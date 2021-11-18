@@ -63,7 +63,7 @@ namespace Group2
                 signInAttemptRemain = 0;
                 AdminSingInAttemptMsg.Text = "";
                 // If ID and Password match, move to the admin panel - currently it lands on the wrong page. Fix it!
-                this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
+                this.NavigationService.Navigate(new Uri("PlannerDashBoard.xaml", UriKind.Relative));
             }
         }
     }

@@ -8,8 +8,8 @@
       d:DesignHeight="800" d:DesignWidth="1280"
       Title="AdminDashBoard">
 
-    <Canvas Background="#FFF7EFFF">
-        <Canvas HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="345" RenderTransformOrigin="-0.26,-4.27" Background="#ffffff">
+    <Canvas Background="#ffffff">
+        <Canvas HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="345" RenderTransformOrigin="-0.26,-4.27" Background="#F7EFFF">
             <Image Source="Images/admin_panel_icon.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="54" Canvas.Top="46" />
             <Label Content="Admin Dashboard" Canvas.Left="111" Canvas.Top="46" FontSize="18" Foreground="#FF333333"/>
             <Line xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -24,20 +24,24 @@
             </Canvas>
             <Canvas x:Name="menu2" Height="63" Canvas.Top="201" Width="345" MouseEnter="menu2_MouseEnter" MouseLeave="menu2_MouseLeave">
                 <Label x:Name="menu2_label" Content="Targeting IP Address / Port" Canvas.Left="72" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
-                <Image Source="admin_connect.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="14" />
+                <Image Source="Images/admin_connect.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="14" />
             </Canvas>
             <Canvas x:Name="menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="menu3_MouseEnter" MouseLeave="menu3_MouseLeave">
                 <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
                 <Label x:Name="menu3_label" Content="Review Log Files" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
-            <Canvas x:Name="AdminBackToMain" Height="63" Canvas.Top="705" Width="345" Background="#FF9756D9" MouseLeftButtonDown="AdminBackToMain_MouseLeftButtonDown">
+            <Canvas x:Name="AdminBackToMain" Height="63" Canvas.Top="699" Width="345" Background="#FF9756D9" MouseLeftButtonDown="AdminBackToMain_MouseLeftButtonDown" Cursor="Hand">
                 <Label Content="Back to Main" Canvas.Left="122" Canvas.Top="14" Foreground="White" FontSize="20"/>
                 <Image Height="32" Canvas.Left="51" Canvas.Top="18" Width="73" Source="door.png"/>
             </Canvas>
 
         </Canvas>
-        <TextBox x:Name="eventTest" Height="47" Canvas.Left="630" TextWrapping="Wrap" Text="Admin Dashboard Started" Canvas.Top="321" Width="280" FontSize="20" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Canvas Height="800" Canvas.Left="350" Width="920"/>
+        <Canvas Height="800" Canvas.Left="350" Width="920">
+            <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Things Get You Going as an Admin" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <Image Height="608" Canvas.Left="158" Canvas.Top="88" Width="608" Source="Images/admin_main_1.jpg"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione " Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
+        </Canvas>
 
     </Canvas>
 

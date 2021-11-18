@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BuyerDashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BuyerSignIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +93,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BuyerDashBoard.xaml.cs">
+      <DependentUpon>BuyerDashBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BuyerSignIn.xaml.cs">
       <DependentUpon>BuyerSignIn.xaml</DependentUpon>
     </Compile>
@@ -102,12 +109,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PlannerDashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PlannerSignIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlannerDashBoard.xaml.cs">
+      <DependentUpon>PlannerDashBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlannerSignIn.xaml.cs">
       <DependentUpon>PlannerSignIn.xaml</DependentUpon>
     </Compile>
@@ -188,10 +202,31 @@
     <Resource Include="Images\admin_directory.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="admin_connect.png" />
+    <Resource Include="Images\admin_connect.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\admin_main_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buyer_panel_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buyer_directory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buyer_main_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\planner_directory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\planner_panel_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\planner_main_1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

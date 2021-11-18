@@ -28,43 +28,37 @@ namespace Group2
         private void menu1_MouseEnter(object sender, MouseEventArgs e)
         {
             menu1.Background = new SolidColorBrush(Color.FromRgb(151,86,217));
-            menu1_label.Foreground = new SolidColorBrush(Colors.White);
-            eventTest.Text = "Menu1_Enter";
+            menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
 
         private void menu1_MouseLeave(object sender, MouseEventArgs e)
         {
-            menu1.Background = new SolidColorBrush(Colors.White);
+            menu1.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
             menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
-            eventTest.Text = "Menu1_Leave";
         }
 
         private void menu2_MouseEnter(object sender, MouseEventArgs e)
         {
             menu2.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
-            menu2_label.Foreground = new SolidColorBrush(Colors.White);
-            eventTest.Text = "Menu2_Enter";
+            menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
 
         private void menu2_MouseLeave(object sender, MouseEventArgs e)
         {
-            menu2.Background = new SolidColorBrush(Colors.White);
+            menu2.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
             menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
-            eventTest.Text = "Menu2_Leave";
         }
 
         private void menu3_MouseEnter(object sender, MouseEventArgs e)
         {
             menu3.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
-            menu3_label.Foreground = new SolidColorBrush(Colors.White);
-            eventTest.Text = "Menu3_Enter";
+            menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
 
         private void menu3_MouseLeave(object sender, MouseEventArgs e)
         {
-            menu3.Background = new SolidColorBrush(Colors.White);
+            menu3.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
             menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
-            eventTest.Text = "Menu3_Leave";
         }
 
         private void AdminBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
