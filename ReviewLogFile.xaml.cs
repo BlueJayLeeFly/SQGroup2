@@ -72,15 +72,16 @@ namespace Group2
 
         private void menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DateTime tsmTime = DateTime.Now;
-            AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Refresh Log\n";
-            Log.Text = AdminController.Record;
+            AdminController.addLog("Refresh Log");
+            Log.Text = AdminController.Record;     
+
         }
 
         private void TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
-            DateTime tsmTime = DateTime.Now;
-            AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Review Log Status\n";
+
+            AdminController.addLog("Review Log Status");
+
             Log.Text = AdminController.Record;
         }
 

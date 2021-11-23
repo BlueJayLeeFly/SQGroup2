@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Group2
 {
-    static class AdminController
+    public static class AdminController
     {
         public static string Record;
+
+
+        public static void addLog(string logMsg)
+        {
+            DateTime tsmTime = DateTime.Now;
+            Record += "[ " + tsmTime + " ]" + " - " + logMsg + "\n";
+        }
     }
 }

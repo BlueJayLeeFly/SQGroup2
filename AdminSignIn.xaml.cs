@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Group2
 {
     /// <summary>
@@ -63,8 +64,7 @@ namespace Group2
                 signInAttemptRemain = 0;
                 AdminSingInAttemptMsg.Text = "";                
 
-                DateTime tsmTime = DateTime.Now;
-                AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Sign in Success!\n";
+                AdminController.addLog("Sign in Success!");
 
                 this.NavigationService.Navigate(new Uri("AdminDashBoard.xaml", UriKind.Relative));
             }         

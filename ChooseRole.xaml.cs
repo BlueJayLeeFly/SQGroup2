@@ -29,8 +29,7 @@ namespace Group2
         {
             this.NavigationService.Navigate(new Uri("AdminSignin.xaml", UriKind.Relative));
 
-            DateTime tsmTime = DateTime.Now;
-            AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Choose Admin as Your Role\n";
+            AdminController.addLog("Choose Admin as Your Role");
         }
 
         private void StartBuyer_Click(object sender, RoutedEventArgs e)

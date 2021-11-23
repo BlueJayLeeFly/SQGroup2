@@ -28,9 +28,8 @@ namespace Group2
         private void HomePageButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
-
-            DateTime tsmTime = DateTime.Now;
-            AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Main Page Get Started Button Clicked - Welcome Back!\n";
+                      
+            AdminController.addLog("Main Page Get Started Button Clicked - Welcome Back!");
 
         }
     }
