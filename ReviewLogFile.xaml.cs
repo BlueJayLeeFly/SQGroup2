@@ -12,22 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace Group2
 {
     /// <summary>
-    /// Interaction logic for AdminDashBoard.xaml
+    /// Interaction logic for ReviewLogFile.xaml
     /// </summary>
-    public partial class AdminDashBoard : Page
+    public partial class ReviewLogFile : Page
     {
-        public AdminDashBoard()
+
+        public static string tmsLog;
+
+        public ReviewLogFile()
         {
             InitializeComponent();
         }
 
         private void menu1_MouseEnter(object sender, MouseEventArgs e)
         {
-            menu1.Background = new SolidColorBrush(Color.FromRgb(151,86,217));
+            menu1.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
             menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
 
@@ -68,7 +72,21 @@ namespace Group2
 
         private void menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ReviewLogFile.xaml", UriKind.Relative));
+            DateTime tsmTime = DateTime.Now;
+            AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Refresh Log\n";
+            Log.Text = AdminController.Record;
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            DateTime tsmTime = DateTime.Now;
+            AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Review Log Status\n";
+            Log.Text = AdminController.Record;
+        }
+
+        private void AdminDashboard_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("AdminDashBoard.xaml", UriKind.Relative));
         }
     }
 }

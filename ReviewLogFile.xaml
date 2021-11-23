@@ -1,4 +1,4 @@
-﻿<Page x:Class="Group2.AdminDashBoard"
+﻿<Page x:Class="Group2.ReviewLogFile"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,12 +6,12 @@
       xmlns:local="clr-namespace:Group2"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1280"
-      Title="AdminDashBoard">
+      Title="ReviewLogFiles">
 
     <Canvas Background="#ffffff">
         <Canvas HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="345" RenderTransformOrigin="-0.26,-4.27" Background="#F7EFFF">
             <Image Source="Images/admin_panel_icon.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="54" Canvas.Top="46" />
-            <Label Content="Admin Dashboard" Canvas.Left="111" Canvas.Top="46" FontSize="18" Foreground="#FF333333"/>
+            <Label x:Name="AdminDashboard" Content="Admin Dashboard" Canvas.Left="111" Canvas.Top="46" FontSize="18" Foreground="#FF333333" MouseLeftButtonDown="AdminDashboard_MouseLeftButtonDown" Cursor="Hand"/>
             <Line xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             X1="250" Y1="403"
             X2="500" Y2="403"
@@ -37,10 +37,11 @@
 
         </Canvas>
         <Canvas Height="800" Canvas.Left="350" Width="920">
-            <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Things Get You Going as an Admin" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="414" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101" Loaded="TextBlock_Loaded"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
-            <Image Height="608" Canvas.Left="158" Canvas.Top="88" Width="608" Source="Images/admin_main_1.jpg"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione " Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
+            
+            <TextBlock x:Name="Log" Canvas.Left="194" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="" Canvas.Top="178" Height="514" Width="565"/>
+            
         </Canvas>
 
     </Canvas>

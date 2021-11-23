@@ -16,13 +16,27 @@ using System.Windows.Shapes;
 namespace Group2
 {
     /// <summary>
-    /// Interaction logic for BuyerDashBoard.xaml
+    /// Interaction logic for Marketplace.xaml
     /// </summary>
-    public partial class BuyerDashBoard : Page
+    public partial class Marketplace : Page
     {
-        public BuyerDashBoard()
+        public Marketplace()
         {
             InitializeComponent();
+
+            Customers customer1 = new Customers("John Doe", "Toronto", "Order Requested", "Images/customer1.jpg");
+            Customer1_Name.Content = customer1.CustomerName;
+            Customer1_City.Content = customer1.CustomerCity;
+            Customer1_Order_Status.Content = customer1.OrderRequestStatus;
+            Customer1_Image.Source = new BitmapImage(new Uri(customer1.ImagePath, UriKind.Relative));
+
+
+            //test1.Source = new BitmapImage(new Uri("Images/customer1.jpg", UriKind.Relative));
+        }
+
+        private void BuyerBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
         }
 
         private void buyer_menu1_MouseEnter(object sender, MouseEventArgs e)
@@ -61,11 +75,6 @@ namespace Group2
             buyer_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
         }
 
-        private void BuyerBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
-        }
-
         private void buyer_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Marketplace.xaml", UriKind.Relative));
@@ -75,5 +84,6 @@ namespace Group2
         {
             this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
         }
+
     }
 }

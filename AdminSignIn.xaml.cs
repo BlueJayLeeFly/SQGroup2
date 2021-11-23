@@ -61,8 +61,11 @@ namespace Group2
             else
             {
                 signInAttemptRemain = 0;
-                AdminSingInAttemptMsg.Text = "";
-                // If ID and Password match, move to the admin panel - currently it lands on the wrong page. Fix it!
+                AdminSingInAttemptMsg.Text = "";                
+
+                DateTime tsmTime = DateTime.Now;
+                AdminController.Record += "[ " + tsmTime + " ]" + " - " + "Sign in Success!\n";
+
                 this.NavigationService.Navigate(new Uri("AdminDashBoard.xaml", UriKind.Relative));
             }         
 
