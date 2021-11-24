@@ -247,5 +247,8 @@
   <ItemGroup>
     <Resource Include="Images\customer1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\TMS.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

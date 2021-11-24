@@ -39,7 +39,7 @@
         <Canvas Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="414" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101" Loaded="TextBlock_Loaded"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
-            
+
             <TextBlock x:Name="Log" Canvas.Left="194" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="" Canvas.Top="178" Height="514" Width="565"/>
             
         </Canvas>

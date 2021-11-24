@@ -24,14 +24,15 @@ namespace Group2
         {
             InitializeComponent();
 
+            // Constructor
             Customers customer1 = new Customers("John Doe", "Toronto", "Order Requested", "Images/customer1.jpg");
+
+            // Display on the page
             Customer1_Name.Content = customer1.CustomerName;
             Customer1_City.Content = customer1.CustomerCity;
             Customer1_Order_Status.Content = customer1.OrderRequestStatus;
             Customer1_Image.Source = new BitmapImage(new Uri(customer1.ImagePath, UriKind.Relative));
 
-
-            //test1.Source = new BitmapImage(new Uri("Images/customer1.jpg", UriKind.Relative));
         }
 
         private void BuyerBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

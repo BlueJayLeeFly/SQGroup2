@@ -20,8 +20,7 @@ namespace Group2
             this.CustomerCity = CustomerCity;
             this.OrderRequestStatus = OrderRequestStatus;
             this.ImagePath = ImagePath;
-        }
- 
+        } 
 
     }
 }
