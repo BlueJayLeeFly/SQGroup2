@@ -50,6 +50,17 @@
         <Rectangle x:Name="adminWarning" Visibility="Collapsed" Fill="#E545B16B" HorizontalAlignment="Left" Height="818" Margin="-27,-18,0,0" StrokeThickness="1" VerticalAlignment="Top" Width="1307"/>
         <Image x:Name="adminLock" Visibility="Collapsed" HorizontalAlignment="Left" Height="100" Margin="586,362,0,0" VerticalAlignment="Top" Width="100" Source="Images/lock.png"/>
         <TextBlock x:Name="adminSignInFail" Visibility="Collapsed" HorizontalAlignment="Left" Margin="424,496,0,0" TextWrapping="Wrap" Text="Please contact support team" VerticalAlignment="Top" FontSize="34" Foreground="White"/>
+
+        <!-- Go Back Button Begin-->
+        <Canvas x:Name="planner_go_back_avatar" Visibility="Collapsed" HorizontalAlignment="Left" Height="142" Margin="70,31,0,0" VerticalAlignment="Top" Width="292">
+            <Image x:Name="planner_avatar_left" Height="100" Canvas.Left="35" Width="100" Cursor="Hand" Source="Images/avatar1.png" MouseEnter="planner_avatar_left_MouseEnter" MouseLeave="planner_avatar_left_MouseLeave" MouseLeftButtonDown="planner_avatar_left_MouseLeftButtonDown"/>
+            <Image x:Name="planner_avatar_right" Height="100" Canvas.Left="171" Width="100" Cursor="Hand" Source="Images/avatar2.png" MouseEnter="planner_avatar_right_MouseEnter" MouseLeave="planner_avatar_right_MouseLeave" MouseLeftButtonDown="planner_avatar_right_MouseLeftButtonDown"/>
+            <Label x:Name="planner_avatar_label_left" Content="Admin" HorizontalContentAlignment="Center" Canvas.Left="43" Canvas.Top="105" Width="86" FontSize="16" Background="{x:Null}" Foreground="#FF333333"/>
+            <Label x:Name="planner_avatar_label_right" Content="Buyer" HorizontalContentAlignment="Center" Canvas.Left="181" Canvas.Top="105" Width="86" FontSize="16" Background="{x:Null}" Foreground="#FF333333"/>
+        </Canvas>
+        <Image x:Name="planner_go_back" HorizontalAlignment="Left" Height="50" Margin="38,55,0,0" VerticalAlignment="Top" Width="49" Cursor="Hand" Source="Images/go_back_icon_planner.png" MouseLeftButtonDown="planner_go_back_MouseLeftButtonDown" MouseEnter="planner_go_back_MouseEnter"/>
+        <!-- Go Back Button End-->
+
     </Grid>
 </Page>
  

@@ -249,6 +249,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\TMS.sql" />
+    <Resource Include="Images\go_back_icon_admin.png" />
+    <Resource Include="Images\go_back_icon_buyer.png" />
+    <Resource Include="Images\go_back_icon_planner.png" />
+    <Resource Include="Images\avatar1.png" />
+    <Resource Include="Images\avatar2.png" />
+    <Resource Include="Images\avatar3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
