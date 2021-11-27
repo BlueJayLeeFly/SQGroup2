@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,11 @@ namespace Group2
 {
     public static class AdminController
     {
-        public static string Record;   // variable to store eventlogs
+
+        public static string PresetLogFile = "c:\\Users\\lsj27\\documents\\TMS_LogFile.log";
         public static string LogFileDirectory;
+        public static string LogFileName;
+        public static string LogWithDateTime;   // variable to store eventlogs
         public static string ConnectionStringForTMS;  // connection string for TMS Database
 
 
@@ -17,9 +21,26 @@ namespace Group2
         public static void addLog(string logMsg)
         {
             DateTime tsmTime = DateTime.Now;
-            Record += $"[ {tsmTime} ] - {logMsg} \n";
+            LogWithDateTime = $"[ {tsmTime} ] - {logMsg}";
 
-            // append to a file
+            if (!File.Exists(LogFileName))
+            {
+                LogFileName = PresetLogFile;
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(LogFileName))
+                {
+                    DateTime createFileTime = DateTime.Now;
+                    sw.WriteLine($"[ {createFileTime} ] - File Created");
+                }
+            }
+
+            // This text is always added, making the file longer over time
+            // if it is not deleted.
+            using (StreamWriter sw = File.AppendText(LogFileName))
+            {
+                sw.WriteLine(LogWithDateTime);
+            }
+
         }
 
         public static void readLog(string logMsg)
