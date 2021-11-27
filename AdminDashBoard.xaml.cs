@@ -77,7 +77,28 @@ namespace Group2
 
         private void menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ReviewLogFile.xaml", UriKind.Relative));
+            admin_log_listbox.Items.Clear();
+
+            if(AdminController.LogFileName == null)
+            {
+                AdminController.LogFileName = AdminController.PresetLogFile;
+            }            
+
+            using (StreamReader sr = File.OpenText(AdminController.LogFileName))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    admin_log_listbox.Items.Add(s);
+                }
+            }            
+
+            admin_dashboard_review_log.Visibility = Visibility.Visible;
+
+            // Hide the other parts
+            AdminDashBoardMain.Visibility = Visibility.Collapsed;
+            AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
         }
 
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -87,6 +108,7 @@ namespace Group2
             // Hide the other parts
             AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
             AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            admin_dashboard_review_log.Visibility = Visibility.Collapsed;
 
             // log
             AdminController.addLog("Admin dashboard home button clicked");
@@ -94,14 +116,22 @@ namespace Group2
 
         private void ChangeLogFilePath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            bool? result = ofd.ShowDialog();
+            // Initial directory set up required during installation(?)
 
-            if (result == true)
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = "c:\\Users\\lsj27\\documents";
+            ofd.Filter = "Log Files (*.log) | *.log";
+            ofd.FilterIndex = 1;
+            ofd.RestoreDirectory = true;
+
+            bool? openResult = ofd.ShowDialog();
+
+            if (openResult == true)
             {
                 LogFilePath.Text = Path.GetDirectoryName(ofd.FileName);
+                AdminController.LogFileName = ofd.FileName;
                 AdminController.LogFileDirectory = LogFilePath.Text;
-            }
+            }        
 
             // log
             AdminController.addLog("Change directory button clicked");
@@ -115,6 +145,7 @@ namespace Group2
             // Hide the other parts
             AdminDashBoardMain.Visibility = Visibility.Collapsed;
             AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            admin_dashboard_review_log.Visibility = Visibility.Collapsed;
 
             // log
             AdminController.addLog("Directory setting menu clicked");
@@ -135,6 +166,7 @@ namespace Group2
             // Hide the other parts
             AdminDashBoardMain.Visibility = Visibility.Collapsed;
             AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
+            admin_dashboard_review_log.Visibility = Visibility.Collapsed;
 
             // log
             AdminController.addLog("DB Connection setting button clicked");
