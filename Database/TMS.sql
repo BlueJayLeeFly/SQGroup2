@@ -66,7 +66,48 @@ CREATE TABLE IF NOT EXISTS `Order` (
   FOREIGN KEY (`Carrier_ID`) REFERENCES `Carrier_Data`(`Carrier_ID`),
   PRIMARY KEY(`Order_ID`)
 );
+INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('1', 'admin','sohaib', 'sheikh');
+INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('2', 'buyer','colby', 'taylor');
+INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('3', 'planner','parichehr', 'salahshour');
+INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('4', 'admin','seungjae', 'lee');
 
-INSERT INTO Rate_Table (Rate_Table_ID, Surcharge, FTL, LTL) VALUES ('1', '150', '0.08', '0.05'); 
+
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('1', 'Windsor','191', 'END','London','2.5');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('2', 'London','128', 'Windsor','Hamilton','1.75');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('3', 'Hamilton','68', 'London','Toronto','1.25');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('4', 'Toronto','60', 'Hamilton','Oshawa','1.3');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('5', 'Oshawa','134', 'Toronto','Belleville','1.65');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('6', 'Belleville','82', 'Oshawa','Kingstone','1.2');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('7', 'Kingstone','96', 'Belleville','Ottawa','2.5');
+INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('8', 'Ottawa','0', 'Kingston','END','0');
+
+
+
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('1', 'Planet Expess','Windsor', '50','640','5.21', '0.3621', '0.08');
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('2', 'Planet Expess','Hamilton', '50','640','5.21', '0.3621', '0.08');
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('3', 'Planet Expess','Oshawa', '50','640','5.21', '0.3621', '0.08');
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('4', 'Planet Expess','Belleville', '50','640','5.21', '0.3621', '0.08');
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('5', 'Planet Expess','Ottawa', '50','640','5.21', '0.3621', '0.08');
+ INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('6', 'Schooners','London', '18','98','5.05', '0.3434', '0.07');
+ INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('7', 'Schooners','Toronto', '18','98','5.05', '0.3434', '0.07');
+ INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('8', 'Schooners','Kingston', '18','98','5.05', '0.3434', '0.07');
+ INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('9', 'Tillman Transport','Windsor', '24','35','5.11', '0.3012', '0.09');
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('10', 'Tillman Transport','London', '24','35','5.11', '0.3012', '0.09'); 
+ INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('11', 'Tillman Transport','Hamilton', '24','35','5.11', '0.3012', '0.09');
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('12', 'We Haul','Ottawa', '11','0','5.2', '0', '0.065'); 
+INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
+ VALUES ('13', 'We Haul','Toronto', '11','0','5.2', '0', '0.065');  
 
 
