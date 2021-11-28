@@ -4,10 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace Group2
 {
+    /// <summary>
+    /// Static class for Admin
+    /// </summary>
     public static class AdminController
     {
 
@@ -15,7 +19,7 @@ namespace Group2
         public static string LogFileDirectory;
         public static string LogFileName;
         public static string LogWithDateTime;   // variable to store eventlogs
-        public static string ConnectionStringForTMS = "Server=localhost;Uid=8709111;Pwd=Student12345;database=lab3";  // connection string for TMS Database
+        public static string ConnectionStringForTMS = "Server=localhost;Uid=testuser;Pwd=12345;database=test";  // connection string for TMS Database
 
         // Backup
         public static string BackupFile;
@@ -52,6 +56,62 @@ namespace Group2
         }
 
         // connectToDB() -> 4.5.2.1.1
+
+        public static string InitialConnectToDB()
+        {
+            string mySqlVersion = "";
+            try
+            {                
+                // Connection String
+                var connstr = ConnectionStringForTMS;                
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+                    mySqlVersion =$"Connected to MySql {conn.ServerVersion}";
+
+                    conn.Close(); // Close connection
+                }         
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);               
+            }
+           
+            return mySqlVersion;
+        }
+
+        public static void ConnectToDB(string mySqlCommand)
+        {
+            try
+            {
+                // Connection String
+                var connstr = ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();                    
+
+                    // Create a command
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        // This a command text
+                        cmd.CommandText = mySqlCommand;
+
+                        // execute
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
 
 
         // localBackup() -> 4.5.2.1.4
@@ -93,7 +153,6 @@ namespace Group2
                 }
             }
         }
-
 
 
 

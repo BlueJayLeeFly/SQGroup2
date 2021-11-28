@@ -171,9 +171,8 @@ namespace Group2
         }
 
 
+
         // ------------------------- These are for Menu Items Click Events [end] ---------------------
-
-
 
         private void ChangeLogFilePath_Click(object sender, RoutedEventArgs e)
         {
@@ -223,7 +222,7 @@ namespace Group2
             }
 
             // log
-            AdminController.addLog("a Backup File Created : " + AdminController.BackupFile);
+            AdminController.addLog("Backup File Created : " + AdminController.BackupFile);
         }
 
         private void restore_button_Click(object sender, RoutedEventArgs e)
@@ -246,7 +245,7 @@ namespace Group2
             }
 
             // log
-            AdminController.addLog("a Backup File Restored : " + AdminController.BackupFile);
+            AdminController.addLog("Backup File Restored : " + AdminController.BackupFile);
         }
 
     }
