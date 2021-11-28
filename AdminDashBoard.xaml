@@ -26,9 +26,17 @@
                 <Label x:Name="menu2_label" Content="DB Connection Setting" Canvas.Left="72" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
                 <Image Source="Images/admin_connect.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="14" />
             </Canvas>
-            <Canvas x:Name="menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="menu3_MouseEnter" MouseLeave="menu3_MouseLeave" MouseLeftButtonDown="menu3_MouseLeftButtonDown">
+            <Canvas x:Name="menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="menu3_MouseEnter" MouseLeave="menu3_MouseLeave" MouseLeftButtonDown="menu3_MouseLeftButtonDown" Cursor="Hand">
                 <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
                 <Label x:Name="menu3_label" Content="Review Log Files" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
+            </Canvas>
+            <Canvas x:Name="menu4" Height="63" Canvas.Top="337" Width="345">
+                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
+                <Label x:Name="menu4_label" Content="DB Table Setting" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
+            </Canvas>
+            <Canvas x:Name="menu5" Height="63" Canvas.Top="408" Width="345" Cursor="Hand" MouseEnter="menu5_MouseEnter" MouseLeave="menu5_MouseLeave" MouseLeftButtonDown="menu5_MouseLeftButtonDown">
+                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="13" />
+                <Label x:Name="menu5_label" Content="Backup TMS DB" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
             <Canvas x:Name="AdminBackToMain" Height="63" Canvas.Top="699" Width="345" Background="#FF9756D9" MouseLeftButtonDown="AdminBackToMain_MouseLeftButtonDown" Cursor="Hand">
                 <Label Content="Back to Main" Canvas.Left="122" Canvas.Top="14" Foreground="White" FontSize="20"/>
@@ -37,6 +45,7 @@
 
         </Canvas>
 
+        <!-- Right Column Components-->
         <Canvas x:Name="AdminDashBoardMain" Visibility="Visible" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Things Get You Going as an Admin" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
@@ -47,14 +56,14 @@
         <Canvas x:Name="AdminDashBoardDirectory" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock TextWrapping="Wrap" Canvas.Top="86" FontSize="20" FontWeight="Bold" Canvas.Left="332" Width="200"><Run Text="Directory"/><Run Text=" Setting"/></TextBlock>
             <TextBlock TextWrapping="Wrap" Canvas.Top="200" FontSize="16" Text="Directory for a Log File" Canvas.Left="166" Width="200" Foreground="#FF333333"></TextBlock>
-            <TextBox x:Name="LogFilePath" VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="226" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="16" />
+            <TextBox x:Name="LogFilePath"  VerticalContentAlignment="Center" Text="c:\Users\lsj27\documents" Canvas.Left="166" Canvas.Top="226" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
             <Button x:Name="ChangeLogFilePath" Content="Change Directory" Canvas.Left="587" Canvas.Top="226" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="ChangeLogFilePath_Click"/>
         </Canvas>
 
         <Canvas x:Name="AdminDashBoardIpPort" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock TextWrapping="Wrap" Canvas.Top="60" FontSize="20" Text="DB Connection Setting" FontWeight="Bold" Canvas.Left="341" Width="227"/>
             <Label Content="TMS MySql Server" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="108" Canvas.Top="144" Height="44" Width="730" Background="#FF9756D9" Foreground="White" FontSize="18"/>
-            <Label Content="Ip Address" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="108" Canvas.Top="201" Height="44" Width="183" Background="#FFC58CFF" Foreground="White" FontSize="16"/>
+            <Label Content="Host Name" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="108" Canvas.Top="201" Height="44" Width="183" Background="#FFC58CFF" Foreground="White" FontSize="16"/>
             <Label Content="Port" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="562" Canvas.Top="201" Height="44" Width="104" Background="#FFC58CFF" Foreground="White" FontSize="16"/>
             <Label Content="User Name" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="108" Canvas.Top="256" Height="44" Width="183" Background="#FFC58CFF" Foreground="White" FontSize="16"/>
             <Label Content="Password" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="108" Canvas.Top="312" Height="44" Width="183" Background="#FFC58CFF" Foreground="White" FontSize="16"/>
@@ -63,6 +72,23 @@
             <PasswordBox x:Name="TmsDbPassword" VerticalContentAlignment="Center" Canvas.Left="300" Canvas.Top="312" Padding="5,5,5,5" Width="243" Height="44" BorderBrush="{x:Null}" Background="#FFF7EFFF" Foreground="#FF9756D9"/>
             <TextBox x:Name="TmsPortNum" VerticalContentAlignment="Center" Text="" Canvas.Left="677" Canvas.Top="201" Padding="5,5,5,5" Height="44" Width="161" Foreground="#FF9756D9" FontSize="16" BorderBrush="{x:Null}" Background="#FFF7EFFF" />
             <Button x:Name="TmsConnect" Content="Connect" Canvas.Left="562" Canvas.Top="259" Width="276" Height="97" BorderBrush="{x:Null}" Background="#FF323232" Foreground="White" FontSize="24" Click="TmsConnect_Click"/>
+            <Label x:Name="connection_result" Content="" HorizontalContentAlignment="Center" Canvas.Top="390" Canvas.Left="108" Height="29" Width="730" FontSize="16" Foreground="#FF333333"/>
+        </Canvas>
+        <Canvas x:Name="admin_dashboard_review_log"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
+            <TextBlock Canvas.Left="514" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <ListBox x:Name="admin_log_listbox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="517" Canvas.Left="104" Canvas.Top="195" Width="738" BorderBrush="{x:Null}"/>
+        </Canvas>
+
+        <Canvas x:Name="admin_dashboard_backup"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
+            <TextBlock Canvas.Left="354" TextWrapping="Wrap" Text="Backup TMS DB" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="173"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock TextWrapping="Wrap" Canvas.Top="250" FontSize="16" Text="Backup/Export a TMS Database " Canvas.Left="166" Width="268" Foreground="#FF333333"></TextBlock>
+            <TextBox x:Name="backup_file_path"  VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="276" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
+            <Button x:Name="backup_button" Content="Backup" Canvas.Left="587" Canvas.Top="276" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="backup_button_Click"/>
+            <TextBlock TextWrapping="Wrap" Canvas.Top="452" FontSize="16" Text="Restore/Import a TMS Database " Canvas.Left="166" Width="268" Foreground="#FF333333"></TextBlock>
+            <TextBox x:Name="restore_file_path"  VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="482" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
+            <Button x:Name="restore_button" Content="Restore" Canvas.Left="587" Canvas.Top="482" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="restore_button_Click"/>
         </Canvas>
 
     </Canvas>

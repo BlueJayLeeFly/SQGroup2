@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,12 +66,60 @@ namespace Group2
                 AdminSingInAttemptMsg.Text = "";                
 
                 AdminController.addLog("Sign in Success!");
-
                 this.NavigationService.Navigate(new Uri("AdminDashBoard.xaml", UriKind.Relative));
             }         
 
           
 
         }
+
+
+
+        // Go back button --- start
+        private void admin_go_back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
+        }
+
+        private void admin_go_back_MouseEnter(object sender, MouseEventArgs e)
+        {
+            admin_go_back_avatar.Visibility = Visibility.Visible;
+        }
+
+        private void admin_avatar_left_MouseEnter(object sender, MouseEventArgs e)
+        {
+            admin_avatar_label_left.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+            admin_avatar_label_left.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        }
+
+        private void admin_avatar_left_MouseLeave(object sender, MouseEventArgs e)
+        {
+            admin_avatar_label_left.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            admin_avatar_label_left.Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51));
+        }
+
+        private void admin_avatar_right_MouseEnter(object sender, MouseEventArgs e)
+        {
+            admin_avatar_label_right.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+            admin_avatar_label_right.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        }
+
+        private void admin_avatar_right_MouseLeave(object sender, MouseEventArgs e)
+        {
+            admin_avatar_label_right.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            admin_avatar_label_right.Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51));
+        }
+
+        private void admin_avatar_left_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("BuyerSignIn.xaml", UriKind.Relative));
+        }
+
+        private void admin_avatar_right_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("PlannerSignIn.xaml", UriKind.Relative));
+        }
+
+        // Go back button --- end
     }
 }

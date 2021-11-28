@@ -66,5 +66,52 @@ namespace Group2
                 this.NavigationService.Navigate(new Uri("PlannerDashBoard.xaml", UriKind.Relative));
             }
         }
+
+        // Go back button --- start
+        private void planner_avatar_left_MouseEnter(object sender, MouseEventArgs e)
+        {
+            planner_avatar_label_left.Background = new SolidColorBrush(Color.FromRgb(69, 177, 107));
+            planner_avatar_label_left.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        }
+
+        private void planner_avatar_left_MouseLeave(object sender, MouseEventArgs e)
+        {
+            planner_avatar_label_left.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            planner_avatar_label_left.Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51));
+        }
+
+        private void planner_avatar_left_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("AdminSignIn.xaml", UriKind.Relative));
+        }
+
+        private void planner_avatar_right_MouseEnter(object sender, MouseEventArgs e)
+        {
+            planner_avatar_label_right.Background = new SolidColorBrush(Color.FromRgb(69, 177, 107));
+            planner_avatar_label_right.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        }
+
+        private void planner_avatar_right_MouseLeave(object sender, MouseEventArgs e)
+        {
+            planner_avatar_label_right.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            planner_avatar_label_right.Foreground = new SolidColorBrush(Color.FromRgb(51, 51, 51));
+        }
+
+        private void planner_avatar_right_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("BuyerSignIn.xaml", UriKind.Relative));
+        }
+
+        private void planner_go_back_MouseEnter(object sender, MouseEventArgs e)
+        {
+            planner_go_back_avatar.Visibility = Visibility.Visible;
+        }
+
+        private void planner_go_back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
+        }
+
+        // Go back button --- end
     }
 }
