@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace Group2
 {
@@ -14,7 +15,10 @@ namespace Group2
         public static string LogFileDirectory;
         public static string LogFileName;
         public static string LogWithDateTime;   // variable to store eventlogs
-        public static string ConnectionStringForTMS;  // connection string for TMS Database
+        public static string ConnectionStringForTMS = "Server=localhost;Uid=8709111;Pwd=Student12345;database=lab3";  // connection string for TMS Database
+
+        // Backup
+        public static string BackupFile;
 
 
         // Logger 4.5.2.1.2  -------- write with append / read 
@@ -26,7 +30,7 @@ namespace Group2
             if (!File.Exists(LogFileName))
             {
                 LogFileName = PresetLogFile;
-                // Create a file to write to.
+               
                 using (StreamWriter sw = File.CreateText(LogFileName))
                 {
                     DateTime createFileTime = DateTime.Now;
@@ -34,8 +38,6 @@ namespace Group2
                 }
             }
 
-            // This text is always added, making the file longer over time
-            // if it is not deleted.
             using (StreamWriter sw = File.AppendText(LogFileName))
             {
                 sw.WriteLine(LogWithDateTime);
@@ -46,9 +48,52 @@ namespace Group2
         public static void readLog(string logMsg)
         {
             // it will display on the admin review log page
+            // This is implemented as a list box.
         }
 
         // connectToDB() -> 4.5.2.1.1
+
+
+        // localBackup() -> 4.5.2.1.4
+        public static void localBackup(string ConnectionStringForTMS, string BackupFile)
+        {
+
+            // https://www.nuget.org/packages/MySqlBackup.NET/
+
+            using (MySqlConnection conn = new MySqlConnection(ConnectionStringForTMS))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ExportToFile(BackupFile);
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+        public static void localRestore(string ConnectionStringForTMS, string BackupFile)
+        {
+            // https://www.nuget.org/packages/MySqlBackup.NET/
+
+            using (MySqlConnection conn = new MySqlConnection(ConnectionStringForTMS))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ImportFromFile(BackupFile);
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
 
 
 
@@ -60,7 +105,7 @@ namespace Group2
 
 
 
-        // localBackup() -> 4.5.2.1.4
+
 
         // MySQL --- id : group2 / password : group2password
 
