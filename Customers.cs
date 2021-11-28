@@ -5,27 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-/// <summary>
-/// 
-/// \class  Customers
-/// 
-/// \brief  The purpose of this class is to store the customer information
-///         when the customer is retrieved from the contract marketplace.
-///         This class has a single constructor with getters and setters 
-///         for each attribute. 
-/// 
-/// Attributes:
-///     -CustomerName       : Name of Customer
-///     -OrderRequestStatus :The status of the customer order
-///     -CustomerCity       : which city the customer in from
-///     -ImagePath          : image path to a picture of the customer
-///     
-/// \author <i>Colby Taylor & Sohaib Sheikh & Seungjae Lee & Parichehr Moghanloo</i>
-///         
-/// </summary>
+
 
 namespace Group2
 {
+    /// <summary>
+    /// 
+    /// \class  Customers
+    /// 
+    /// \brief  The purpose of this class is to store the customer information
+    ///         when the customer is retrieved from the contract marketplace.
+    ///         This class has a single constructor with getters and setters 
+    ///         for each attribute. 
+    /// 
+    /// Attributes:
+    ///     -CustomerName       : Name of Customer
+    ///     -OrderRequestStatus :The status of the customer order
+    ///     -CustomerCity       : which city the customer in from
+    ///     -ImagePath          : image path to a picture of the customer
+    ///     
+    /// \author <i>Colby Taylor & Sohaib Sheikh & Seungjae Lee & Parichehr Moghanloo</i>
+    ///         
+    /// </summary>
     class Customers
     {
         public string CustomerName { get; set; }            ///< Customer Properties to set and get attribute

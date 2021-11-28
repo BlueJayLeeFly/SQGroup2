@@ -6,35 +6,36 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-/// <summary>
-/// 
-/// \class  AdminController
-/// 
-/// \brief  The purpose of this class is to allow the admin specific controls
-///         to be able to review log record log and connect to the Database
-/// 
-/// Attributes:
-///     -Record                       : Attribute for storing the event log
-///     -LogFileDirectory             : Attribute to store the local location
-///                                   : of the log file
-///     -ConnectionStringForTMS       : Stores the connection string for the 
-///                                   : TMS database
-/// 
-/// Methods:
-///     -addLog(string msg)
-///     -readLog(string msg)
-///     -connectToDb()
-///     -changeCarrierData()
-///     -changeRouteTable()
-///     -changeRateFeeTable()
-///     
-/// \author <i>Colby Taylor & Sohaib Sheikh & Seungjae Lee & Parichehr Moghanloo</i>
-///         
-/// </summary>
-/// 
+
 
 namespace Group2
 {
+    /// <summary>
+    /// 
+    /// \class  AdminController
+    /// 
+    /// \brief  The purpose of this class is to allow the admin specific controls
+    ///         to be able to review log record log and connect to the Database
+    /// 
+    /// Attributes:
+    ///     -Record                       : Attribute for storing the event log
+    ///     -LogFileDirectory             : Attribute to store the local location
+    ///                                   : of the log file
+    ///     -ConnectionStringForTMS       : Stores the connection string for the 
+    ///                                   : TMS database
+    /// 
+    /// Methods:
+    ///     -addLog(string msg)
+    ///     -readLog(string msg)
+    ///     -connectToDb()
+    ///     -changeCarrierData()
+    ///     -changeRouteTable()
+    ///     -changeRateFeeTable()
+    ///     
+    /// \author <i>Colby Taylor & Sohaib Sheikh & Seungjae Lee & Parichehr Moghanloo</i>
+    ///         
+    /// </summary>
+    /// 
     public static class AdminController
     {
 
