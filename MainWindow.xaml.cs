@@ -20,6 +20,14 @@ namespace Group2
     /// </summary>
     public partial class MainWindow : NavigationWindow
     {
+
+        /**
+        *  \brief   MainWindow -- initialize components
+        *  \details this method initialize components of MainWindow.xaml
+        *  \param   NONE
+        *  \returns NONE
+        */
+
         public MainWindow()
         {
             InitializeComponent();

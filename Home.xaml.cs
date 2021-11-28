@@ -16,14 +16,37 @@ using System.Windows.Shapes;
 namespace Group2
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// class for the logic of Home.xaml
     /// </summary>
+    /// 
+    /// \class  Home
+    /// 
+    /// \brief  The purpose of this class is to create the very initial page of the app
+    /// 
+    /// 
+    /// Methods:
+    ///     -Home()
+    ///     -HomePageButton_Click(object sender, RoutedEventArgs e)
+    ///     
+    /// \author <i>Colby Taylor & Sohaib Sheikh & Seungjae Lee & Parichehr Moghanloo</i>
+    ///         
+    /// </summary>
+    ///
     public partial class Home : Page
     {
         public Home()
         {
             InitializeComponent();
         }
+
+
+        /**
+        *  \brief   HomePageButton_Click -- event handling of home page get started button
+        *  \details this method handles get started button click event and leads to ChooseRole.xaml
+        *  \param   sender object
+        *  \param   RoutedEventArgs e
+        *  \returns NONE
+        */
 
         private void HomePageButton_Click(object sender, RoutedEventArgs e)
         {

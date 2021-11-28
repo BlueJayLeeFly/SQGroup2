@@ -23,6 +23,14 @@ namespace Group2
     /// </summary>
     public partial class AdminDashBoard : Page
     {
+
+        /**
+        *  \brief   AdminDashBoard -- initialize components
+        *  \details this method initialize components of AdminDashBoard.xaml
+        *  \param   NONE
+        *  \returns NONE
+        */
+
         public AdminDashBoard()
         {
             InitializeComponent();
@@ -31,11 +39,29 @@ namespace Group2
 
         // ------------------------- These are for hover effect [start] ---------------------
 
+
+        /**
+        *  \brief   menu1_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
         private void menu1_MouseEnter(object sender, MouseEventArgs e)
         {
             menu1.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
             menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
+
+
+        /**
+        *  \brief   menu1_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
 
         private void menu1_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -43,11 +69,29 @@ namespace Group2
             menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
         }
 
+
+        /**
+        *  \brief   menu2_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
         private void menu2_MouseEnter(object sender, MouseEventArgs e)
         {
             menu2.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
             menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
+
+
+        /**
+        *  \brief   menu2_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
 
         private void menu2_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -55,11 +99,29 @@ namespace Group2
             menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
         }
 
+
+        /**
+        *  \brief   menu3_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
         private void menu3_MouseEnter(object sender, MouseEventArgs e)
         {
             menu3.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
             menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
+
+
+        /**
+        *  \brief   menu3_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
 
         private void menu3_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -67,11 +129,29 @@ namespace Group2
             menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
         }
 
+
+        /**
+        *  \brief   menu5_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
         private void menu5_MouseEnter(object sender, MouseEventArgs e)
         {
             menu5.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
             menu5_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
         }
+
+
+        /**
+        *  \brief   menu5_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
 
         private void menu5_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -83,6 +163,16 @@ namespace Group2
 
 
         // ------------------------- These are for Menu Items Click Events [start] ---------------------
+
+
+
+        /**
+        *  \brief   Label_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu which is main dashboard page and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
 
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -99,6 +189,15 @@ namespace Group2
         }
 
 
+
+        /**
+        *  \brief   menu1_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu which is main dashboard page and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
         private void menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AdminDashBoardDirectory.Visibility = Visibility.Visible;
@@ -113,6 +212,15 @@ namespace Group2
             AdminController.addLog("Directory setting menu clicked");
         }
 
+
+        /**
+        *  \brief   menu2_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
         private void menu2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AdminDashBoardIpPort.Visibility = Visibility.Visible;
@@ -126,6 +234,15 @@ namespace Group2
             // log
             AdminController.addLog("DB Connection setting button clicked");
         }
+
+
+        /**
+        *  \brief   menu3_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
 
         private void menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -154,6 +271,16 @@ namespace Group2
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
         }
 
+
+
+        /**
+        *  \brief   menu5_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
         private void menu5_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             admin_dashboard_backup.Visibility = Visibility.Visible;
@@ -165,6 +292,15 @@ namespace Group2
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
         }
 
+
+        /**
+        *  \brief   AdminBackToMain_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event and lead to ChooseRole.xaml
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
         private void AdminBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
@@ -173,6 +309,15 @@ namespace Group2
 
 
         // ------------------------- These are for Menu Items Click Events [end] ---------------------
+
+
+        /**
+        *  \brief   ChangeLogFilePath_Click -- event handling of change directory button click
+        *  \details this method handles change directory button click event, display open file dialog
+        *  \param   sender object
+        *  \param   RoutedEventArgs e
+        *  \returns NONE
+        */
 
         private void ChangeLogFilePath_Click(object sender, RoutedEventArgs e)
         {
@@ -196,7 +341,15 @@ namespace Group2
             // log
             AdminController.addLog("Change directory button clicked");
         }
-                      
+
+
+        /**
+        *  \brief   TmsConnect_Click -- event handling of connect button click
+        *  \details this method handles connect button click event and make an initial connection to MySql server
+        *  \param   sender object
+        *  \param   RoutedEventArgs e
+        *  \returns NONE
+        */
 
         private void TmsConnect_Click(object sender, RoutedEventArgs e)
         {         
@@ -206,7 +359,17 @@ namespace Group2
 
             // log
             AdminController.addLog("TMS database connection button clicked");
-        }        
+        }
+
+
+
+        /**
+        *  \brief   backup_button_Click -- event handling of backup button click
+        *  \details this method handles backup button click event and exports a backup file
+        *  \param   sender object
+        *  \param   RoutedEventArgs e
+        *  \returns NONE
+        */
 
         private void backup_button_Click(object sender, RoutedEventArgs e)
         {
@@ -224,6 +387,16 @@ namespace Group2
             // log
             AdminController.addLog("Backup File Created : " + AdminController.BackupFile);
         }
+
+
+
+        /**
+        *  \brief   restore_button_Click -- event handling of restore button click
+        *  \details this method handles restore button click event and imports a backup file
+        *  \param   sender object
+        *  \param   RoutedEventArgs e
+        *  \returns NONE
+        */
 
         private void restore_button_Click(object sender, RoutedEventArgs e)
         {

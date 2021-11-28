@@ -35,6 +35,17 @@ namespace Group2
         public string ImagePath { get; set; }               ///< ImagePath Properties to set and get attribute
 
 
+
+        /**
+        *  \brief   Customers -- Constuctor of customers class
+        *  \details this method instantiates customer objects and holds entities of customers in DB
+        *  \param   CustomerName string
+        *  \param   CustomerCity string
+        *  \param   OrderRequestStatus string
+        *  \param   ImagePath string
+        *  \returns NONE
+        */
+
         public Customers(string CustomerName, string CustomerCity, string OrderRequestStatus, string ImagePath)
         {
             this.CustomerName = CustomerName;            

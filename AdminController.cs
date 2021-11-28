@@ -53,7 +53,13 @@ namespace Group2
         public static string BackupFile;
 
 
-        // Logger 4.5.2.1.2  -------- write with append / read 
+        /**
+        *  \brief   addLog -- add logs to a log file
+        *  \details this method add log to a log file by appending
+        *  \param   logMsg string
+        *  \returns NONE
+        */
+
         public static void addLog(string logMsg)
         {
             DateTime tsmTime = DateTime.Now;
@@ -77,13 +83,29 @@ namespace Group2
 
         }
 
+
+
+        /**
+        *  \brief   readLog -- read log file
+        *  \details this method read log file
+        *  \param   logMsg string 
+        *  \returns NONE
+        */
+
         public static void readLog(string logMsg)
         {
             // it will display on the admin review log page
             // This is implemented as a list box.
         }
 
-        // connectToDB() -> 4.5.2.1.1
+
+
+        /**
+        *  \brief   InitialConnectToDB -- connect to TMS DB initially 
+        *  \details this method connects TMS DB initially
+        *  \param   NONE
+        *  \returns NONE
+        */
 
         public static string InitialConnectToDB()
         {
@@ -109,6 +131,15 @@ namespace Group2
            
             return mySqlVersion;
         }
+
+
+
+        /**
+        *  \brief    ConnectToDB -- connect to TMS DB with sql command
+        *  \details  this method connects TMS DB and execute sql command
+        *  \param    mySqlCommand string
+        *  \returns  NONE
+        */
 
         public static void ConnectToDB(string mySqlCommand)
         {
@@ -142,7 +173,14 @@ namespace Group2
         }
 
 
-        // localBackup() -> 4.5.2.1.4
+        /**
+        *  \brief    localBackup -- create a DB backup locally
+        *  \details  this method create a DB backup file locally
+        *  \param    ConnectionStringForTMS string
+        *  \param    BackupFile string
+        *  \returns  NONE
+        */
+
         public static void localBackup(string ConnectionStringForTMS, string BackupFile)
         {
 
@@ -162,6 +200,15 @@ namespace Group2
                 }
             }
         }
+
+
+        /**
+        *  \brief    localRestore -- restore a DB backup locally
+        *  \details  this method restore a DB backup file locally
+        *  \param    ConnectionStringForTMS string
+        *  \param    BackupFile string
+        *  \returns  NONE
+        */
 
         public static void localRestore(string ConnectionStringForTMS, string BackupFile)
         {
@@ -184,29 +231,50 @@ namespace Group2
 
 
 
-        // changeCarrierData() -> 4.5.2.1.3
+        /**
+        *  \brief    changeCarrierData -- change carrier data
+        *  \details  this method changes carrier data and modify DB
+        *  \param    NONE
+        *  \returns  NONE
+        */
 
-        // changeRouteTable() -> 4.5.2.1.3
+        public static void changeCarrierData()
+        {
 
-        // changeRateFeeTable() -> 4.5.2.1.3
-
-
-
-
-
-        // MySQL --- id : group2 / password : group2password
-
-
+        }
 
 
-        //buyer methods
-        //getContract() -> 4.5.2.2.1
-        //reviewCust() -> 4.5.2.2.2
-        //acceptNewCust() -> 4.5.2.2.2
-        //startOrder() -> 4.5.2.2.3
-        //selectCity() -> 4.5.2.2.4
-        //createInvoice()-> 4.5.2.2.5
-        //create invoice generates invoice in a file and updates TMS database
+        /**
+        *  \brief    changeRouteTable -- change route table
+        *  \details  this method changes route table and modify DB
+        *  \param    NONE
+        *  \returns  NONE
+        */
+
+        public static void changeRouteTable()
+        {
+
+        }
+
+
+        /**
+        *  \brief    changeRateFeeTable -- change rate fee table
+        *  \details  this method changes route table and modify DB
+        *  \param    NONE
+        *  \returns  NONE
+        */
+
+        public static void changeRateFeeTable()
+        {
+
+        }
+
+
+
+
+
+
+        
 
 
         //planner methods
