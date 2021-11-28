@@ -67,5 +67,6 @@ CREATE TABLE IF NOT EXISTS `Order` (
   PRIMARY KEY(`Order_ID`)
 );
 
+INSERT INTO Rate_Table (Rate_Table_ID, Surcharge, FTL, LTL) VALUES ('1', '150', '0.08', '0.05'); 
 
 
