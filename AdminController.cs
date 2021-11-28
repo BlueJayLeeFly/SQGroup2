@@ -12,10 +12,8 @@ using MySql.Data.MySqlClient;
 namespace Group2
 {
     /// <summary>
-<<<<<<< HEAD
     /// Static class for Admin
     /// </summary>
-=======
     /// 
     /// \class  AdminController
     /// 
@@ -41,7 +39,7 @@ namespace Group2
     ///         
     /// </summary>
     /// 
->>>>>>> 35ffea0824d78449f0e40ceba75f4b2ff63f0068
+
     public static class AdminController
     {
 
