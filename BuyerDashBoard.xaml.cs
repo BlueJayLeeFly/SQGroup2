@@ -313,6 +313,13 @@ namespace Group2
         }
 
 
+        // Event for "Accept Contract" button
+        private void accept_contract_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+
 
 
 

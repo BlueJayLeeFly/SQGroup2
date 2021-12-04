@@ -102,7 +102,8 @@
                 <TextBox x:Name="buyer_dashboard_market_ip_dbName" Text="cmp" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="616" Canvas.Top="94"/>
                 <Label Content="DB" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="563" Canvas.Top="90" Width="47"/>
             </Canvas>
-            <Label x:Name="market_status_bar" Content="Martket Place DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="146" Background="#FFEF466F" Width="179" Foreground="White" FontSize="14" MouseLeftButtonDown="Label_MouseLeftButtonDown_1" Cursor="Hand"/>
+            <Label x:Name="market_status_bar" Content="Martket Place DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="146" Background="#FFEF466F" Width="253" Foreground="White" FontSize="14" MouseLeftButtonDown="Label_MouseLeftButtonDown_1" Cursor="Hand"/>
+            <Label x:Name="accept_contract" Content="Accept Contract" HorizontalContentAlignment="Center" Canvas.Left="600" Canvas.Top="146" Background="#FFEF466F" Width="253" Foreground="White" FontSize="14" Cursor="Hand" MouseLeftButtonDown="accept_contract_MouseLeftButtonDown"/>
 
             <!-- TMS Data grid -->
             <DataGrid Height="258" Canvas.Left="62" Canvas.Top="478" Width="791" BorderBrush="#FFFBA5BA" BorderThickness="5">
