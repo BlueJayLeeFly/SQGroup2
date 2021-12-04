@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,8 @@ namespace Group2
     /// <summary>
     /// Interaction logic for BuyerDashBoard.xaml
     /// </summary>
+    /// 
+    
     public partial class BuyerDashBoard : Page
     {
 
@@ -148,7 +152,7 @@ namespace Group2
 
         private void buyer_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Marketplace.xaml", UriKind.Relative));
+            //
         }
 
 
@@ -163,6 +167,81 @@ namespace Group2
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
+        }
+
+
+
+
+        private void Label_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            
+            buyer_market_db_signin.Visibility = Visibility.Visible;
+
+            
+
+        }
+
+
+        private void buyer_market_signin_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            buyer_market_db_signin.Visibility = Visibility.Collapsed;
+        }
+
+
+        private void buyer_dashboard_market_button_Click(object sender, RoutedEventArgs e)
+        {
+            buyer_market_db_signin.Visibility = Visibility.Collapsed;
+
+            // MySql
+            try
+            {
+                // Connection String - Test version. Missing ip address
+                var connstr = $"Server={buyer_dashboard_market_ip.Text};Uid={buyer_dashboard_market_id.Text};Pwd={buyer_dashboard_market_password.Password};database={buyer_dashboard_market_ip_dbName.Text}";
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    // MySqal commands here
+
+                    market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
+
+                    string sq1 = "SELECT * FROM Contract;";
+                    MySqlCommand selectAllContract = new MySqlCommand(sq1, conn);
+                    MySqlDataReader rdr = selectAllContract.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+
+                        // DataTable Dt = new DataTable();
+
+                        // Render data to datagrid
+                        // TEST
+                        Marketplace_datagrid.Items.Add(new contractParams
+                        {
+
+                            clientName = rdr[0].ToString(),
+                            jobType = int.Parse(rdr[1].ToString()),
+                            quantity = int.Parse(rdr[2].ToString()),
+                            origin = rdr[3].ToString(),
+                            destination = rdr[4].ToString(),
+                            vanType = int.Parse(rdr[5].ToString())
+                        });
+                        //market_status_bar.Content = rdr[1].ToString();
+
+                    }
+                    rdr.Close();
+
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
         }
 
 
@@ -232,6 +311,11 @@ namespace Group2
         {
 
         }
+
+
+
+
+
 
 
 

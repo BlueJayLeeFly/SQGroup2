@@ -34,7 +34,7 @@
                 <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
                 <Label x:Name="menu4_label" Content="DB Table Setting" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
-            <Canvas x:Name="menu5" Height="63" Canvas.Top="408" Width="345" Cursor="Hand" MouseEnter="menu5_MouseEnter" MouseLeave="menu5_MouseLeave" MouseLeftButtonDown="menu5_MouseLeftButtonDown">
+            <Canvas x:Name="menu5" Height="63" Canvas.Top="524" Width="345" Cursor="Hand" MouseEnter="menu5_MouseEnter" MouseLeave="menu5_MouseLeave" MouseLeftButtonDown="menu5_MouseLeftButtonDown">
                 <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="13" />
                 <Label x:Name="menu5_label" Content="Backup TMS DB" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
@@ -46,6 +46,8 @@
         </Canvas>
 
         <!-- Right Column Components-->
+        
+        <!-- [[Dashboard - Main] -->
         <Canvas x:Name="AdminDashBoardMain" Visibility="Visible" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Things Get You Going as an Admin" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
@@ -53,6 +55,7 @@
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione " Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
         </Canvas>
 
+        <!-- [[Dashboard - Directory Setting] -->
         <Canvas x:Name="AdminDashBoardDirectory" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock TextWrapping="Wrap" Canvas.Top="86" FontSize="20" FontWeight="Bold" Canvas.Left="332" Width="200"><Run Text="Directory"/><Run Text=" Setting"/></TextBlock>
             <TextBlock TextWrapping="Wrap" Canvas.Top="200" FontSize="16" Text="Directory for a Log File" Canvas.Left="166" Width="200" Foreground="#FF333333"></TextBlock>
@@ -60,6 +63,7 @@
             <Button x:Name="ChangeLogFilePath" Content="Change Directory" Canvas.Left="587" Canvas.Top="226" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="ChangeLogFilePath_Click"/>
         </Canvas>
 
+        <!-- [[Dashboard - DB Connection Setting] -->
         <Canvas x:Name="AdminDashBoardIpPort" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock TextWrapping="Wrap" Canvas.Top="60" FontSize="20" Text="DB Connection Setting" FontWeight="Bold" Canvas.Left="341" Width="227"/>
             <Label Content="TMS MySql Server" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="108" Canvas.Top="144" Height="44" Width="730" Background="#FF9756D9" Foreground="White" FontSize="18"/>
@@ -74,12 +78,15 @@
             <Button x:Name="TmsConnect" Content="Connect" Canvas.Left="562" Canvas.Top="259" Width="276" Height="97" BorderBrush="{x:Null}" Background="#FF323232" Foreground="White" FontSize="24" Click="TmsConnect_Click"/>
             <Label x:Name="connection_result" Content="" HorizontalContentAlignment="Center" Canvas.Top="390" Canvas.Left="108" Height="29" Width="730" FontSize="16" Foreground="#FF333333"/>
         </Canvas>
+
+        <!-- [[Dashboard - Review Log Files] -->
         <Canvas x:Name="admin_dashboard_review_log"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
             <TextBlock Canvas.Left="514" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <ListBox x:Name="admin_log_listbox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="517" Canvas.Left="104" Canvas.Top="195" Width="738" BorderBrush="{x:Null}"/>
         </Canvas>
 
+        <!-- [[Dashboard - Backup TMS DB] -->
         <Canvas x:Name="admin_dashboard_backup"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
             <TextBlock Canvas.Left="354" TextWrapping="Wrap" Text="Backup TMS DB" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="173"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>

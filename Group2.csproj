@@ -149,6 +149,7 @@
     <Compile Include="ChooseRole.xaml.cs">
       <DependentUpon>ChooseRole.xaml</DependentUpon>
     </Compile>
+    <Compile Include="contractParams.cs" />
     <Compile Include="Customers.cs" />
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -167,6 +168,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Params.cs" />
     <Compile Include="PlannerDashBoard.xaml.cs">
       <DependentUpon>PlannerDashBoard.xaml</DependentUpon>
     </Compile>

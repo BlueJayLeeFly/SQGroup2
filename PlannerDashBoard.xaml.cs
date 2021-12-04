@@ -34,6 +34,8 @@ namespace Group2
         }
 
 
+        // ----------------- Menu item hover effect [start] -------------------------------------------------
+
         /**
         *  \brief   planner_menu1_MouseEnter -- event handling of menu item mouse enter
         *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
@@ -123,6 +125,9 @@ namespace Group2
             planner_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(69, 177, 107));
         }
 
+        // ----------------- Menu item hover effect [end] -------------------------------------------------
+
+
 
         /**
         *  \brief   PlannerBackToMain_MouseLeftButtonDown -- event handling of menu item mouse click
@@ -137,5 +142,70 @@ namespace Group2
             this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
         }
 
+
+
+        /**
+        *  \brief   planner_home_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event 
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
+        private void planner_home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            main_screen.Visibility = Visibility.Visible;
+
+            // hide others
+            menu1_screen.Visibility = Visibility.Collapsed;
+            menu2_screen.Visibility = Visibility.Collapsed;
+            menu3_screen.Visibility = Visibility.Collapsed;
+
+            // Logic goes blow from here
+
+        }
+
+        private void planner_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            menu1_screen.Visibility = Visibility.Visible;
+
+
+            // hide others
+            main_screen.Visibility = Visibility.Collapsed;
+            menu2_screen.Visibility = Visibility.Collapsed;
+            menu3_screen.Visibility = Visibility.Collapsed;
+
+            // Logic goes blow from here
+
+        }
+
+        private void planner_menu2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            menu2_screen.Visibility = Visibility.Visible;
+
+
+            // hide others
+            main_screen.Visibility = Visibility.Collapsed;
+            menu1_screen.Visibility = Visibility.Collapsed;
+            menu3_screen.Visibility = Visibility.Collapsed;
+
+            // Logic goes blow from here
+
+        }
+
+        private void planner_menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            menu3_screen.Visibility = Visibility.Visible;
+
+
+            // hide others
+            main_screen.Visibility = Visibility.Collapsed;
+            menu1_screen.Visibility = Visibility.Collapsed;
+            menu2_screen.Visibility = Visibility.Collapsed;
+
+            // Logic goes blow from here
+
+        }
     }
 }
+

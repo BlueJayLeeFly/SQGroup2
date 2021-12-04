@@ -43,7 +43,7 @@ namespace Group2
     public static class AdminController
     {
 
-        public static string PresetLogFile = "c:\\Users\\lsj27\\documents\\TMS_LogFile.log";
+        public static string PresetLogFile = AppDomain.CurrentDomain.BaseDirectory + "\\log.txt";
         public static string LogFileDirectory;
         public static string LogFileName;
         public static string LogWithDateTime;   // variable to store eventlogs

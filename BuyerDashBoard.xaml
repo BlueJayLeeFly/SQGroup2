@@ -20,15 +20,15 @@
 
             <Canvas x:Name="buyer_menu1" Height="63" Canvas.Top="133" Width="345" MouseEnter="buyer_menu1_MouseEnter" MouseLeave="buyer_menu1_MouseLeave" MouseLeftButtonDown="buyer_menu1_MouseLeftButtonDown" Cursor="Hand">
                 <Image Source="Images/buyer_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="16" />
-                <Label x:Name="buyer_menu1_label" Content="Marketplace" Canvas.Left="72" Canvas.Top="16" FontSize="18" Foreground="#FF787878" Width="174"/>
+                <Label x:Name="buyer_menu1_label" Content="Initiate Orders" Canvas.Left="72" Canvas.Top="16" FontSize="18" Foreground="#FF787878" Width="174"/>
             </Canvas>
             <Canvas x:Name="buyer_menu2" Height="63" Canvas.Top="201" Width="345" MouseEnter="buyer_menu2_MouseEnter" MouseLeave="buyer_menu2_MouseLeave">
-                <Label x:Name="buyer_menu2_label" Content="Targeting IP Address / Port" Canvas.Left="72" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
+                <Label x:Name="buyer_menu2_label" Content="Review Completed Orders" Canvas.Left="72" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
                 <Image Source="Images/buyer_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="14" />
             </Canvas>
             <Canvas x:Name="buyer_menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="buyer_menu3_MouseEnter" MouseLeave="buyer_menu3_MouseLeave">
                 <Image Source="Images/buyer_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
-                <Label x:Name="buyer_menu3_label" Content="Review Log Files" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
+                <Label x:Name="buyer_menu3_label" Content="Generate Invoice" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
             <Canvas x:Name="BuyerBackToMain" Height="63" Canvas.Top="699" Width="345" Background="#EF466F" MouseLeftButtonDown="BuyerBackToMain_MouseLeftButtonDown" Cursor="Hand">
                 <Label Content="Back to Main" Canvas.Left="122" Canvas.Top="14" Foreground="White" FontSize="20"/>
@@ -36,12 +36,151 @@
             </Canvas>
 
         </Canvas>
-        <Canvas Height="800" Canvas.Left="350" Width="920">
+
+        <!-- [Dashboard - Main] -->
+        <Canvas x:Name="buyer_dashboard_main" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="335" TextWrapping="Wrap" Text="Things Get You Going as a Buyer" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <Image Height="498" Canvas.Left="233" Canvas.Top="149" Width="498" Source="Images/buyer_main_1.jpg"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione " Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
         </Canvas>
+
+        <!-- [Dashboard - Initiate Order] -->
+        <Canvas x:Name="buyer_dashboard_ini_orders" Visibility="Visible" Height="800" Canvas.Left="350" Width="930">
+            <TextBlock Canvas.Left="402" TextWrapping="Wrap" Text="Initiate Orders" Canvas.Top="39" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="77" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+
+            <!-- Marketplace Data grid -->
+            <DataGrid x:Name="Marketplace_datagrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="CLIENT_NAME" Binding="{Binding clientName}"/>
+                    <DataGridTextColumn Header="JOB_TYPE" Binding="{Binding jobType}"/>
+                    <DataGridTextColumn Header="QUANTITY" Binding="{Binding quantity}"/>
+                    <DataGridTextColumn Header="ORIGIN" Binding="{Binding origin}"/>
+                    <DataGridComboBoxColumn Header="DESTINATION" SelectedItemBinding="{Binding destination}" />
+                    <DataGridTextColumn Header="VAN_TYPE" Binding="{Binding vanType}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Marketplace Signin -->
+            <Canvas x:Name="buyer_market_db_signin" Visibility="Visible" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791">
+                <Canvas.Background>
+                    <SolidColorBrush Color="#FFFDDAE3" Opacity="0.9"/>
+                </Canvas.Background>
+                <Label x:Name="buyer_market_signin_close" Content="[x]" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="737" Canvas.Top="11" MouseLeftButtonDown="buyer_market_signin_close_MouseLeftButtonDown" Cursor="Hand"/>
+                <TextBox x:Name="buyer_dashboard_market_id" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="DevOSHT" VerticalAlignment="Top" Width="129" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="172" Canvas.Top="41"/>
+                <Label Content="Username" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="68" Canvas.Top="37"/>
+                <Button x:Name="buyer_dashboard_market_button" Content="Connect"  Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top" Width="697" Height="50" BorderBrush="{x:Null}" FontSize="18" Foreground="White" Canvas.Left="50" Canvas.Top="178" Click="buyer_dashboard_market_button_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#EF466F"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#EF466F"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="25"
+                            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Rectangle x:Name="buyer_dashboard_Warning" Visibility="Collapsed" Fill="#E5EF466F" HorizontalAlignment="Left" Height="818" Margin="-27,-18,0,0" StrokeThickness="1" VerticalAlignment="Top" Width="1307"/>
+                <PasswordBox x:Name="buyer_dashboard_market_password" Password="Snodgr4ss!" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="129" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="172" Canvas.Top="97"/>
+                <Label Content="Password" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="74" Canvas.Top="93" Width="97"/>
+                <TextBox x:Name="buyer_dashboard_market_ip" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="159.89.117.198" VerticalAlignment="Top" Width="285" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="419" Canvas.Top="41"/>
+                <Label Content="IP" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="379" Canvas.Top="40" Width="35"/>
+                <TextBox x:Name="buyer_dashboard_market_port" Text="3306" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="417" Canvas.Top="94"/>
+                <Label Content="Port" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="364" Canvas.Top="90" Width="47"/>
+                <TextBox x:Name="buyer_dashboard_market_ip_dbName" Text="cmp" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="616" Canvas.Top="94"/>
+                <Label Content="DB" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="563" Canvas.Top="90" Width="47"/>
+            </Canvas>
+            <Label x:Name="market_status_bar" Content="Martket Place DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="146" Background="#FFEF466F" Width="179" Foreground="White" FontSize="14" MouseLeftButtonDown="Label_MouseLeftButtonDown_1" Cursor="Hand"/>
+
+            <!-- TMS Data grid -->
+            <DataGrid Height="258" Canvas.Left="62" Canvas.Top="478" Width="791" BorderBrush="#FFFBA5BA" BorderThickness="5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ORDER_ID"/>
+                    <DataGridTextColumn Header="EMPLOYEE_ID"/>
+                    <DataGridTextColumn Header="CLIENT_NAME"/>
+                    <DataGridTextColumn Header="JOB_TYPE"/>
+                    <DataGridTextColumn Header="QUANTITY"/>
+                    <DataGridComboBoxColumn Header="ORIGIN"/>
+                    <DataGridComboBoxColumn Header="DESTINATION"/>
+                    <DataGridComboBoxColumn Header="VAN_TYPE"/>
+                    <DataGridComboBoxColumn Header="CITY"/>
+                    <DataGridComboBoxColumn Header="CARRIER_NAME"/>
+                    <DataGridComboBoxColumn Header="TOTAL_DISTANCE"/>
+                    <DataGridComboBoxColumn Header="TOTAL_TIME"/>
+                    <DataGridComboBoxColumn Header="CARRIER_CHARGES"/>
+                    <DataGridComboBoxColumn Header="OHST_Revenue"/>
+                    <DataGridComboBoxColumn Header="TRIP"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Marketplace Signin -->
+            <Canvas x:Name="buyer_tms_db_signin" Visibility="Collapsed" Height="258" Canvas.Left="62" Canvas.Top="478" Width="791">
+                <Canvas.Background>
+                    <SolidColorBrush Color="#FFFDDAE3" Opacity="0.9"/>
+                </Canvas.Background>
+                <Label x:Name="buyer_tms_signin_close" Content="[x]" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="737" Canvas.Top="11" MouseLeftButtonDown="buyer_market_signin_close_MouseLeftButtonDown" Cursor="Hand"/>
+                <TextBox x:Name="buyer_dashboard_tms_id" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="172" Canvas.Top="41"/>
+                <Label Content="Username" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="68" Canvas.Top="37"/>
+                <Button x:Name="buyer_dashboard_tms_button" Content="Connect"  Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top" Width="697" Height="50" BorderBrush="{x:Null}" FontSize="18" Foreground="White" Canvas.Left="50" Canvas.Top="178">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#EF466F"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#EF466F"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="25"
+                            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+                <PasswordBox x:Name="buyer_dashboard_tms_password" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="129" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="172" Canvas.Top="97"/>
+                <Label Content="Password" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="74" Canvas.Top="93" Width="97"/>
+                <TextBox x:Name="buyer_dashboard_tms_ip" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="285" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="419" Canvas.Top="41"/>
+                <Label Content="IP" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="379" Canvas.Top="40" Width="35"/>
+                <TextBox x:Name="buyer_dashboard_tms_port" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="417" Canvas.Top="94"/>
+                <Label Content="Port" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="364" Canvas.Top="90" Width="47"/>
+                <TextBox x:Name="buyer_dashboard_tms_dbName" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="616" Canvas.Top="94"/>
+                <Label Content="DB" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="563" Canvas.Top="90" Width="47"/>
+            </Canvas>
+            <Label x:Name="tms_status_bar" Content="TMS DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="449" Background="#FFEF466F" Width="179" Foreground="White" FontSize="14" Cursor="Hand"/>
+        </Canvas>
+
+        <!-- [Dashboard - Review Completed Orders] -->
+        <Canvas Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
+            <TextBlock Canvas.Left="374" TextWrapping="Wrap" Text="Review Completed Orders" Canvas.Top="48" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+        </Canvas>
+
+        <!-- [[Dashboard - Generate invoice] -->
+        <Canvas Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
+            <TextBlock Canvas.Left="374" TextWrapping="Wrap" Text="Generate Invoices" Canvas.Top="48" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+        </Canvas>
+
+
 
     </Canvas>
 
