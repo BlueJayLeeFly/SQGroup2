@@ -316,6 +316,13 @@ namespace Group2
         // Event for "Accept Contract" button
         private void accept_contract_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+           
+        }
+
+
+        // Event for "Generate Invoice"
+        private void buyer_menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
 
         }
 

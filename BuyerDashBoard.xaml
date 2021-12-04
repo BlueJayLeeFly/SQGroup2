@@ -26,7 +26,7 @@
                 <Label x:Name="buyer_menu2_label" Content="Review Completed Orders" Canvas.Left="72" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
                 <Image Source="Images/buyer_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="14" />
             </Canvas>
-            <Canvas x:Name="buyer_menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="buyer_menu3_MouseEnter" MouseLeave="buyer_menu3_MouseLeave">
+            <Canvas x:Name="buyer_menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="buyer_menu3_MouseEnter" MouseLeave="buyer_menu3_MouseLeave" MouseLeftButtonDown="buyer_menu3_MouseLeftButtonDown">
                 <Image Source="Images/buyer_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
                 <Label x:Name="buyer_menu3_label" Content="Generate Invoice" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
@@ -58,6 +58,7 @@
                     <DataGridTextColumn Header="QUANTITY" Binding="{Binding quantity}"/>
                     <DataGridTextColumn Header="ORIGIN" Binding="{Binding origin}"/>
                     <DataGridComboBoxColumn Header="DESTINATION" SelectedItemBinding="{Binding destination}" />
+                    <!-- This should be added above - research// ItemsSource="{Binding Source={StaticResource testEnum}}"-->
                     <DataGridTextColumn Header="VAN_TYPE" Binding="{Binding vanType}"/>
                 </DataGrid.Columns>
             </DataGrid>
