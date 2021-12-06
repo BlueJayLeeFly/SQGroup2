@@ -802,6 +802,7 @@ namespace Group2
                 DataRowView dataRowView = (DataRowView)carrier_table_datagrid.SelectedItem;
                 SelectedCarrierID = Int32.Parse(dataRowView[0].ToString());
                 Carrier_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
+                ForCarrierName.Text = dataRowView[1].ToString();
                 ForDepotCity.Text = dataRowView[2].ToString();
                 ForFTLAvailability.Text = dataRowView[3].ToString();
                 ForLTLAvailability.Text = dataRowView[4].ToString();
@@ -819,6 +820,7 @@ namespace Group2
                 DataRowView dataRowView = (DataRowView)route_table_datagrid.SelectedItem;
                 SelectedRouteID = Int32.Parse(dataRowView[0].ToString());
                 Route_Table_Message.Content = $"Route ID: {dataRowView[0].ToString()} - Selected";
+                ForDestination.Text = dataRowView[1].ToString();
                 ForKM.Text = dataRowView[2].ToString();
                 ForWest.Text = dataRowView[3].ToString();
                 ForEast.Text = dataRowView[4].ToString();
@@ -863,9 +865,27 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    string sq1 = "INSERT INTO TABLE (TEST1, TEST2, TEST3) VALUES ('Value1','Value2', 'Value3')"; ; // ADJUSTMENT NAME REQUIRES
+                    string sq1 = "INSERT INTO Carrier_Data (Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge) VALUES ('New Item', 'None', 0, 0, 0.00, 0.00, 0);"; 
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtCarrierTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Carrier_Data;";
+                    MySqlCommand selectAllCarrier = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllCarrier);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtCarrierTable);
+
+                    // Render the Columns and the rows
+                    carrier_table_datagrid.ItemsSource = DtCarrierTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
 
                     conn.Close(); // Close connection
                 }
@@ -887,9 +907,27 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    string sq1 = "INSERT INTO TABLE (TEST1, TEST2, TEST3) VALUES ('Value1','Value2', 'Value3')"; ; // ADJUSTMENT NAME REQUIRES
+                    string sq1 = "INSERT INTO Route_Table (Destination, Kilometer, West, East, Time) VALUES ('New Item', 0, 'None', 'None', 0.00)"; ; // ADJUSTMENT NAME REQUIRES
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtRouteTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Route_Table;";
+                    MySqlCommand selectAllRoute = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRoute);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRouteTable);
+
+                    // Render the Columns and the rows
+                    route_table_datagrid.ItemsSource = DtRouteTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
 
                     conn.Close(); // Close connection
                 }
@@ -917,6 +955,8 @@ namespace Group2
                     string sq1 = $"DELETE FROM Rate_Table WHERE Rate_Table_ID = {rate_id.Text}"; ; // ADJUSTMENT NAME REQUIRES
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
+
+
 
                     conn.Close(); // Close connection
                 }
@@ -1051,7 +1091,7 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    string setCondition = $"Depot_City = '{ForDepotCity.Text}', FTL_Availability = {ForFTLAvailability.Text}, LTL_Availability = {ForLTLAvailability.Text}, FTL_Rate = {ForFTLRate.Text}, LTL_Rate = {ForLTLRate.Text}, Reefer_Charge ={ForReeferCharge.Text}";
+                    string setCondition = $"Carrier_Name = '{ForCarrierName.Text}', Depot_City = '{ForDepotCity.Text}', FTL_Availability = {ForFTLAvailability.Text}, LTL_Availability = {ForLTLAvailability.Text}, FTL_Rate = {ForFTLRate.Text}, LTL_Rate = {ForLTLRate.Text}, Reefer_Charge ={ForReeferCharge.Text}";
                     string sq1 = $"UPDATE Carrier_Data SET {setCondition} WHERE Carrier_ID = {SelectedCarrierID};"; // ADJUSTMENT NAME REQUIRES
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
@@ -1081,9 +1121,6 @@ namespace Group2
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
-
-
         }
 
         private void route_update_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -1097,7 +1134,7 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    string setCondition = $"Kilometer = {ForKM.Text}, West = '{ForWest.Text}', East = '{ForEast.Text}', Time = {ForTime.Text}";
+                    string setCondition = $"Destination = '{ForDestination.Text}', Kilometer = {ForKM.Text}, West = '{ForWest.Text}', East = '{ForEast.Text}', Time = {ForTime.Text}";
                     string sq1 = $"UPDATE Route_Table SET {setCondition} WHERE Route_ID = {SelectedRouteID};"; // ADJUSTMENT NAME REQUIRES
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();

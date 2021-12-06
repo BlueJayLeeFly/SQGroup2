@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.IO;
 
 namespace Group2
 {
@@ -256,10 +258,148 @@ namespace Group2
         // Event for "Generate Invoice"
         private void buyer_menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            buyer_market_db_signin.Visibility = Visibility.Collapsed;
+            accept_contract.Visibility = Visibility.Collapsed;
+            gen_invoice.Visibility = Visibility.Visible;
+            ORDER_datagrid.Visibility = Visibility.Collapsed;
+            Carrier_ComboBox.Visibility = Visibility.Collapsed;
+            add_carrier_btn.Visibility = Visibility.Collapsed;
+            update_order_db_btn.Visibility = Visibility.Collapsed;
+            completed_orders.Visibility = Visibility.Visible;
+
+            // MySql
+            try
+            {
+                // Connection String - Test version. Missing ip address
+                //var connstr = $"Server={buyer_dashboard_market_ip.Text};Uid={buyer_dashboard_market_id.Text};Pwd={buyer_dashboard_market_password.Password};database={buyer_dashboard_market_ip_dbName.Text}";
+                var connstr = $"Server=localhost;Uid=group2;Pwd=group2password;database=tms_db;";//colbys con string
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    // Shows Connection Accepted on UI
+                    market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
+
+                    // SQL Command
+                    string sq1 = "SELECT * FROM Orders WHERE Order_status = 9;";
+                    MySqlCommand selectAllContract = new MySqlCommand(sq1, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllContract);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtMarketPlace);
+                    DtOrder = DtMarketPlace.Copy();
+
+
+                    // Create 2 Columns 
+                    //DataColumn Order_ID = new DataColumn("Order_ID", typeof(Int32));
+                    //DataColumn Order_Status = new DataColumn("Order_Status", typeof(Int32));
+                    //DataColumn Order_Carrier = new DataColumn("Order_Carrier", typeof(string));
+
+                    //DtMarketPlace.Columns.Add(Order_ID);
+                    //DtMarketPlace.Columns.Add(Order_Status);
+                    //DtMarketPlace.Columns.Add(Order_Carrier);
+
+                    //DtOrder = DtMarketPlace.Copy();
+
+                    // Render the Columns and the rows 
+                    completed_orders.ItemsSource = DtMarketPlace.DefaultView;
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
         }
 
+        private void generate_invoice_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                foreach (System.Data.DataRowView acceptedRows in completed_orders.SelectedItems)
+                {
 
+                    if (acceptedRows != null)
+                    {
+                        Generate_Invoice(acceptedRows);
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void OpenApp(string path)
+        {
+            Process.Start("WINWORD.EXE", path);
+        }
+
+        public static void Generate_Invoice(System.Data.DataRowView info)
+        {
+            string InvoiceDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string folder = "Invoices";
+            InvoiceDirectory = System.IO.Path.Combine(InvoiceDirectory, folder);
+            System.IO.Directory.CreateDirectory(InvoiceDirectory);
+            string orderID = info[0].ToString();
+
+            string clientName = info[1].ToString();
+            int orderStatus = int.Parse(info[2].ToString());
+            int jobtype = int.Parse(info[3].ToString());
+            int quantity = int.Parse(info[4].ToString());
+            string origin = info[5].ToString();
+            string dest = info[6].ToString();
+            int van_type = int.Parse(info[7].ToString());
+            string carrierName = info[8].ToString();
+            int km = int.Parse(info[9].ToString());
+            int estTime = int.Parse(info[10].ToString());
+            int amountDue = int.Parse(info[11].ToString());
+
+            try
+            {
+
+                string filePath = System.IO.Path.Combine(InvoiceDirectory, orderID + ".doc");
+                FileStream file;
+                StreamWriter sw;
+                //string filepath = InvoiceDirectory + orderID + ".docx";
+                file = File.Create(filePath);
+                file.Close();
+                string invoicemsg = "Hello there " + clientName + ", Thank you for using our service, below is a breakdown of your order" + "\r\n\r\n" +
+                                     "Order ID:" + orderID + "\r\n" +
+                                     "Order Quantity: " + quantity + "\r\n" +
+                                     "Order Shipped From: " + origin + "\r\n" +
+                                     "Order Destination: " + dest + "\r\n" +
+                                     "Order Shipped by: " + carrierName + "\r\n" +
+                                     "Van Type: " + van_type + "\r\n" +
+                                     "Total Distance: " + km + "\r\n" +
+                                     "Estimated Delivery Time: " + estTime + "\r\n" +
+                                     "Total Amount Due: $" + amountDue + "\r\n\r\n" +
+                                     "Thank you so much for choosing our service! We hope that the delivery method was easy and convienient for you. " +
+                                     "If you have any questions please reach out to us. " +
+                                     "You may pay your balance by cheque through the mail - Please allow 2-3 business days for mail to arrive. " +
+                                     "Or over the phone with your credit card.  Or in person at one of our offices. " +
+                                     "We look forward to working with you again! Sincerely our team at TMS OSHT. ";
+
+                file = File.Open(filePath, FileMode.Append);
+
+                sw = new StreamWriter(file);
+                sw.Write(invoicemsg);
+                sw.Close();
+                file.Close();
+                OpenApp(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
 
 
 
@@ -416,3 +556,5 @@ namespace Group2
 
     }
 }
+
+

@@ -20,8 +20,10 @@
 
             <Canvas x:Name="planner_menu1" Height="63" Canvas.Top="133" Width="345" MouseEnter="planner_menu1_MouseEnter" MouseLeave="planner_menu1_MouseLeave" MouseLeftButtonDown="planner_menu1_MouseLeftButtonDown" Cursor="Hand">
                 <Image Source="Images/planner_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="34" Canvas.Top="16" />
-                <Label x:Name="planner_menu1_label" Content="Menu1" Canvas.Left="83" Canvas.Top="16" FontSize="18" Foreground="#FF787878" Width="174"/>
+                <Label x:Name="planner_menu1_label" Content="Calculate Order Information" Canvas.Left="83" Canvas.Top="16" FontSize="18" Foreground="#FF787878" Width="238"/>
             </Canvas>
+
+            <!--  Remove menu2 and 3-->
             <Canvas x:Name="planner_menu2" Height="63" Canvas.Top="201" Width="345" MouseEnter="planner_menu2_MouseEnter" MouseLeave="planner_menu2_MouseLeave" MouseLeftButtonDown="planner_menu2_MouseLeftButtonDown" Cursor="Hand">
                 <Label x:Name="planner_menu2_label" Content="Menu2" Canvas.Left="81" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
                 <Image Source="Images/planner_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="35" Canvas.Top="14" />
@@ -38,7 +40,7 @@
         </Canvas>
 
         <!-- [[Dashboard - Main] -->
-        <Canvas x:Name="main_screen" Visibility="Visible" Height="800" Canvas.Left="350" Width="920">
+        <Canvas x:Name="main_screen" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="312" Text="Things Get You Going as an Planner" TextWrapping="Wrap" Canvas.Top="58" FontSize="20" FontWeight="Bold" Width="349"></TextBlock>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <Image Height="464" Canvas.Left="236" Canvas.Top="156" Width="464" Source="Images/planner_main_1.jpg"/>
@@ -46,12 +48,16 @@
         </Canvas>
 
         <!-- [[Dashboard - Menu1] -->
-        <Canvas x:Name="menu1_screen" Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
-            <TextBlock Canvas.Left="374" TextWrapping="Wrap" Text="Menu1" Canvas.Top="48" FontSize="20" FontWeight="Bold"/>
+        <Canvas x:Name="menu1_screen" Height="800" Canvas.Left="345" Width="935" Visibility="Visible">
+            <TextBlock Canvas.Left="348" TextWrapping="Wrap" Text="Calculate Order Information" Canvas.Top="47" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <DataGrid x:Name="Planner_datagrid"  AutoGenerateColumns="True" Height="306" Canvas.Left="71" Canvas.Top="197" Width="792" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
+            </DataGrid>
+            <TextBox Height="23" Canvas.Left="290" TextWrapping="Wrap" Text="TextBox" Canvas.Top="591" Width="120"/>
+            <Button Content="Button" Canvas.Left="442" Canvas.Top="591" Width="75"/>
         </Canvas>
 
-        <!-- [[Dashboard - Menu2] -->
+        <!-- [[Dashboard - Menu2] Delete menu2 and menu3-->
         <Canvas x:Name="menu2_screen" Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
             <TextBlock Canvas.Left="374" TextWrapping="Wrap" Text="Menu2" Canvas.Top="48" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>

@@ -53,6 +53,7 @@
             <!-- Marketplace Data grid -->
             <DataGrid x:Name="Marketplace_datagrid"  AutoGenerateColumns="True" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
             </DataGrid>
+            <DataGrid x:Name="completed_orders" Visibility="Collapsed" AutoGenerateColumns="True" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5" />
 
             <!-- Marketplace Signin -->
             <Canvas x:Name="buyer_market_db_signin" Visibility="Visible" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791">
@@ -96,13 +97,14 @@
             </Canvas>
             <Label x:Name="market_status_bar" Content="Martket Place DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="146" Background="#FFEF466F" Width="253" Foreground="White" FontSize="14" MouseLeftButtonDown="Label_MouseLeftButtonDown_1" Cursor="Hand"/>
             <Label x:Name="accept_contract" Content="Accept Contract" HorizontalContentAlignment="Center" Canvas.Left="600" Canvas.Top="146" Background="#FFEF466F" Width="253" Foreground="White" FontSize="14" Cursor="Hand" MouseLeftButtonDown="accept_contract_MouseLeftButtonDown"/>
+            <Label x:Name="gen_invoice" Visibility="Collapsed" Content="Generate Invoice" HorizontalContentAlignment="Center" Canvas.Left="600" Canvas.Top="146" Background="#FFEF466F" Width="253" Foreground="White" FontSize="14" Cursor="Hand" MouseLeftButtonDown="generate_invoice_MouseLeftButtonDown"/>
 
             <!-- TMS Data grid -->
             <!-- TMS Data grid -->
             <DataGrid x:Name="ORDER_datagrid"  AutoGenerateColumns="True" Height="258" Canvas.Left="62" Canvas.Top="478" Width="791" BorderBrush="#FFFBA5BA" BorderThickness="5" SelectionChanged="ORDER_datagrid_SelectionChanged">
             </DataGrid>
             <ComboBox x:Name="Carrier_ComboBox" Canvas.Left="88" Canvas.Top="449" Width="316" SelectionChanged="Carrier_ComboBox_SelectionChanged"/>
-            <Button Content="Add Carrier" Canvas.Left="434" Canvas.Top="449" Width="104" Click="Button_Add_Carrier"/>
+            <Button x:Name="add_carrier_btn" Content="Add Carrier" Canvas.Left="434" Canvas.Top="449" Width="104" Click="Button_Add_Carrier"/>
 
             <!-- Marketplace Signin -->
             <Canvas x:Name="buyer_tms_db_signin" Visibility="Collapsed" Height="258" Canvas.Left="62" Canvas.Top="478" Width="791">
@@ -145,7 +147,7 @@
                 <Label Content="DB" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="563" Canvas.Top="90" Width="47"/>
             </Canvas>
             <Label x:Name="tms_status_bar" Content="TMS DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="736" Background="#FFEF466F" Width="791" Foreground="White" FontSize="14" Cursor="Hand"/>
-            <Button Content="Update Order DB" Canvas.Left="665" Canvas.Top="449" Width="163" Click="Button_Update_Order_DB" Height="22"/>
+            <Button x:Name="update_order_db_btn" Content="Update Order DB" Canvas.Left="665" Canvas.Top="449" Width="163" Click="Button_Update_Order_DB" Height="22"/>
         </Canvas>
 
         <!-- [Dashboard - Review Completed Orders] -->

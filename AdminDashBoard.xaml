@@ -142,16 +142,18 @@
             </Canvas>
             <!-- Search Result -->
             <Canvas x:Name="data_elements_carrier" Height="287" Canvas.Left="70" Canvas.Top="513" Width="790" Background="#FFF7EFFF">
-                <Label Content="Depot_City" Canvas.Left="143" Canvas.Top="17" FontSize="16"/>
-                <TextBox x:Name="ForDepotCity" Height="46" Canvas.Left="143" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <TextBox x:Name="ForFTLAvailability" Height="46" Canvas.Left="332" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <Label Content="FTL Availability" Canvas.Left="332" Canvas.Top="17" FontSize="16"/>
-                <TextBox x:Name="ForLTLAvailability" Height="46" Canvas.Left="530" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <Label Content="LTL Availability" Canvas.Left="530" Canvas.Top="17" FontSize="16"/>
-                <Label Content="FTL_Rate" Canvas.Left="143" Canvas.Top="99" FontSize="16"/>
+                <Label Content="Carrier Name" Canvas.Left="79" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForCarrierName" Height="46" Canvas.Left="76" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="164" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="Depot City" Canvas.Left="295" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForDepotCity" Height="46" Canvas.Left="291" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <TextBox x:Name="ForFTLAvailability" Height="46" Canvas.Left="454" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="FTL Availability" Canvas.Left="454" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForLTLAvailability" Height="46" Canvas.Left="622" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="LTL Availability" Canvas.Left="622" Canvas.Top="17" FontSize="16"/>
+                <Label Content="FTL Rate" Canvas.Left="143" Canvas.Top="99" FontSize="16"/>
                 <TextBox x:Name="ForFTLRate" Height="46" Canvas.Left="143" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
                 <TextBox x:Name="ForLTLRate" Height="46" Canvas.Left="332" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <Label Content="LTL_Rate" Canvas.Left="332" Canvas.Top="99" FontSize="16"/>
+                <Label Content="LTL Rate" Canvas.Left="332" Canvas.Top="99" FontSize="16"/>
                 <TextBox x:Name="ForReeferCharge" Height="46" Canvas.Left="530" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
                 <Label Content="Reefer Charge" Canvas.Left="530" Canvas.Top="99" FontSize="16"/>
 
@@ -180,21 +182,23 @@
             </Canvas>
             <!-- Search Result -->
             <Canvas x:Name="data_elements_route" Height="271" Canvas.Left="70" Canvas.Top="529" Width="790" Background="#FFF7EFFF">
-                <Label Content="Kilometer" Canvas.Left="55" Canvas.Top="17" FontSize="16"/>
-                <TextBox x:Name="ForKM" Height="46" Canvas.Left="55" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <TextBox x:Name="ForWest" Height="46" Canvas.Left="244" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <Label Content="West" Canvas.Left="244" Canvas.Top="17" FontSize="16"/>
-                <TextBox x:Name="ForEast" Height="46" Canvas.Left="442" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <Label Content="East" Canvas.Left="442" Canvas.Top="17" FontSize="16"/>
-                <TextBox x:Name="ForTime" Height="46" Canvas.Left="634" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
-                <Label Content="Time" Canvas.Left="634" Canvas.Top="17" FontSize="16"/>
+                <Label Content="Destination" Canvas.Left="50" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForDestination" Height="46" Canvas.Left="50" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="Kilometer" Canvas.Left="197" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForKM" Height="46" Canvas.Left="197" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <TextBox x:Name="ForWest" Height="46" Canvas.Left="342" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="West" Canvas.Left="342" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForEast" Height="46" Canvas.Left="492" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="East" Canvas.Left="492" Canvas.Top="17" FontSize="16"/>
+                <TextBox x:Name="ForTime" Height="46" Canvas.Left="642" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <Label Content="Time" Canvas.Left="642" Canvas.Top="17" FontSize="16"/>
 
                 <Label x:Name="route_add_button" Content="Add" HorizontalContentAlignment="Center" Canvas.Top="172" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="189" Width="134" MouseLeftButtonDown="route_add_button_MouseLeftButtonDown"/>
                 <Label x:Name="route_delete_button" Content="Delete" HorizontalContentAlignment="Center" Canvas.Top="172" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="328" Width="135" MouseLeftButtonDown="route_delete_button_MouseLeftButtonDown"/>
                 <Label x:Name="route_update_button" Content="Update" HorizontalContentAlignment="Center" Canvas.Top="172" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="468" Width="135" MouseLeftButtonDown="route_update_button_MouseLeftButtonDown"/>
             </Canvas>
 
-        </Canvas>        
+        </Canvas>
 
         <!-- [[Dashboard - Review Log Files] -->
         <Canvas x:Name="admin_dashboard_review_log"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
