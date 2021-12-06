@@ -51,16 +51,7 @@
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="77" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Marketplace Data grid -->
-            <DataGrid x:Name="Marketplace_datagrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="CLIENT_NAME" Binding="{Binding clientName}"/>
-                    <DataGridTextColumn Header="JOB_TYPE" Binding="{Binding jobType}"/>
-                    <DataGridTextColumn Header="QUANTITY" Binding="{Binding quantity}"/>
-                    <DataGridTextColumn Header="ORIGIN" Binding="{Binding origin}"/>
-                    <DataGridComboBoxColumn Header="DESTINATION" SelectedItemBinding="{Binding destination}" />
-                    <!-- This should be added above - research// ItemsSource="{Binding Source={StaticResource testEnum}}"-->
-                    <DataGridTextColumn Header="VAN_TYPE" Binding="{Binding vanType}"/>
-                </DataGrid.Columns>
+            <DataGrid x:Name="Marketplace_datagrid"  AutoGenerateColumns="True" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
             </DataGrid>
 
             <!-- Marketplace Signin -->
@@ -107,25 +98,11 @@
             <Label x:Name="accept_contract" Content="Accept Contract" HorizontalContentAlignment="Center" Canvas.Left="600" Canvas.Top="146" Background="#FFEF466F" Width="253" Foreground="White" FontSize="14" Cursor="Hand" MouseLeftButtonDown="accept_contract_MouseLeftButtonDown"/>
 
             <!-- TMS Data grid -->
-            <DataGrid Height="258" Canvas.Left="62" Canvas.Top="478" Width="791" BorderBrush="#FFFBA5BA" BorderThickness="5">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ORDER_ID"/>
-                    <DataGridTextColumn Header="EMPLOYEE_ID"/>
-                    <DataGridTextColumn Header="CLIENT_NAME"/>
-                    <DataGridTextColumn Header="JOB_TYPE"/>
-                    <DataGridTextColumn Header="QUANTITY"/>
-                    <DataGridComboBoxColumn Header="ORIGIN"/>
-                    <DataGridComboBoxColumn Header="DESTINATION"/>
-                    <DataGridComboBoxColumn Header="VAN_TYPE"/>
-                    <DataGridComboBoxColumn Header="CITY"/>
-                    <DataGridComboBoxColumn Header="CARRIER_NAME"/>
-                    <DataGridComboBoxColumn Header="TOTAL_DISTANCE"/>
-                    <DataGridComboBoxColumn Header="TOTAL_TIME"/>
-                    <DataGridComboBoxColumn Header="CARRIER_CHARGES"/>
-                    <DataGridComboBoxColumn Header="OHST_Revenue"/>
-                    <DataGridComboBoxColumn Header="TRIP"/>
-                </DataGrid.Columns>
+            <!-- TMS Data grid -->
+            <DataGrid x:Name="ORDER_datagrid"  AutoGenerateColumns="True" Height="258" Canvas.Left="62" Canvas.Top="478" Width="791" BorderBrush="#FFFBA5BA" BorderThickness="5" SelectionChanged="ORDER_datagrid_SelectionChanged">
             </DataGrid>
+            <ComboBox x:Name="Carrier_ComboBox" Canvas.Left="88" Canvas.Top="449" Width="316" SelectionChanged="Carrier_ComboBox_SelectionChanged"/>
+            <Button Content="Add Carrier" Canvas.Left="434" Canvas.Top="449" Width="104" Click="Button_Add_Carrier"/>
 
             <!-- Marketplace Signin -->
             <Canvas x:Name="buyer_tms_db_signin" Visibility="Collapsed" Height="258" Canvas.Left="62" Canvas.Top="478" Width="791">
@@ -167,7 +144,8 @@
                 <TextBox x:Name="buyer_dashboard_tms_dbName" Padding="5" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#EF466F" Foreground="#EF466F" SelectionBrush="#EF466F" FontSize="16" Canvas.Left="616" Canvas.Top="94"/>
                 <Label Content="DB" Foreground="#EF466F" Background="{x:Null}" FontSize="20" Canvas.Left="563" Canvas.Top="90" Width="47"/>
             </Canvas>
-            <Label x:Name="tms_status_bar" Content="TMS DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="449" Background="#FFEF466F" Width="179" Foreground="White" FontSize="14" Cursor="Hand"/>
+            <Label x:Name="tms_status_bar" Content="TMS DB Sign in" HorizontalContentAlignment="Center" Canvas.Left="62" Canvas.Top="736" Background="#FFEF466F" Width="791" Foreground="White" FontSize="14" Cursor="Hand"/>
+            <Button Content="Update Order DB" Canvas.Left="665" Canvas.Top="449" Width="163" Click="Button_Update_Order_DB" Height="22"/>
         </Canvas>
 
         <!-- [Dashboard - Review Completed Orders] -->

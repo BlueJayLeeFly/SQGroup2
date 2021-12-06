@@ -15,14 +15,28 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
 using Path = System.IO.Path;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Group2
 {
     /// <summary>
     /// Interaction logic for AdminDashBoard.xaml
     /// </summary>
+    /// 
+
+    
+
     public partial class AdminDashBoard : Page
     {
+
+        DataTable DtRateTable = new DataTable();
+        DataTable DtCarrierTable = new DataTable();
+        DataTable DtRouteTable = new DataTable();
+
+
+        int SelectedCarrierID;
+        int SelectedRouteID;
 
         /**
         *  \brief   AdminDashBoard -- initialize components
@@ -130,6 +144,161 @@ namespace Group2
         }
 
 
+
+        /**
+        *  \brief   menu4_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void menu4_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            menu4.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+        }
+
+
+        /**
+        *  \brief   menu4_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void menu4_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            menu4.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+        }
+
+
+        /**
+        *  \brief   sub_menu1_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Parent menu keep the hover state
+            menu4.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+
+            // sub-menu hover effect
+            sub_menu1.Background = new SolidColorBrush(Color.FromRgb(192, 128, 255));
+            sub_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+        }
+
+
+
+        /**
+        *  \brief   sub_menu1_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            // Parent menu keep the hover state
+            menu4.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+
+            // sub-menu hover effect
+            sub_menu1.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            sub_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+        }
+
+
+
+        /**
+        *  \brief   sub_menu2_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Parent menu keep the hover state
+            menu4.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+
+            // sub-menu hover effect
+            sub_menu2.Background = new SolidColorBrush(Color.FromRgb(192, 128, 255));
+            sub_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+        }
+
+
+
+        /**
+        *  \brief   sub_menu2_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            // Parent menu keep the hover state
+            menu4.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+
+            // sub-menu hover effect
+            sub_menu2.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            sub_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+        }
+
+
+        /**
+        *  \brief   sub_menu3_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Parent menu keep the hover state
+            menu4.Background = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+
+            // sub-menu hover effect
+            sub_menu3.Background = new SolidColorBrush(Color.FromRgb(192, 128, 255));
+            sub_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+        }
+
+
+
+        /**
+        *  \brief   sub_menu2_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu3_MouseLeave(object sender, MouseEventArgs e)
+        {
+            // Parent menu keep the hover state
+            menu4.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            menu4_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+
+            // sub-menu hover effect
+            sub_menu3.Background = new SolidColorBrush(Color.FromRgb(247, 239, 255));
+            sub_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(151, 86, 217));
+        }
+
+
         /**
         *  \brief   menu5_MouseEnter -- event handling of menu item mouse enter
         *  \details this method handlesmenu item mouse enter event and change the background and text color
@@ -162,6 +331,7 @@ namespace Group2
         // ------------------------- These are for hover effect [end] ---------------------
 
 
+
         // ------------------------- These are for Menu Items Click Events [start] ---------------------
 
 
@@ -181,6 +351,9 @@ namespace Group2
             // Hide the other parts
             AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
             AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;
+            Carrier_Table.Visibility = Visibility.Collapsed;
+            Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
 
@@ -205,6 +378,9 @@ namespace Group2
             // Hide the other parts
             AdminDashBoardMain.Visibility = Visibility.Collapsed;
             AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;
+            Carrier_Table.Visibility = Visibility.Collapsed;
+            Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
 
@@ -228,6 +404,9 @@ namespace Group2
             // Hide the other parts
             AdminDashBoardMain.Visibility = Visibility.Collapsed;
             AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;
+            Carrier_Table.Visibility = Visibility.Collapsed;
+            Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
 
@@ -268,7 +447,193 @@ namespace Group2
             AdminDashBoardMain.Visibility = Visibility.Collapsed;
             AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
             AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;
+            Carrier_Table.Visibility = Visibility.Collapsed;
+            Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
+        }
+
+
+
+        /**
+        *  \brief   sub_menu1_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Rate_Table.Visibility = Visibility.Visible;
+
+            // Hide the other parts
+            AdminDashBoardMain.Visibility = Visibility.Collapsed;
+            AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            AdminDashBoardDirectory.Visibility = Visibility.Collapsed;            
+            Carrier_Table.Visibility = Visibility.Collapsed;
+            Route_Table.Visibility = Visibility.Collapsed;
+            admin_dashboard_review_log.Visibility = Visibility.Collapsed;
+            admin_dashboard_backup.Visibility = Visibility.Collapsed;
+
+            // Rate Table Data Grid
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    // Shows Connection Accepted on UI
+                    //market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
+
+                    // SQL Command
+                    string sq1 = "SELECT * FROM Rate_Table;"; 
+                    MySqlCommand selectAllRate = new MySqlCommand(sq1, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRate);
+
+                    // fills Data Table Object with All Contract Rows                   
+
+                    reader.Fill(DtRateTable);                   
+
+                    // Render the Columns and the rows 
+                    rate_table_datagrid.ItemsSource = DtRateTable.DefaultView;
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+        /**
+        *  \brief   sub_menu2_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Carrier_Table.Visibility = Visibility.Visible;
+
+            // Hide the other parts
+            AdminDashBoardMain.Visibility = Visibility.Collapsed;
+            AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;            
+            Route_Table.Visibility = Visibility.Collapsed;
+            admin_dashboard_review_log.Visibility = Visibility.Collapsed;
+            admin_dashboard_backup.Visibility = Visibility.Collapsed;
+
+
+            DtCarrierTable.Clear();
+
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    // Shows Connection Accepted on UI
+                    //market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
+
+                    // SQL Command
+                    string sq1 = "SELECT * FROM Carrier_Data;";
+                    MySqlCommand selectAllCarrier = new MySqlCommand(sq1, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllCarrier);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtCarrierTable);
+
+                    // Render the Columns and the rows
+                    carrier_table_datagrid.ItemsSource = DtCarrierTable.DefaultView;
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            
+
+        }
+
+
+        /**
+        *  \brief   sub_menu3_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+
+        private void sub_menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Route_Table.Visibility = Visibility.Visible;
+
+            // Hide the other parts
+            AdminDashBoardMain.Visibility = Visibility.Collapsed;
+            AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
+            AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;
+            Carrier_Table.Visibility = Visibility.Collapsed;            
+            admin_dashboard_review_log.Visibility = Visibility.Collapsed;
+            admin_dashboard_backup.Visibility = Visibility.Collapsed;
+
+
+            // Route Table Data Grid
+
+            DtRouteTable.Clear();
+
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    // Shows Connection Accepted on UI
+                    //market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
+
+                    // SQL Command
+                    string sq1 = "SELECT * FROM Route_Table;";
+                    MySqlCommand selectAllRoute = new MySqlCommand(sq1, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRoute);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRouteTable);
+
+                    // Render the Columns and the rows 
+                    route_table_datagrid.ItemsSource = DtRouteTable.DefaultView;
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
         }
 
 
@@ -289,6 +654,9 @@ namespace Group2
             AdminDashBoardMain.Visibility = Visibility.Collapsed;
             AdminDashBoardIpPort.Visibility = Visibility.Collapsed;
             AdminDashBoardDirectory.Visibility = Visibility.Collapsed;
+            Rate_Table.Visibility = Visibility.Collapsed;
+            Carrier_Table.Visibility = Visibility.Collapsed;
+            Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
         }
 
@@ -324,7 +692,7 @@ namespace Group2
             // Initial directory set up required during installation(?)
 
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = "c:\\Users\\lsj27\\documents";
+            ofd.InitialDirectory = AdminController.LogFileDirectory;
             ofd.Filter = "Log Files (*.log) | *.log";
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
@@ -353,7 +721,7 @@ namespace Group2
 
         private void TmsConnect_Click(object sender, RoutedEventArgs e)
         {         
-            AdminController.ConnectionStringForTMS = $"Server={TmsIpAddress.Text};Uid={TmsUserName.Text};Pwd={TmsDbPassword.Password};database=test";
+            AdminController.ConnectionStringForTMS = $"Server={TmsIpAddress.Text};Uid={TmsUserName.Text};Pwd={TmsDbPassword.Password};database=tms_db";
 
             connection_result.Content = AdminController.InitialConnectToDB();
 
@@ -421,5 +789,344 @@ namespace Group2
             AdminController.addLog("Backup File Restored : " + AdminController.BackupFile);
         }
 
+
+
+        // ------------------ When Data Grid Selected, textboxes are filled ------------------------------------
+
+        // for rate table here
+
+        private void carrier_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(carrier_table_datagrid.SelectedItem != null)
+            {
+                DataRowView dataRowView = (DataRowView)carrier_table_datagrid.SelectedItem;
+                SelectedCarrierID = Int32.Parse(dataRowView[0].ToString());
+                Carrier_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
+                ForDepotCity.Text = dataRowView[2].ToString();
+                ForFTLAvailability.Text = dataRowView[3].ToString();
+                ForLTLAvailability.Text = dataRowView[4].ToString();
+                ForFTLRate.Text = dataRowView[5].ToString();
+                ForLTLRate.Text = dataRowView[6].ToString();
+                ForReeferCharge.Text = dataRowView[7].ToString();
+            }
+            
+        }
+
+        private void route_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(route_table_datagrid.SelectedItem != null)
+            {
+                DataRowView dataRowView = (DataRowView)route_table_datagrid.SelectedItem;
+                SelectedRouteID = Int32.Parse(dataRowView[0].ToString());
+                Route_Table_Message.Content = $"Route ID: {dataRowView[0].ToString()} - Selected";
+                ForKM.Text = dataRowView[2].ToString();
+                ForWest.Text = dataRowView[3].ToString();
+                ForEast.Text = dataRowView[4].ToString();
+                ForTime.Text = dataRowView[5].ToString();
+            }
+        }
+
+
+        // ------------------------ Add Buttons ----------------------------------------------------------
+        private void rate_add_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string sq1 = $"INSERT INTO Rate_Table (Surcharge, FTL, LTL) VALUES ({Surcharge.Text},{ForFTL.Text}, {ForLTL.Text})";
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close(); // Close connection
+                }               
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+}
+
+        private void carrier_add_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string sq1 = "INSERT INTO TABLE (TEST1, TEST2, TEST3) VALUES ('Value1','Value2', 'Value3')"; ; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void route_add_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string sq1 = "INSERT INTO TABLE (TEST1, TEST2, TEST3) VALUES ('Value1','Value2', 'Value3')"; ; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+        // ------------------------ Delete Buttons ----------------------------------------------------------
+
+        private void rate_delete_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string sq1 = $"DELETE FROM Rate_Table WHERE Rate_Table_ID = {rate_id.Text}"; ; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void carrier_delete_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string sq1 = $"DELETE FROM Carrier_Data WHERE Carrier_ID = {SelectedCarrierID};" ; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtCarrierTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Carrier_Data;";
+                    MySqlCommand selectAllCarrier = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllCarrier);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtCarrierTable);
+
+                    // Render the Columns and the rows
+                    carrier_table_datagrid.ItemsSource = DtCarrierTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+        }
+
+        private void route_delete_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string sq1 = $"DELETE FROM Route_Table WHERE Route_ID = {SelectedRouteID};"; 
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtRouteTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Route_Table;";
+                    MySqlCommand selectAllRoute = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRoute);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRouteTable);
+
+                    // Render the Columns and the rows
+                    route_table_datagrid.ItemsSource = DtRouteTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+        // ------------------------ Update Buttons ----------------------------------------------------------
+
+        private void rate_update_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+                    
+                    string sq1 = $"UPDATE Rate_Table SET column1 = value1 WHERE Rate_Table_ID = {rate_id.Text};" ; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+        private void carrier_update_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string setCondition = $"Depot_City = '{ForDepotCity.Text}', FTL_Availability = {ForFTLAvailability.Text}, LTL_Availability = {ForLTLAvailability.Text}, FTL_Rate = {ForFTLRate.Text}, LTL_Rate = {ForLTLRate.Text}, Reefer_Charge ={ForReeferCharge.Text}";
+                    string sq1 = $"UPDATE Carrier_Data SET {setCondition} WHERE Carrier_ID = {SelectedCarrierID};"; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtCarrierTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Carrier_Data;";
+                    MySqlCommand selectAllCarrier = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllCarrier);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtCarrierTable);
+
+                    // Render the Columns and the rows
+                    carrier_table_datagrid.ItemsSource = DtCarrierTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+
+
+        }
+
+        private void route_update_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    string setCondition = $"Kilometer = {ForKM.Text}, West = '{ForWest.Text}', East = '{ForEast.Text}', Time = {ForTime.Text}";
+                    string sq1 = $"UPDATE Route_Table SET {setCondition} WHERE Route_ID = {SelectedRouteID};"; // ADJUSTMENT NAME REQUIRES
+                    MySqlCommand cmd = new MySqlCommand(sq1, conn);
+                    cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtRouteTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Route_Table;";
+                    MySqlCommand selectAllRoute = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRoute);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRouteTable);
+
+                    // Render the Columns and the rows
+                    route_table_datagrid.ItemsSource = DtRouteTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
+
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }

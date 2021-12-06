@@ -21,7 +21,7 @@ namespace Group2
     /// Interaction logic for BuyerDashBoard.xaml
     /// </summary>
     /// 
-    
+
     public partial class BuyerDashBoard : Page
     {
 
@@ -31,162 +31,26 @@ namespace Group2
         *  \param   NONE
         *  \returns NONE
         */
+        DataTable DtMarketPlace = new DataTable();                 // DataTable Defined as a Global variable.
+        DataTable DtOrder = new DataTable();                        // DataTable Defined as a Global variable.
+        List<object> newList = new List<object>();
+
 
         public BuyerDashBoard()
         {
+
             InitializeComponent();
-        }
-
-
-        /**
-        *  \brief   buyer_menu1_MouseEnter -- event handling of menu item mouse enter
-        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu1_MouseEnter(object sender, MouseEventArgs e)
-        {
-            buyer_menu1.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-            buyer_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-        }
-
-
-        /**
-        *  \brief   buyer_menu1_MouseLeave -- event handling of menu item mouse leave
-        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu1_MouseLeave(object sender, MouseEventArgs e)
-        {
-            buyer_menu1.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-            buyer_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-        }
-
-
-        /**
-        *  \brief   buyer_menu2_MouseEnter -- event handling of menu item mouse enter
-        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu2_MouseEnter(object sender, MouseEventArgs e)
-        {
-            buyer_menu2.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-            buyer_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-        }
-
-
-        /**
-        *  \brief   buyer_menu2_MouseLeave -- event handling of menu item mouse leave
-        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu2_MouseLeave(object sender, MouseEventArgs e)
-        {
-            buyer_menu2.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-            buyer_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-        }
-
-
-        /**
-        *  \brief   buyer_menu3_MouseEnter -- event handling of menu item mouse enter
-        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu3_MouseEnter(object sender, MouseEventArgs e)
-        {
-            buyer_menu3.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-            buyer_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-        }
-
-
-        /**
-        *  \brief   buyer_menu3_MouseLeave -- event handling of menu item mouse leave
-        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu3_MouseLeave(object sender, MouseEventArgs e)
-        {
-            buyer_menu3.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-            buyer_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-        }
-
-
-        /**
-        *  \brief   BuyerBackToMain_MouseLeftButtonDown -- event handling of menu item mouse click
-        *  \details this method handles menu item mouse click event and lead to ChooseRole.xaml
-        *  \param   sender object
-        *  \param   MouseButtonEventArgs e
-        *  \returns NONE
-        */
-
-        private void BuyerBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
-        }
-
-
-        /**
-        *  \brief   buyer_menu1_MouseLeftButtonDown -- event handling of menu item mouse click
-        *  \details this method handles menu item mouse click event, display content of the menu which is main dashboard page and hide non-related content
-        *  \param   sender object
-        *  \param   MouseButtonEventArgs e
-        *  \returns NONE
-        */
-
-        private void buyer_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //
-        }
-
-
-        /**
-        *  \brief   Label_MouseLeftButtonDown -- event handling of menu item mouse click
-        *  \details this method handles menu item mouse click event, display content of the menu which is main dashboard page and hide non-related content
-        *  \param   sender object
-        *  \param   MouseButtonEventArgs e
-        *  \returns NONE
-        */
-
-        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
+            Carrier_ComboBox.Items.Add("We Haul");
+            Carrier_ComboBox.Items.Add("Planet Express");
+            Carrier_ComboBox.Items.Add("Schooner's");
+            Carrier_ComboBox.Items.Add("Tillman Transport");
         }
 
 
 
-
-        private void Label_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-            
-            buyer_market_db_signin.Visibility = Visibility.Visible;
-
-            
-
-        }
-
-
-        private void buyer_market_signin_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            buyer_market_db_signin.Visibility = Visibility.Collapsed;
-        }
-
+        // ----------------------------------------------------------------------------------------------//
+        // ----------------------------------   Sohaib functions   --------------------------------------//
+        // ----------------------------------------------------------------------------------------------//
 
         private void buyer_dashboard_market_button_Click(object sender, RoutedEventArgs e)
         {
@@ -203,35 +67,35 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    // MySqal commands here
-
+                    // Shows Connection Accepted on UI
                     market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
 
+                    // SQL Command
                     string sq1 = "SELECT * FROM Contract;";
                     MySqlCommand selectAllContract = new MySqlCommand(sq1, conn);
-                    MySqlDataReader rdr = selectAllContract.ExecuteReader();
 
-                    while (rdr.Read())
-                    {
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllContract);
 
-                        // DataTable Dt = new DataTable();
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtMarketPlace);
+                    DtOrder = DtMarketPlace.Copy();
 
-                        // Render data to datagrid
-                        // TEST
-                        Marketplace_datagrid.Items.Add(new contractParams
-                        {
 
-                            clientName = rdr[0].ToString(),
-                            jobType = int.Parse(rdr[1].ToString()),
-                            quantity = int.Parse(rdr[2].ToString()),
-                            origin = rdr[3].ToString(),
-                            destination = rdr[4].ToString(),
-                            vanType = int.Parse(rdr[5].ToString())
-                        });
-                        //market_status_bar.Content = rdr[1].ToString();
+                    // Create 2 Columns 
+                    DataColumn Order_ID = new DataColumn("Order_ID", typeof(Int32));
+                    DataColumn Order_Status = new DataColumn("Order_Status", typeof(Int32));
+                    DataColumn Order_Carrier = new DataColumn("Order_Carrier", typeof(string));
 
-                    }
-                    rdr.Close();
+                    DtMarketPlace.Columns.Add(Order_ID);
+                    DtMarketPlace.Columns.Add(Order_Status);
+                    DtMarketPlace.Columns.Add(Order_Carrier);
+
+                    //DtOrder = DtMarketPlace.Copy();
+
+                    // Render the Columns and the rows 
+                    Marketplace_datagrid.ItemsSource = DtMarketPlace.DefaultView;
+
 
 
                     conn.Close(); // Close connection
@@ -244,80 +108,149 @@ namespace Group2
 
         }
 
-
-        // ------------------ future functions 
-
-
-
         /**
-        *  \brief    getContract -- fetch customers data
-        *  \details  this method fetch customers data
+        *  \brief   accept_contract_MouseLeftButtonDown -- Gets selected client contracts,
+        *  \details  this method fetch customers Contract, Generates a DataGrid of selected Items.
         *  \param    NONE
         *  \returns  NONE
         */
-
-        private void getContract()
-        {
-
-        }
-
-
-        /**
-        *  \brief    reviewCust -- review existing customers
-        *  \details  this method review existing customer
-        *  \param    NONE
-        *  \returns  NONE
-        */
-
-        private void reviewCust()
-        {
-
-        }
-
-
-        /**
-        *  \brief    acceptNewCust -- accept new customers
-        *  \details  this method accepts new customers and update DB
-        *  \param    NONE
-        *  \returns  NONE
-        */
-
-        private void acceptNewCust()
-        {
-
-        }
-
-
-        /**
-        *  \brief    startOrder -- accept new customers
-        *  \details  this method accepts new customers and update DB
-        *  \param    NONE
-        *  \returns  NONE
-        */
-
-        private void startOrder()
-        {
-
-        }
-
-
-        private void selectCity()
-        {
-
-        }
-
-
-        private void createInvoice()
-        {
-
-        }
-
-
-        // Event for "Accept Contract" button
         private void accept_contract_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-           
+
+
+
+            // Add Selected orders.
+            foreach (var selectedItem in Marketplace_datagrid.SelectedItems)
+            {
+
+                if (selectedItem != null)
+                {
+
+                    newList.Add(selectedItem);
+
+
+                    ORDER_datagrid.ItemsSource = newList;
+                    ORDER_datagrid.Items.Refresh();
+
+                }
+
+            }
+
+
         }
+
+        /**
+       *  \brief    Button_Add_Carrier -- Selected Orders are added a Carrier Value
+       *  \details  this method fetch selected orders, Assigns a carrier only if the fullfil validation rule.
+       *  \param    NONE
+       *  \returns  NONE
+       */
+        private void Button_Add_Carrier(object sender, RoutedEventArgs e)
+        {
+            bool ValidCarrierAssigned = false;
+            string Carrier_Error_Message = "";
+
+            foreach (System.Data.DataRowView acceptedRows in ORDER_datagrid.SelectedItems)
+            {
+
+
+                string origin = acceptedRows[3].ToString();
+                string carrier = Carrier_ComboBox.SelectedItem.ToString();
+
+                if (carrier == "We Haul")
+                {
+                    if ((origin == "Ottawa" || origin == "Toronto"))
+                    {
+                        ValidCarrierAssigned = true;
+                    }
+                    else
+                    {
+
+                        Carrier_Error_Message = "We Haul - operates from Ottawa and Toronto.";
+                    }
+
+
+                }
+                else if (carrier == "Planet Express")
+                {
+                    if ((origin == "Ottawa" || origin == "Hamilton" || origin == "Belleville" || origin == "Oshawa" || origin == "Windsor"))
+                    {
+                        ValidCarrierAssigned = true;
+                    }
+                    else
+                    {
+
+                        Carrier_Error_Message = "Planet Express - operates from Ottawa, Hamilton, Belleville, Oshawa and Windsor.";
+                    }
+
+                }
+
+                else if (carrier == "Schooner's")
+                {
+                    if ((origin == "London" || origin == "Toronto" || origin == "Kingston"))
+                    {
+                        ValidCarrierAssigned = true;
+                    }
+                    else
+                    {
+
+                        Carrier_Error_Message = "Schooner's - operates from London,Toronto and Kingston.";
+                    }
+
+
+                }
+                else if (carrier == "Tillman Transport")
+                {
+                    if ((origin == "London" || origin == "Windsor" || origin == "Hamilton"))
+                    {
+                        ValidCarrierAssigned = true;
+                    }
+                    else
+                    {
+
+                        Carrier_Error_Message = "Tillman Transport - operates from London, Windsor and Hamilton.";
+                    }
+
+                }
+
+                if (ValidCarrierAssigned == true)
+                {
+
+                    Random randomNumber = new Random();
+                    acceptedRows[6] = randomNumber.Next(1, 10000);
+                    acceptedRows[7] = 2;
+                    acceptedRows[8] = carrier;
+                    tms_status_bar.Content = "Order ID:" + acceptedRows[6].ToString() + "has been assigned a Carrier.";
+
+
+                    // [D] - Hacky solution - fix  
+                    Marketplace_datagrid.ItemsSource = DtOrder.DefaultView;
+
+                }
+                else
+                {
+                    tms_status_bar.Content = Carrier_Error_Message;
+                }
+            }
+
+        }
+
+
+        private void Button_Update_Order_DB(object sender, RoutedEventArgs e)
+        {
+            // INSERT INTO ORDER TABLE DB
+
+            // SELECTED Item from ORDER_DataGrid or MarketPlace Table.
+
+            // After rendering all columns and defaulting empty values
+        }
+
+
+
+
+        // ----------------------------------------------------------------------------------------------//
+        // ----------------------------------   Colby functions   ---------------------------------------//
+        // ----------------------------------------------------------------------------------------------//
 
 
         // Event for "Generate Invoice"
@@ -332,15 +265,154 @@ namespace Group2
 
 
 
+        // ----------------------------------------------------------------------------------------------//
+        // ---------------------------------- MISC /UI functions   --------------------------------------//
+        // ----------------------------------------------------------------------------------------------//
 
-        //buyer methods
-        //getContract() -> 4.5.2.2.1
-        //reviewCust() -> 4.5.2.2.2
-        //acceptNewCust() -> 4.5.2.2.2
-        //startOrder() -> 4.5.2.2.3
-        //selectCity() -> 4.5.2.2.4
-        //createInvoice()-> 4.5.2.2.5
-        //create invoice generates invoice in a file and updates TMS database
+
+        /**
+        *  \brief   buyer_menu1_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            buyer_menu1.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
+            buyer_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
+        }
+
+
+        /**
+        *  \brief   buyer_menu1_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            buyer_menu1.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
+            buyer_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
+        }
+
+
+        /**
+        *  \brief   buyer_menu2_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            buyer_menu2.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
+            buyer_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
+        }
+
+
+        /**
+        *  \brief   buyer_menu2_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            buyer_menu2.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
+            buyer_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
+        }
+
+
+        /**
+        *  \brief   buyer_menu3_MouseEnter -- event handling of menu item mouse enter
+        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            buyer_menu3.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
+            buyer_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
+        }
+
+
+        /**
+        *  \brief   buyer_menu3_MouseLeave -- event handling of menu item mouse leave
+        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
+        *  \param   sender object
+        *  \param   MouseEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu3_MouseLeave(object sender, MouseEventArgs e)
+        {
+            buyer_menu3.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
+            buyer_menu3_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
+        }
+
+
+        /**
+        *  \brief   BuyerBackToMain_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event and lead to ChooseRole.xaml
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+        private void BuyerBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
+        }
+
+        /**
+        *  \brief   buyer_menu1_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu which is main dashboard page and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+        private void buyer_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //
+        }
+
+        /**
+        *  \brief   Label_MouseLeftButtonDown -- event handling of menu item mouse click
+        *  \details this method handles menu item mouse click event, display content of the menu which is main dashboard page and hide non-related content
+        *  \param   sender object
+        *  \param   MouseButtonEventArgs e
+        *  \returns NONE
+        */
+        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
+        }
+
+        private void Label_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+
+            buyer_market_db_signin.Visibility = Visibility.Visible;
+
+        }
+
+        private void buyer_market_signin_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            buyer_market_db_signin.Visibility = Visibility.Collapsed;
+        }
+
+        private void Carrier_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ORDER_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
 
     }
 }

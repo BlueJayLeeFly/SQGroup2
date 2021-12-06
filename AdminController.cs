@@ -44,10 +44,10 @@ namespace Group2
     {
 
         public static string PresetLogFile = AppDomain.CurrentDomain.BaseDirectory + "\\log.txt";
-        public static string LogFileDirectory;
+        public static string LogFileDirectory = AppDomain.CurrentDomain.BaseDirectory;
         public static string LogFileName;
         public static string LogWithDateTime;   // variable to store eventlogs
-        public static string ConnectionStringForTMS = "Server=localhost;Uid=testuser;Pwd=12345;database=test";  // connection string for TMS Database
+        public static string ConnectionStringForTMS;  // connection string for TMS Database
 
         // Backup
         public static string BackupFile;
