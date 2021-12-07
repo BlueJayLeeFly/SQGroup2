@@ -49,6 +49,7 @@ namespace Group2
         public AdminDashBoard()
         {
             InitializeComponent();
+            AdminController.addLog("[Admin] Admin Dashboard Initialized");
         }
 
 
@@ -345,6 +346,7 @@ namespace Group2
         *  \returns NONE
         */
 
+        // Dashboard Home
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AdminDashBoardMain.Visibility = Visibility.Visible;
@@ -357,9 +359,6 @@ namespace Group2
             Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
-
-            // log
-            AdminController.addLog("Admin dashboard home button clicked");
         }
 
 
@@ -384,9 +383,6 @@ namespace Group2
             Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
-
-            // log
-            AdminController.addLog("Directory setting menu clicked");
         }
 
 
@@ -410,9 +406,6 @@ namespace Group2
             Route_Table.Visibility = Visibility.Collapsed;
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
-
-            // log
-            AdminController.addLog("DB Connection setting button clicked");
         }
 
 
@@ -510,10 +503,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Rate Database Loaded");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Rate Database Loading Failed");
             }
         }
 
@@ -569,10 +564,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Carrier Database Loaded");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Carrier Database Loading Failed");
             }
 
             
@@ -634,10 +631,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Route Database Loaded");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Route Database Loading Failed");
             }
 
         }
@@ -678,6 +677,9 @@ namespace Group2
         private void AdminBackToMain_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
+
+            // LOG
+            AdminController.addLog("[Admin] Signed out - Good Job!");
         }
 
 
@@ -695,25 +697,29 @@ namespace Group2
 
         private void ChangeLogFilePath_Click(object sender, RoutedEventArgs e)
         {
-            // Initial directory set up required during installation(?)
+            Stream myStream;
 
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = AdminController.LogFileDirectory;
-            ofd.Filter = "Log Files (*.log) | *.log";
-            ofd.FilterIndex = 1;
-            ofd.RestoreDirectory = true;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = AdminController.LogFileDirectory;
+            sfd.Filter = "Log Files (*.log) | *.log";
+            sfd.FilterIndex = 1;
+            sfd.RestoreDirectory = true;
 
-            bool? openResult = ofd.ShowDialog();
-
-            if (openResult == true)
+            if (sfd.ShowDialog() == true)
             {
-                LogFilePath.Text = Path.GetDirectoryName(ofd.FileName);
-                AdminController.LogFileName = ofd.FileName;
+                if ((myStream = sfd.OpenFile()) != null)
+                {
+                    // Start with empty string
+                    myStream.Close();
+                }
+                LogFilePath.Text = Path.GetDirectoryName(sfd.FileName);
+                AdminController.LogFileName = sfd.FileName;
                 AdminController.LogFileDirectory = LogFilePath.Text;
-            }        
 
-            // log
-            AdminController.addLog("Change directory button clicked");
+                // LOG
+                AdminController.addLog($"[Admin] Changed a log file directory");
+                AdminController.addLog($"[Admin] Started a new log file");
+            }
         }
 
 
@@ -732,7 +738,7 @@ namespace Group2
             connection_result.Content = AdminController.InitialConnectToDB();
 
             // log
-            AdminController.addLog("TMS database connection button clicked");
+            AdminController.addLog("[Admin] TMS Database Connected");
         }
 
 
@@ -759,7 +765,7 @@ namespace Group2
             }
 
             // log
-            AdminController.addLog("Backup File Created : " + AdminController.BackupFile);
+            AdminController.addLog("[Admin] Database Backup File Created : " + AdminController.BackupFile);
         }
 
 
@@ -792,7 +798,7 @@ namespace Group2
             }
 
             // log
-            AdminController.addLog("Backup File Restored : " + AdminController.BackupFile);
+            AdminController.addLog("[Admin] Database Backup File Restored : " + AdminController.BackupFile);
         }
 
 
@@ -800,48 +806,72 @@ namespace Group2
         // ------------------ When Data Grid Selected, textboxes are filled ------------------------------------
 
         private void rate_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (rate_table_datagrid.SelectedItem != null)
+        {  
+            try
             {
-                DataRowView dataRowView = (DataRowView)rate_table_datagrid.SelectedItem;
-                SelectedRateID = Int32.Parse(dataRowView[0].ToString());
-                Rate_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
-                ForSurcharge.Text = dataRowView[1].ToString();
-                ForFTL.Text = dataRowView[2].ToString();
-                ForLTL.Text = dataRowView[3].ToString();
+                if (rate_table_datagrid.SelectedItem != null)
+                {
+                    DataRowView dataRowView = (DataRowView)rate_table_datagrid.SelectedItem;
+                    SelectedRateID = Int32.Parse(dataRowView[0].ToString());
+                    Rate_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
+                    ForSurcharge.Text = dataRowView[1].ToString();
+                    ForFTL.Text = dataRowView[2].ToString();
+                    ForLTL.Text = dataRowView[3].ToString();
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Rate Database Row Selection Failed");
             }
         }
 
         private void carrier_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(carrier_table_datagrid.SelectedItem != null)
+            try
             {
-                DataRowView dataRowView = (DataRowView)carrier_table_datagrid.SelectedItem;
-                SelectedCarrierID = Int32.Parse(dataRowView[0].ToString());
-                Carrier_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
-                ForCarrierName.Text = dataRowView[1].ToString();
-                ForDepotCity.Text = dataRowView[2].ToString();
-                ForFTLAvailability.Text = dataRowView[3].ToString();
-                ForLTLAvailability.Text = dataRowView[4].ToString();
-                ForFTLRate.Text = dataRowView[5].ToString();
-                ForLTLRate.Text = dataRowView[6].ToString();
-                ForReeferCharge.Text = dataRowView[7].ToString();
-            }            
+                if (carrier_table_datagrid.SelectedItem != null)
+                {
+                    DataRowView dataRowView = (DataRowView)carrier_table_datagrid.SelectedItem;
+                    SelectedCarrierID = Int32.Parse(dataRowView[0].ToString());
+                    Carrier_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
+                    ForCarrierName.Text = dataRowView[1].ToString();
+                    ForDepotCity.Text = dataRowView[2].ToString();
+                    ForFTLAvailability.Text = dataRowView[3].ToString();
+                    ForLTLAvailability.Text = dataRowView[4].ToString();
+                    ForFTLRate.Text = dataRowView[5].ToString();
+                    ForLTLRate.Text = dataRowView[6].ToString();
+                    ForReeferCharge.Text = dataRowView[7].ToString();
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Carrier Database Row Selection Failed");
+            }           
         }
 
         private void route_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(route_table_datagrid.SelectedItem != null)
+            try
             {
-                DataRowView dataRowView = (DataRowView)route_table_datagrid.SelectedItem;
-                SelectedRouteID = Int32.Parse(dataRowView[0].ToString());
-                Route_Table_Message.Content = $"Route ID: {dataRowView[0].ToString()} - Selected";
-                ForDestination.Text = dataRowView[1].ToString();
-                ForKM.Text = dataRowView[2].ToString();
-                ForWest.Text = dataRowView[3].ToString();
-                ForEast.Text = dataRowView[4].ToString();
-                ForTime.Text = dataRowView[5].ToString();
+                if (route_table_datagrid.SelectedItem != null)
+                {
+                    DataRowView dataRowView = (DataRowView)route_table_datagrid.SelectedItem;
+                    SelectedRouteID = Int32.Parse(dataRowView[0].ToString());
+                    Route_Table_Message.Content = $"Route ID: {dataRowView[0].ToString()} - Selected";
+                    ForDestination.Text = dataRowView[1].ToString();
+                    ForKM.Text = dataRowView[2].ToString();
+                    ForWest.Text = dataRowView[3].ToString();
+                    ForEast.Text = dataRowView[4].ToString();
+                    ForTime.Text = dataRowView[5].ToString();
+                }
             }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Route Database Row Selection Failed");
+            }            
         }
 
 
@@ -880,11 +910,13 @@ namespace Group2
                     // ----------- Refresh [End] -----------------
 
                     conn.Close(); // Close connection
-                }               
+                }
+                AdminController.addLog("[Admin] Rate Database Data Added");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Rate Database Row Addition Failed");
             }
 }
 
@@ -923,10 +955,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Carrier Database Data Added");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Carrier Database Row Addition Failed");
             }
         }
 
@@ -965,10 +999,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Route Database Data Added");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Route Database Row Addition Failed");
             }
         }
 
@@ -1010,10 +1046,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Rate Database Data Deleted");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Rate Database Row Delete Failed");
             }
         }
 
@@ -1052,10 +1090,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Carrier Database Data Deleted");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Carrier Database Row Delete Failed");
             }
 
         }
@@ -1095,10 +1135,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Route Database Data Deleted");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Route Database Row Delete Failed");
             }
         }
 
@@ -1141,10 +1183,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Rate Database Data Updated");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Rate Database Row Updating Failed");
             }
         }
 
@@ -1185,10 +1229,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Carrier Database Data Updated");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Carrier Database Row Updating Failed");
             }
         }
 
@@ -1229,10 +1275,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Admin] Route Database Data Updated");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Admin] Route Database Row Updating Failed");
             }
         }
     }

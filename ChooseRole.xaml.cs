@@ -62,7 +62,6 @@ namespace Group2
         {
             this.NavigationService.Navigate(new Uri("AdminSignin.xaml", UriKind.Relative));
 
-            AdminController.addLog("Choose Admin as Your Role");
         }
 
 

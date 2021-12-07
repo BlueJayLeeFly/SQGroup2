@@ -79,7 +79,8 @@ namespace Group2
             {
                 signInAttemptRemain = 0;
                 AdminSingInAttemptMsg.Text = "";
-                // If ID and Password match, move to the admin panel - currently it lands on the wrong page. Fix it!
+
+                AdminController.addLog("[Buyer] Sign in Success!");
                 this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
             }
 

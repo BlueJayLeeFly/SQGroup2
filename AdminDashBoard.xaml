@@ -78,7 +78,7 @@
         <Canvas x:Name="AdminDashBoardDirectory" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock TextWrapping="Wrap" Canvas.Top="86" FontSize="20" FontWeight="Bold" Canvas.Left="332" Width="200"><Run Text="Directory"/><Run Text=" Setting"/></TextBlock>
             <TextBlock TextWrapping="Wrap" Canvas.Top="200" FontSize="16" Text="Directory for a Log File" Canvas.Left="166" Width="200" Foreground="#FF333333"></TextBlock>
-            <TextBox x:Name="LogFilePath"  VerticalContentAlignment="Center" Text="c:\Users\lsj27\documents" Canvas.Left="166" Canvas.Top="226" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
+            <TextBox x:Name="LogFilePath"  VerticalContentAlignment="Center" Text="You're currently using an app default directory." Canvas.Left="166" Canvas.Top="226" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
             <Button x:Name="ChangeLogFilePath" Content="Change Directory" Canvas.Left="587" Canvas.Top="226" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="ChangeLogFilePath_Click"/>
             <Image Height="366" Canvas.Left="147" Canvas.Top="328" Width="600" Source="Images/file-management.png"/>
         </Canvas>

@@ -284,6 +284,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\TMS.sql" />
+    <Resource Include="Images\comingsoon.png" />
+    <Resource Include="Images\bill.png" />
+    <Resource Include="Images\low-priority.png" />
     <Resource Include="Images\log1.png" />
     <Resource Include="Images\log2.png" />
     <Resource Include="Images\invoice.png" />

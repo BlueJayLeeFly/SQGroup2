@@ -83,7 +83,7 @@ namespace Group2
                 signInAttemptRemain = 0;
                 AdminSingInAttemptMsg.Text = "";                
 
-                AdminController.addLog("Sign in Success!");
+                AdminController.addLog("[Admin] Sign in Success!");
                 this.NavigationService.Navigate(new Uri("AdminDashBoard.xaml", UriKind.Relative));
             }                   
 

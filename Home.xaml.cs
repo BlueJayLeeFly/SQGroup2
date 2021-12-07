@@ -37,6 +37,7 @@ namespace Group2
         public Home()
         {
             InitializeComponent();
+            AdminController.addLog($"Group2 TMS App has Initialized!");
         }
 
 
@@ -52,7 +53,7 @@ namespace Group2
         {
             this.NavigationService.Navigate(new Uri("ChooseRole.xaml", UriKind.Relative));
                       
-            AdminController.addLog("Main Page Get Started Button Clicked - Welcome Back!");
+            AdminController.addLog("Welcome Back to Group2 TMS App!");
 
         }
     }

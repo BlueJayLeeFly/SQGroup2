@@ -47,6 +47,7 @@ namespace Group2
             Carrier_ComboBox.Items.Add("Planet Express");
             Carrier_ComboBox.Items.Add("Schooner's");
             Carrier_ComboBox.Items.Add("Tillman Transport");
+            AdminController.addLog("[Buyer] Buyer Dashboard Initialized");
         }
 
 
@@ -111,10 +112,12 @@ namespace Group2
 
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Buyer] Market Database Loaded");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Buyer] Market Database Loading Failed");
             }
 
         }
@@ -148,6 +151,8 @@ namespace Group2
                 }
 
             }
+
+            AdminController.addLog("[Buyer] Marketplace Contract Accepted");
 
 
         }
@@ -251,12 +256,14 @@ namespace Group2
 
                     // [D] - Hacky solution - fix  
                     //Marketplace_datagrid.ItemsSource = DtOrder.DefaultView;
+                    AdminController.addLog("[Buyer] Carrier Assigned");
 
                 }
                 else
                 {
                     // Display Error Status
                     tms_status_bar.Content = Carrier_Error_Message;
+                    AdminController.addLog("[Buyer] Carrier Assignment Failed");
                 }
             }
 
@@ -304,10 +311,12 @@ namespace Group2
                     tms_status_bar.Content = $"Updated {rowCounter} selected rows";
                     conn.Close(); // Close connection
                 }
+                AdminController.addLog("[Buyer] Order Updated");
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Buyer] Order Updating Failed");
             }
         }
 
@@ -402,11 +411,13 @@ namespace Group2
                     completed_orders.ItemsSource = DtCompletedOrder.DefaultView;
 
                     conn.Close(); // Close connection
+                    AdminController.addLog("[Buyer] Completed Order Data Loaded");
                 }
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Buyer] Completed Order Data Loading Failed");
             }
 
         }
@@ -428,6 +439,7 @@ namespace Group2
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Buyer] Data for Generating Invoice Loading Failed");
             }
         }
 
@@ -489,10 +501,13 @@ namespace Group2
                 sw.Close();
                 file.Close();
                 OpenApp(filePath);
+
+                AdminController.addLog("[Buyer] Invoice Generated");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Buyer] Invoice Generating Failed");
             }
         }
 
@@ -530,34 +545,6 @@ namespace Group2
         {
             buyer_menu1.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
             buyer_menu1_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-        }
-
-
-        /**
-        *  \brief   buyer_menu2_MouseEnter -- event handling of menu item mouse enter
-        *  \details this method handlesmenu item mouse enter event and change the background and text color to accent colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-        private void buyer_menu2_MouseEnter(object sender, MouseEventArgs e)
-        {
-            buyer_menu2.Background = new SolidColorBrush(Color.FromRgb(239, 70, 111));
-            buyer_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-        }
-
-
-        /**
-        *  \brief   buyer_menu2_MouseLeave -- event handling of menu item mouse leave
-        *  \details this method handlesmenu item mouse leave event and change the background and text color to original colors
-        *  \param   sender object
-        *  \param   MouseEventArgs e
-        *  \returns NONE
-        */
-        private void buyer_menu2_MouseLeave(object sender, MouseEventArgs e)
-        {
-            buyer_menu2.Background = new SolidColorBrush(Color.FromRgb(233, 224, 226));
-            buyer_menu2_label.Foreground = new SolidColorBrush(Color.FromRgb(239, 70, 111));
         }
 
 
