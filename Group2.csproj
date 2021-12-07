@@ -284,6 +284,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\TMS.sql" />
+    <Resource Include="Images\log1.png" />
+    <Resource Include="Images\log2.png" />
+    <Resource Include="Images\invoice.png" />
+    <Resource Include="Images\backup.png" />
+    <Resource Include="Images\file-management.png" />
+    <Resource Include="Images\database.png" />
+    <Resource Include="Images\folder-upload.png" />
+    <Resource Include="Images\timeline.png" />
+    <Resource Include="Images\distance.png" />
+    <Resource Include="Images\delivery-track.png" />
+    <Resource Include="Images\currency-exchange-2.png" />
+    <Resource Include="Images\table-move.png" />
+    <Resource Include="Images\open-folder.png" />
     <Resource Include="logo.ico" />
     <Resource Include="Images\go_back_icon_admin.png" />
     <Resource Include="Images\go_back_icon_buyer.png" />

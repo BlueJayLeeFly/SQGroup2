@@ -19,7 +19,7 @@
             StrokeThickness="1" Canvas.Left="-213" Canvas.Top="-298" />
 
             <Canvas x:Name="menu1" Height="63" Canvas.Top="133" Width="345" MouseEnter="menu1_MouseEnter" MouseLeave="menu1_MouseLeave" MouseLeftButtonDown="menu1_MouseLeftButtonDown" Cursor="Hand">
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="40" Canvas.Top="16" />
+                <Image Source="Images/open-folder.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="40" Canvas.Top="16" />
                 <Label x:Name="menu1_label" Content="Directory Setting" Canvas.Left="85" Canvas.Top="16" FontSize="18" Foreground="#FF787878" Width="174"/>
             </Canvas>
             <Canvas x:Name="menu2" Height="63" Canvas.Top="201" Width="345" MouseEnter="menu2_MouseEnter" MouseLeave="menu2_MouseLeave" MouseLeftButtonDown="menu2_MouseLeftButtonDown" Cursor="Hand">
@@ -27,34 +27,34 @@
                 <Image Source="Images/admin_connect.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="14" />
             </Canvas>
             <Canvas x:Name="menu3" Height="63" Canvas.Top="518" Width="345" MouseEnter="menu3_MouseEnter" MouseLeave="menu3_MouseLeave" MouseLeftButtonDown="menu3_MouseLeftButtonDown" Cursor="Hand">
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
+                <Image Source="Images/timeline.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
                 <Label x:Name="menu3_label" Content="Review Log Files" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
             <Canvas x:Name="menu4" Height="63" Canvas.Top="267" Width="345" MouseEnter="menu4_MouseEnter_1" MouseLeave="menu4_MouseLeave_1" Cursor="Arrow">
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
+                <Image Source="Images/table-move.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="15" />
                 <Label x:Name="menu4_label" Content="DB Table Setting" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
             <!-- [[Dashboard - Sub_menu1 - rate table] -->
             <Canvas x:Name="sub_menu1" Height="63" Canvas.Top="329" Width="345" Cursor="Hand" MouseEnter="sub_menu1_MouseEnter" MouseLeave="sub_menu1_MouseLeave" MouseLeftButtonDown="sub_menu1_MouseLeftButtonDown">
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="79" Canvas.Top="15" />
+                <Image Source="Images/currency-exchange-2.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="79" Canvas.Top="15" />
                 <Label x:Name="sub_menu1_label" Content="Rate Table" Canvas.Left="124" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="211"/>
             </Canvas>
 
             <!-- [[Dashboard - Sub_menu2] - carrier table-->
             <Canvas x:Name="sub_menu2" Height="63" Canvas.Top="392" Width="345" Cursor="Hand" MouseEnter="sub_menu2_MouseEnter" MouseLeave="sub_menu2_MouseLeave" MouseLeftButtonDown="sub_menu2_MouseLeftButtonDown" >
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="79" Canvas.Top="15" />
+                <Image Source="Images/delivery-track.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="79" Canvas.Top="15" />
                 <Label x:Name="sub_menu2_label" Content="Carrier Table" Canvas.Left="124" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="211"/>
             </Canvas>
 
             <!-- [[Dashboard - Sub_menu3] - route table-->
             <Canvas x:Name="sub_menu3" Height="63" Canvas.Top="455" Width="345" Cursor="Hand" MouseEnter="sub_menu3_MouseEnter" MouseLeave="sub_menu3_MouseLeave" MouseLeftButtonDown="sub_menu3_MouseLeftButtonDown" >
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="79" Canvas.Top="15" />
+                <Image Source="Images/distance.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="79" Canvas.Top="15" />
                 <Label x:Name="sub_menu3_label" Content="Route Table" Canvas.Left="124" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="211"/>
             </Canvas>
 
 
             <Canvas x:Name="menu5" Height="63" Canvas.Top="581" Width="345" Cursor="Hand" MouseEnter="menu5_MouseEnter" MouseLeave="menu5_MouseLeave" MouseLeftButtonDown="menu5_MouseLeftButtonDown">
-                <Image Source="Images/admin_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="13" />
+                <Image Source="Images/folder-upload.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="27" Canvas.Top="13" />
                 <Label x:Name="menu5_label" Content="Backup TMS DB" Canvas.Left="72" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
             </Canvas>
             <Canvas x:Name="AdminBackToMain" Height="63" Canvas.Top="699" Width="345" Background="#FF9756D9" MouseLeftButtonDown="AdminBackToMain_MouseLeftButtonDown" Cursor="Hand">
@@ -80,6 +80,7 @@
             <TextBlock TextWrapping="Wrap" Canvas.Top="200" FontSize="16" Text="Directory for a Log File" Canvas.Left="166" Width="200" Foreground="#FF333333"></TextBlock>
             <TextBox x:Name="LogFilePath"  VerticalContentAlignment="Center" Text="c:\Users\lsj27\documents" Canvas.Left="166" Canvas.Top="226" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
             <Button x:Name="ChangeLogFilePath" Content="Change Directory" Canvas.Left="587" Canvas.Top="226" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="ChangeLogFilePath_Click"/>
+            <Image Height="366" Canvas.Left="147" Canvas.Top="328" Width="600" Source="Images/file-management.png"/>
         </Canvas>
 
         <!-- [[Dashboard - DB Connection Setting] -->
@@ -94,8 +95,9 @@
             <TextBox x:Name="TmsUserName" VerticalContentAlignment="Center" Text="" Canvas.Left="300" Canvas.Top="256" Padding="5,5,5,5" Height="44" Width="243" Foreground="#FF9756D9" FontSize="16" BorderBrush="{x:Null}" Background="#FFF7EFFF" />
             <PasswordBox x:Name="TmsDbPassword" VerticalContentAlignment="Center" Canvas.Left="300" Canvas.Top="312" Padding="5,5,5,5" Width="243" Height="44" BorderBrush="{x:Null}" Background="#FFF7EFFF" Foreground="#FF9756D9"/>
             <TextBox x:Name="TmsPortNum" VerticalContentAlignment="Center" Text="" Canvas.Left="677" Canvas.Top="201" Padding="5,5,5,5" Height="44" Width="161" Foreground="#FF9756D9" FontSize="16" BorderBrush="{x:Null}" Background="#FFF7EFFF" />
-            <Button x:Name="TmsConnect" Content="Connect" Canvas.Left="562" Canvas.Top="259" Width="276" Height="97" BorderBrush="{x:Null}" Background="#FF323232" Foreground="White" FontSize="24" Click="TmsConnect_Click"/>
-            <Label x:Name="connection_result" Content="" HorizontalContentAlignment="Center" Canvas.Top="390" Canvas.Left="108" Height="29" Width="730" FontSize="16" Foreground="#FF333333"/>
+            <Button x:Name="TmsConnect" Content="Connect" Canvas.Left="562" Canvas.Top="277" Width="276" Height="79" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" FontSize="24" Click="TmsConnect_Click"/>
+            <Label x:Name="connection_result" Content="" HorizontalContentAlignment="Center" Canvas.Top="534" Canvas.Left="108" Height="130" Width="284" FontSize="20" Foreground="#FF9756D9" FontWeight="DemiBold"/>
+            <Image Height="400" Canvas.Left="410" Canvas.Top="400" Width="500" Source="Images/database.png"/>
         </Canvas>
 
         <!-- [[Dashboard - Rate_Table] -->
@@ -104,18 +106,27 @@
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="82" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Rate Table Data grid -->
-            <DataGrid x:Name="rate_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="146" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" />
+            <DataGrid x:Name="rate_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="146" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="rate_table_datagrid_SelectionChanged">
+                <!-- Column Header Style -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="BlueViolet" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.5"/>
+                        <Setter Property="Padding" Value="5,10,5,10" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
 
             <!-- Search Rate Table Data  -->
             <Canvas Height="76" Canvas.Left="70" Canvas.Top="448" Width="790" Background="#FF9756D9">
-                <Label Content="Rate ID" Canvas.Left="192" Canvas.Top="21" Foreground="White" FontSize="20"/>
-                <TextBox x:Name="rate_id" Height="45" Canvas.Left="307" TextWrapping="Wrap" Text="" Canvas.Top="17" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333"/>
-                <Label x:Name="select_button_rate" Content="Select" Canvas.Left="464" Canvas.Top="17" Foreground="White" BorderBrush="White" Padding="30,5,30,5" BorderThickness="1" FontSize="20" Height="45" Cursor="Hand"/>
+                <Label x:Name="Rate_Table_Message" Content="Rate ID" Canvas.Left="192" Canvas.Top="21" Foreground="White" FontSize="20" Width="428"/>
             </Canvas>
             <!-- Search Result -->
             <Canvas x:Name="data_elements_rate" Height="271" Canvas.Left="70" Canvas.Top="529" Width="790" Background="#FFF7EFFF">
                 <Label Content="Surcharge" Canvas.Left="143" Canvas.Top="17" FontSize="16"/>
-                <TextBox x:Name="Surcharge" Height="46" Canvas.Left="143" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
+                <TextBox x:Name="ForSurcharge" Height="46" Canvas.Left="143" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
                 <TextBox x:Name="ForFTL" Height="46" Canvas.Left="332" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
                 <Label Content="FTL" Canvas.Left="332" Canvas.Top="17" FontSize="16"/>
                 <TextBox x:Name="ForLTL" Height="46" Canvas.Left="530" TextWrapping="Wrap" Text="" Canvas.Top="48" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
@@ -134,7 +145,19 @@
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="78" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Carrier Table Data grid -->
-            <DataGrid x:Name="carrier_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="132" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="carrier_table_datagrid_SelectionChanged" />
+            <DataGrid x:Name="carrier_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="132" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="carrier_table_datagrid_SelectionChanged">
+                <!-- Column Header Style -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="BlueViolet" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.5"/>
+                        <Setter Property="Padding" Value="5,10,5,10" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
+
 
             <!-- Search Carrier Table Data  -->
             <Canvas Height="76" Canvas.Left="70" Canvas.Top="432" Width="790" Background="#FF9756D9">
@@ -157,9 +180,9 @@
                 <TextBox x:Name="ForReeferCharge" Height="46" Canvas.Left="530" TextWrapping="Wrap" Text="" Canvas.Top="130" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Padding="5,5,5,5" Foreground="#FF333333" BorderBrush="#FF9756D9" BorderThickness="3"/>
                 <Label Content="Reefer Charge" Canvas.Left="530" Canvas.Top="99" FontSize="16"/>
 
-                <Label x:Name="carrier_add_button" Content="Add" HorizontalContentAlignment="Center" Canvas.Top="194" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="189" Width="134" MouseLeftButtonDown="carrier_add_button_MouseLeftButtonDown"/>
-                <Label x:Name="carrier_delete_button" Content="Delete" HorizontalContentAlignment="Center" Canvas.Top="194" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="328" Width="135" MouseLeftButtonDown="carrier_delete_button_MouseLeftButtonDown"/>
-                <Label x:Name="carrier_update_button" Content="Update" HorizontalContentAlignment="Center" Canvas.Top="194" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="468" Width="135" MouseLeftButtonDown="carrier_update_button_MouseLeftButtonDown"/>
+                <Label x:Name="carrier_add_button" Content="Add" HorizontalContentAlignment="Center" Canvas.Top="190" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="189" Width="134" MouseLeftButtonDown="carrier_add_button_MouseLeftButtonDown"/>
+                <Label x:Name="carrier_delete_button" Content="Delete" HorizontalContentAlignment="Center" Canvas.Top="190" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="328" Width="135" MouseLeftButtonDown="carrier_delete_button_MouseLeftButtonDown"/>
+                <Label x:Name="carrier_update_button" Content="Update" HorizontalContentAlignment="Center" Canvas.Top="190" Foreground="White" Padding="30,5,30,5" FontSize="20" Height="46" Cursor="Hand" Background="#FF9756D9" Canvas.Left="468" Width="135" MouseLeftButtonDown="carrier_update_button_MouseLeftButtonDown"/>
             </Canvas>
 
         </Canvas>
@@ -170,7 +193,18 @@
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="84" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Route Table Data grid -->
-            <DataGrid x:Name="route_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="146" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="route_table_datagrid_SelectionChanged" />
+            <DataGrid x:Name="route_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="146" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="route_table_datagrid_SelectionChanged">
+                <!-- Column Header Style -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="BlueViolet" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.5"/>
+                        <Setter Property="Padding" Value="5,10,5,10" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
 
             <!-- Search Route Table Data  -->
             <Canvas Height="76" Canvas.Left="70" Canvas.Top="448" Width="790" Background="#FF9756D9">
@@ -202,21 +236,25 @@
 
         <!-- [[Dashboard - Review Log Files] -->
         <Canvas x:Name="admin_dashboard_review_log"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
-            <TextBlock Canvas.Left="514" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
-            <ListBox x:Name="admin_log_listbox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="517" Canvas.Left="104" Canvas.Top="195" Width="738" BorderBrush="{x:Null}"/>
+            <TextBlock Canvas.Left="418" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101"/>
+            <TextBlock Canvas.Left="259" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="550" Foreground="#FF787878"/>
+            <ListBox x:Name="admin_log_listbox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="517" Canvas.Left="158" Canvas.Top="195" Width="651" BorderBrush="{x:Null}"/>
+            <Image Height="300" Canvas.Left="-65" Canvas.Top="71" Width="300" Source="Images/log1.png"/>
+            <Image Height="300" Canvas.Left="592" Canvas.Top="122" Width="300" Source="Images/log2.png"/>
         </Canvas>
 
         <!-- [[Dashboard - Backup TMS DB] -->
         <Canvas x:Name="admin_dashboard_backup"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
+            <Image Height="272" Canvas.Left="628" Canvas.Top="466" Width="272" Source="Images/backup.png" RenderTransformOrigin="0.5,0.5"/>
             <TextBlock Canvas.Left="354" TextWrapping="Wrap" Text="Backup TMS DB" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="173"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <TextBlock TextWrapping="Wrap" Canvas.Top="250" FontSize="16" Text="Backup/Export a TMS Database " Canvas.Left="166" Width="268" Foreground="#FF333333"></TextBlock>
             <TextBox x:Name="backup_file_path"  VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="276" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
             <Button x:Name="backup_button" Content="Backup" Canvas.Left="587" Canvas.Top="276" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="backup_button_Click"/>
-            <TextBlock TextWrapping="Wrap" Canvas.Top="452" FontSize="16" Text="Restore/Import a TMS Database " Canvas.Left="166" Width="268" Foreground="#FF333333"></TextBlock>
-            <TextBox x:Name="restore_file_path"  VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="482" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
-            <Button x:Name="restore_button" Content="Restore" Canvas.Left="587" Canvas.Top="482" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="restore_button_Click"/>
+            <TextBlock TextWrapping="Wrap" Canvas.Top="394" FontSize="16" Text="Restore/Import a TMS Database " Canvas.Left="166" Width="268" Foreground="#FF333333"></TextBlock>
+            <TextBox x:Name="restore_file_path"  VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="424" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
+            <Button x:Name="restore_button" Content="Restore" Canvas.Left="587" Canvas.Top="424" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="restore_button_Click"/>
+
         </Canvas>
 
     </Canvas>

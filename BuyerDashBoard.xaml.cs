@@ -33,8 +33,9 @@ namespace Group2
         *  \param   NONE
         *  \returns NONE
         */
-        DataTable DtMarketPlace = new DataTable();                 // DataTable Defined as a Global variable.
-        DataTable DtOrder = new DataTable();                        // DataTable Defined as a Global variable.
+        DataTable DtMarketPlace = new DataTable();                      // DataTable Defined as a Global variable.
+        DataTable DtOrder = new DataTable();                            // DataTable Defined as a Global variable.
+        DataTable DtCompletedOrder = new DataTable();                   // DataTable Defined as a Global variable.
         List<object> newList = new List<object>();
 
 
@@ -84,16 +85,24 @@ namespace Group2
                     DtOrder = DtMarketPlace.Copy();
 
 
-                    // Create 2 Columns 
-                    DataColumn Order_ID = new DataColumn("Order_ID", typeof(Int32));
-                    DataColumn Order_Status = new DataColumn("Order_Status", typeof(Int32));
-                    DataColumn Order_Carrier = new DataColumn("Order_Carrier", typeof(string));
+                    // 6-> id, 7-> Status, 8 -> Carrier, 9 -> km , 10 -> time, 11 -> CarrierFee, 12 -> OSHTFee
+                    DataColumn Order_ID = new DataColumn("OrderID", typeof(Int32));
+                    DataColumn Order_Status = new DataColumn("OrderStatus", typeof(Int32));
+                    DataColumn Order_Carrier = new DataColumn("OrderCarrier", typeof(string));
+                    DataColumn Order_Km = new DataColumn("Km", typeof(Int32));
+                    DataColumn EstTime = new DataColumn("EstTime", typeof(Double));
+                    DataColumn CarrierFee = new DataColumn("CarrierFee", typeof(Int32));
+                    DataColumn OSHTFee = new DataColumn("OSHTFee", typeof(Int32));
+
 
                     DtMarketPlace.Columns.Add(Order_ID);
                     DtMarketPlace.Columns.Add(Order_Status);
                     DtMarketPlace.Columns.Add(Order_Carrier);
+                    DtMarketPlace.Columns.Add(Order_Km);
+                    DtMarketPlace.Columns.Add(EstTime);
+                    DtMarketPlace.Columns.Add(CarrierFee);
+                    DtMarketPlace.Columns.Add(OSHTFee);
 
-                    //DtOrder = DtMarketPlace.Copy();
 
                     // Render the Columns and the rows 
                     Marketplace_datagrid.ItemsSource = DtMarketPlace.DefaultView;
@@ -121,7 +130,9 @@ namespace Group2
 
 
 
-            // Add Selected orders.
+            // Add Selected orders. SelectedItem are stored in a temporary List DataStructure,
+            // this creates a Disconnect Between the two datagrids. however the datagrids do share
+            // the same dimensions and schema.
             foreach (var selectedItem in Marketplace_datagrid.SelectedItems)
             {
 
@@ -217,20 +228,34 @@ namespace Group2
 
                 if (ValidCarrierAssigned == true)
                 {
-
+                    // Randomly generate and assign a Order ID betweem 1 and 10k
                     Random randomNumber = new Random();
                     acceptedRows[6] = randomNumber.Next(1, 10000);
-                    acceptedRows[7] = 2;
+
+                    // Set Status to 2 and Carrier to the ComboValues
+                    acceptedRows[7] = 9;
                     acceptedRows[8] = carrier;
-                    tms_status_bar.Content = "Order ID:" + acceptedRows[6].ToString() + "has been assigned a Carrier.";
+
+                    // Default Values for km, time and cost
+                    acceptedRows[9] = 0;
+                    acceptedRows[10] = 0.01;
+                    acceptedRows[11] = 0;
+                    acceptedRows[12] = 0;
+
+                    // Display OK Status
+                    tms_status_bar.Content = "Order ID: " + acceptedRows[6].ToString() + " has been assigned a Carrier.";
+
+
+
 
 
                     // [D] - Hacky solution - fix  
-                    Marketplace_datagrid.ItemsSource = DtOrder.DefaultView;
+                    //Marketplace_datagrid.ItemsSource = DtOrder.DefaultView;
 
                 }
                 else
                 {
+                    // Display Error Status
                     tms_status_bar.Content = Carrier_Error_Message;
                 }
             }
@@ -240,11 +265,85 @@ namespace Group2
 
         private void Button_Update_Order_DB(object sender, RoutedEventArgs e)
         {
-            // INSERT INTO ORDER TABLE DB
 
-            // SELECTED Item from ORDER_DataGrid or MarketPlace Table.
 
-            // After rendering all columns and defaulting empty values
+            // MySql
+            try
+            {
+
+                //var connstrSohaib = "Server=localhost;Uid=Group02;Pwd=group2password;database=tms_db;";
+
+                // [R] - Remove test connection string with Admin string for final Submit.
+                var connstr = AdminController.ConnectionStringForTMS;
+                using (var conn = new MySqlConnection(connstr))
+                {
+                    // Open connection
+                    conn.Open();
+
+                    // Shows Connection Accepted on UI
+                    tms_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
+
+                    int rowCounter = 0;
+
+                    foreach (System.Data.DataRowView selectedInsertRows in ORDER_datagrid.SelectedItems)
+                    {
+
+                        if (selectedInsertRows != null)
+                        {
+
+                            string sq1 = generateInsertString(selectedInsertRows);
+                            MySqlCommand mySqlCommand = new MySqlCommand(sq1, conn);
+                            mySqlCommand.ExecuteNonQuery();
+
+                        }
+
+                        rowCounter++;
+
+                    }
+
+                    tms_status_bar.Content = $"Updated {rowCounter} selected rows";
+                    conn.Close(); // Close connection
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private string generateInsertString(System.Data.DataRowView selectedInsertRows)
+        {
+
+            if (string.Compare(selectedInsertRows[8].ToString(), $"Schooner's") == 0)
+            {
+
+                selectedInsertRows[8] = "Schooners";
+
+            }
+
+            string Order0 = "'" + selectedInsertRows[0].ToString() + "'";
+            string Order1 = "'" + selectedInsertRows[1].ToString() + "'";
+            string Order2 = "'" + selectedInsertRows[2].ToString() + "'";
+            string Order3 = "'" + selectedInsertRows[3].ToString() + "'";
+            string Order4 = "'" + selectedInsertRows[4].ToString() + "'";
+            string Order5 = "'" + selectedInsertRows[5].ToString() + "'";
+            string Order6 = "'" + selectedInsertRows[6].ToString() + "'";
+            string Order7 = "'" + selectedInsertRows[7].ToString() + "'";
+            string Order8 = "'" + selectedInsertRows[8].ToString() + "'";
+            string Order9 = "'" + selectedInsertRows[9].ToString() + "'";
+            string Order10 = "'" + selectedInsertRows[10].ToString() + "'";
+            string Order11 = "'" + selectedInsertRows[11].ToString() + "'";
+            string Order12 = "'" + selectedInsertRows[12].ToString() + "'";
+
+            // SQL Command
+            string sq1 = "INSERT INTO tms_db.order " +
+                "(ClientName,JobType,Quantity,Origin,Destination,VanType,OrderID,OrderStatus,OrderCarrier,Km,EstTime,CarrierFee,OSHTFee)" +
+                " VALUES" +
+                "(" + Order0 + "," + Order1 + "," + Order2 + "," + Order3 + "," + Order4 + "," + Order5 + "," + Order6 + ","
+                + Order7 + "," + Order8 + "," + Order9 + "," + Order10 + "," + Order11 + "," + Order12 + ");";
+
+            tms_status_bar.Content = $"SQL COMMAND :[" + sq1 + "]";
+            return sq1;
         }
 
 
@@ -258,21 +357,27 @@ namespace Group2
         // Event for "Generate Invoice"
         private void buyer_menu3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            buyer_market_db_signin.Visibility = Visibility.Collapsed;
-            accept_contract.Visibility = Visibility.Collapsed;
-            gen_invoice.Visibility = Visibility.Visible;
-            ORDER_datagrid.Visibility = Visibility.Collapsed;
-            Carrier_ComboBox.Visibility = Visibility.Collapsed;
-            add_carrier_btn.Visibility = Visibility.Collapsed;
-            update_order_db_btn.Visibility = Visibility.Collapsed;
-            completed_orders.Visibility = Visibility.Visible;
+            buyer_dashboard_generate_invoice.Visibility = Visibility.Visible;
+
+            // hide others
+            buyer_dashboard_main.Visibility = Visibility.Collapsed;
+            buyer_dashboard_ini_orders.Visibility = Visibility.Collapsed;
+
 
             // MySql
             try
             {
-                // Connection String - Test version. Missing ip address
+
                 //var connstr = $"Server={buyer_dashboard_market_ip.Text};Uid={buyer_dashboard_market_id.Text};Pwd={buyer_dashboard_market_password.Password};database={buyer_dashboard_market_ip_dbName.Text}";
-                var connstr = $"Server=localhost;Uid=group2;Pwd=group2password;database=tms_db;";//colbys con string
+                //var connstr = $"Server=localhost;Uid=group02;Pwd=group2password;database=tms_db;";//colbys con string
+                var connstr = AdminController.ConnectionStringForTMS;
+
+                // Clears the dataTable to avoid Double entry situation upon clicking.
+                DtCompletedOrder.Clear();
+
+
+                // [R] - Remove test connection string with Admin string for final Submit.
+                //var connstr = AdminController.ConnectionStringForTMS;
                 using (var conn = new MySqlConnection(connstr))
                 {
                     // Open connection
@@ -282,30 +387,19 @@ namespace Group2
                     market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
 
                     // SQL Command
-                    string sq1 = "SELECT * FROM Orders WHERE Order_status = 9;";
+                    string sq1 = "SELECT * FROM tms_db.order where OrderStatus = '9';";
                     MySqlCommand selectAllContract = new MySqlCommand(sq1, conn);
 
                     // Create A data Adapter
                     MySqlDataAdapter reader = new MySqlDataAdapter(selectAllContract);
 
+
                     // fills Data Table Object with All Contract Rows 
-                    reader.Fill(DtMarketPlace);
-                    DtOrder = DtMarketPlace.Copy();
+                    reader.Fill(DtCompletedOrder);
 
-
-                    // Create 2 Columns 
-                    //DataColumn Order_ID = new DataColumn("Order_ID", typeof(Int32));
-                    //DataColumn Order_Status = new DataColumn("Order_Status", typeof(Int32));
-                    //DataColumn Order_Carrier = new DataColumn("Order_Carrier", typeof(string));
-
-                    //DtMarketPlace.Columns.Add(Order_ID);
-                    //DtMarketPlace.Columns.Add(Order_Status);
-                    //DtMarketPlace.Columns.Add(Order_Carrier);
-
-                    //DtOrder = DtMarketPlace.Copy();
 
                     // Render the Columns and the rows 
-                    completed_orders.ItemsSource = DtMarketPlace.DefaultView;
+                    completed_orders.ItemsSource = DtCompletedOrder.DefaultView;
 
                     conn.Close(); // Close connection
                 }
@@ -331,7 +425,7 @@ namespace Group2
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -348,19 +442,20 @@ namespace Group2
             string folder = "Invoices";
             InvoiceDirectory = System.IO.Path.Combine(InvoiceDirectory, folder);
             System.IO.Directory.CreateDirectory(InvoiceDirectory);
-            string orderID = info[0].ToString();
 
-            string clientName = info[1].ToString();
-            int orderStatus = int.Parse(info[2].ToString());
-            int jobtype = int.Parse(info[3].ToString());
-            int quantity = int.Parse(info[4].ToString());
-            string origin = info[5].ToString();
-            string dest = info[6].ToString();
-            int van_type = int.Parse(info[7].ToString());
+            string clientName = info[0].ToString();
+            int jobtype = int.Parse(info[1].ToString());
+            int quantity = int.Parse(info[2].ToString());
+            string origin = info[3].ToString();
+            string dest = info[4].ToString();
+            int van_type = int.Parse(info[5].ToString());
+            string orderID = info[6].ToString();
+            int orderStatus = int.Parse(info[7].ToString());
             string carrierName = info[8].ToString();
             int km = int.Parse(info[9].ToString());
-            int estTime = int.Parse(info[10].ToString());
+            double estTime = double.Parse(info[10].ToString());
             int amountDue = int.Parse(info[11].ToString());
+            int OSHTDue = int.Parse(info[12].ToString());
 
             try
             {
@@ -515,7 +610,11 @@ namespace Group2
         */
         private void buyer_menu1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //
+            buyer_dashboard_ini_orders.Visibility = Visibility.Visible;
+
+            // hide others
+            buyer_dashboard_main.Visibility = Visibility.Collapsed;
+            buyer_dashboard_generate_invoice.Visibility = Visibility.Collapsed;
         }
 
         /**
@@ -525,11 +624,20 @@ namespace Group2
         *  \param   MouseButtonEventArgs e
         *  \returns NONE
         */
+
+        // Home button
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
+            //this.NavigationService.Navigate(new Uri("BuyerDashBoard.xaml", UriKind.Relative));
+
+            buyer_dashboard_main.Visibility = Visibility.Visible;
+
+            // Hide others
+            buyer_dashboard_ini_orders.Visibility = Visibility.Collapsed;
+            buyer_dashboard_generate_invoice.Visibility = Visibility.Collapsed;
         }
 
+        // From initial order menu
         private void Label_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
 
@@ -551,8 +659,6 @@ namespace Group2
         {
 
         }
-
-
 
     }
 }

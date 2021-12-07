@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `Employee`;
 
 
 CREATE TABLE IF NOT EXISTS `Route_Table` (
-  `Route_ID` Integer, 
+  `Route_ID` Integer auto_increment, 
   `Destination` VARCHAR(100),
   `Kilometer` Integer,
   `West` VARCHAR(100),
@@ -23,23 +23,23 @@ CREATE TABLE IF NOT EXISTS `Route_Table` (
 );
 
 CREATE TABLE IF NOT EXISTS `Carrier_Data` (
-  `Carrier_ID` Integer,
+  `Carrier_ID` Integer auto_increment,
   `Carrier_Name` VARCHAR(100),
   `Depot_City` VARCHAR(100),
   `FTL_Availability` Integer,
   `LTL_Availability` Integer,
   `FTL_Rate` Double,
   `LTL_Rate` Double,
-  `Reefer_Charge` Integer,
+  `Reefer_Charge` Double,
   PRIMARY KEY(`Carrier_ID`)
 );
 
 CREATE TABLE IF NOT EXISTS `Rate_Table` (
-  `Rate_Table_ID` Integer,
-  `Surcharge` Double,
-  `FTL` Double,
-  `LTL` Double,
-  PRIMARY KEY(`Rate_Table_ID`)
+    `Rate_Table_ID` INTEGER AUTO_INCREMENT,
+    `Surcharge` DOUBLE,
+    `FTL` DOUBLE,
+    `LTL` DOUBLE,
+    PRIMARY KEY (`Rate_Table_ID`)
 );
 
 CREATE TABLE IF NOT EXISTS `Employee` (
@@ -50,22 +50,29 @@ CREATE TABLE IF NOT EXISTS `Employee` (
     PRIMARY KEY(`Employee_ID`)
 );
 
-
 CREATE TABLE IF NOT EXISTS `Order` (
-  `Order_ID` Integer,
-  `Employee_ID` Integer,
-  `Order_Status` VARCHAR(50),
-  `Route_ID` Integer,
-  `Order_Quantity` Integer,
-  `Trip` varchar(50),
-  `Rate_Table_ID` Integer,
-  `Carrier_ID` Integer,
-  FOREIGN KEY (`Employee_ID`) REFERENCES `Employee` (`Employee_ID`),
-  FOREIGN KEY (`Rate_Table_ID`) REFERENCES `Rate_Table`(`Rate_Table_ID`),
-  FOREIGN KEY (`Route_ID`) REFERENCES `Route_Table`(`Route_ID`),
-  FOREIGN KEY (`Carrier_ID`) REFERENCES `Carrier_Data`(`Carrier_ID`),
-  PRIMARY KEY(`Order_ID`)
+  `ClientName` VARCHAR(50),
+  `JobType` Integer,
+  `Quantity` Integer,
+  `Origin` VARCHAR(50),
+  `Destination` VARCHAR(50),
+  `VanType` Integer,
+  `OrderID` Integer,
+  `OrderStatus` Integer,
+  `OrderCarrier` VARCHAR(50),
+  `Km` Integer,
+  `EstTime` Double,
+  `CarrierFee` Integer,
+  `OSHTFee` Integer,
+  PRIMARY KEY(`OrderID`)
 );
+
+
+-- Base Values
+
+
+INSERT INTO Rate_Table (Surcharge, FTL, LTL) VALUES ('150', '5.25','0.3012');
+
 INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('1', 'admin','sohaib', 'sheikh');
 INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('2', 'buyer','colby', 'taylor');
 INSERT INTO Employee (Employee_ID, Employee_Type, UserName, Password) VALUES ('3', 'planner','parichehr', 'salahshour');
@@ -80,8 +87,6 @@ INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VAL
 INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('6', 'Belleville','82', 'Oshawa','Kingstone','1.2');
 INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('7', 'Kingstone','96', 'Belleville','Ottawa','2.5');
 INSERT INTO Route_Table (Route_ID, Destination, Kilometer, West, East, Time) VALUES ('8', 'Ottawa','0', 'Kingston','END','0');
-
-
 
 INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
  VALUES ('1', 'Planet Expess','Windsor', '50','640','5.21', '0.3621', '0.08');
@@ -110,4 +115,8 @@ INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability
 INSERT INTO Carrier_Data (Carrier_ID, Carrier_Name, Depot_City, FTL_Availability, LTL_Availability, FTL_Rate, LTL_Rate, Reefer_Charge)
  VALUES ('13', 'We Haul','Toronto', '11','0','5.2', '0', '0.065');  
 
+INSERT INTO tms_db.order (ClientName, JobType,Quantity,Origin,Destination,VanType, OrderID, OrderStatus, OrderCarrier, Km, EstTime, CarrierFee, OSHTFee)
+			VALUES('CompletedTest','0'    ,'0'  , 'Windsor','London','0'      ,'100'    ,'9'      ,'PlanetExpress', '100', '2.0','500','550');
+INSERT INTO tms_db.order (ClientName, JobType,Quantity,Origin,Destination,VanType, OrderID, OrderStatus, OrderCarrier, Km, EstTime, CarrierFee, OSHTFee)
+			VALUES('PlannerTest','0'    ,'0'  , 'Windsor','London','0'      ,'102'    ,'2'      ,'PlanetExpress', '100', '2.0','500','550');
 

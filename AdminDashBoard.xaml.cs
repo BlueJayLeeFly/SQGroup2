@@ -29,12 +29,13 @@ namespace Group2
 
     public partial class AdminDashBoard : Page
     {
-
+        // Declare Data tables
         DataTable DtRateTable = new DataTable();
         DataTable DtCarrierTable = new DataTable();
         DataTable DtRouteTable = new DataTable();
 
-
+        // Declare IDs for MySql commands
+        int SelectedRateID;
         int SelectedCarrierID;
         int SelectedRouteID;
 
@@ -477,6 +478,10 @@ namespace Group2
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
 
             // Rate Table Data Grid
+
+            // Clear the data table to prevent duplicate data
+            DtRateTable.Clear();
+
             try
             {
                 var connstr = AdminController.ConnectionStringForTMS;
@@ -534,7 +539,7 @@ namespace Group2
             admin_dashboard_review_log.Visibility = Visibility.Collapsed;
             admin_dashboard_backup.Visibility = Visibility.Collapsed;
 
-
+            // Clear the data table to prevent duplicate data
             DtCarrierTable.Clear();
 
             try
@@ -599,6 +604,7 @@ namespace Group2
 
             // Route Table Data Grid
 
+            // Clear the data table to prevent duplicate data
             DtRouteTable.Clear();
 
             try
@@ -793,7 +799,18 @@ namespace Group2
 
         // ------------------ When Data Grid Selected, textboxes are filled ------------------------------------
 
-        // for rate table here
+        private void rate_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (rate_table_datagrid.SelectedItem != null)
+            {
+                DataRowView dataRowView = (DataRowView)rate_table_datagrid.SelectedItem;
+                SelectedRateID = Int32.Parse(dataRowView[0].ToString());
+                Rate_Table_Message.Content = $"Carrier ID: {dataRowView[0].ToString()} - Selected";
+                ForSurcharge.Text = dataRowView[1].ToString();
+                ForFTL.Text = dataRowView[2].ToString();
+                ForLTL.Text = dataRowView[3].ToString();
+            }
+        }
 
         private void carrier_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -809,8 +826,7 @@ namespace Group2
                 ForFTLRate.Text = dataRowView[5].ToString();
                 ForLTLRate.Text = dataRowView[6].ToString();
                 ForReeferCharge.Text = dataRowView[7].ToString();
-            }
-            
+            }            
         }
 
         private void route_table_datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -841,9 +857,27 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    string sq1 = $"INSERT INTO Rate_Table (Surcharge, FTL, LTL) VALUES ({Surcharge.Text},{ForFTL.Text}, {ForLTL.Text})";
+                    string sq1 = $"INSERT INTO Rate_Table (Surcharge, FTL, LTL) VALUES (0.00, 0.00, 0.00);";
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtRateTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Rate_Table;";
+                    MySqlCommand selectAllRate = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRate);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRateTable);
+
+                    // Render the Columns and the rows
+                    rate_table_datagrid.ItemsSource = DtRateTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
 
                     conn.Close(); // Close connection
                 }               
@@ -952,11 +986,27 @@ namespace Group2
                     // Open connection
                     conn.Open();
 
-                    string sq1 = $"DELETE FROM Rate_Table WHERE Rate_Table_ID = {rate_id.Text}"; ; // ADJUSTMENT NAME REQUIRES
+                    string sq1 = $"DELETE FROM Rate_Table WHERE Rate_Table_ID = {SelectedRateID}"; ; // ADJUSTMENT NAME REQUIRES
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
 
+                    // ----------- Refresh [Start] -----------------
+                    DtRateTable.Clear();
 
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Rate_Table;";
+                    MySqlCommand selectAllRate = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRate);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRateTable);
+
+                    // Render the Columns and the rows
+                    rate_table_datagrid.ItemsSource = DtRateTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
 
                     conn.Close(); // Close connection
                 }
@@ -1065,10 +1115,29 @@ namespace Group2
                 {
                     // Open connection
                     conn.Open();
-                    
-                    string sq1 = $"UPDATE Rate_Table SET column1 = value1 WHERE Rate_Table_ID = {rate_id.Text};" ; // ADJUSTMENT NAME REQUIRES
+
+                    string setCondition = $"Surcharge = '{ForSurcharge.Text}', FTL = {ForFTL.Text}, LTL = {ForLTL.Text}";
+                    string sq1 = $"UPDATE Rate_Table SET {setCondition} WHERE Rate_Table_ID = {SelectedRateID};" ; 
                     MySqlCommand cmd = new MySqlCommand(sq1, conn);
                     cmd.ExecuteNonQuery();
+
+                    // ----------- Refresh [Start] -----------------
+                    DtRateTable.Clear();
+
+                    // SQL Command
+                    string sq2 = "SELECT * FROM Rate_Table;";
+                    MySqlCommand selectAllRate = new MySqlCommand(sq2, conn);
+
+                    // Create A data Adapter
+                    MySqlDataAdapter reader = new MySqlDataAdapter(selectAllRate);
+
+                    // fills Data Table Object with All Contract Rows 
+                    reader.Fill(DtRateTable);
+
+                    // Render the Columns and the rows
+                    rate_table_datagrid.ItemsSource = DtRateTable.DefaultView;
+
+                    // ----------- Refresh [End] -----------------
 
                     conn.Close(); // Close connection
                 }
@@ -1122,6 +1191,7 @@ namespace Group2
                 MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
 
         private void route_update_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
