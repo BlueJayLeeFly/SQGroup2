@@ -158,7 +158,7 @@ namespace Group2
                         SelectedRow[10] = time;
                         SelectedRow[11] = CarrierCost;
                         SelectedRow[12] = OhstRevenue;
-
+                        SelectedRow[7] = 9; //
                     }
 
                 }
@@ -198,7 +198,7 @@ namespace Group2
                     //market_status_bar.Content = $"Connected to MySql {conn.ServerVersion}";
 
                     // SQL Command
-                    string sq1 = "SELECT * FROM tms_db.order where OrderStatus = '2';";
+                    string sq1 = "SELECT * FROM tms_db.order";// where OrderStatus = '2';";
                     MySqlCommand selectAllRate = new MySqlCommand(sq1, conn);
 
                     // Create A data Adapter
@@ -287,7 +287,7 @@ namespace Group2
             string Order4 = "'" + selectedInsertRows[4].ToString() + "'";
             string Order5 = "'" + selectedInsertRows[5].ToString() + "'";
             string Order6 = "'" + selectedInsertRows[6].ToString() + "'";
-            string Order7 = "'" + selectedInsertRows[7].ToString() + "'";
+            string Order7 = "'" + selectedInsertRows[7].ToString() + "'"; //order status
             string Order8 = "'" + selectedInsertRows[8].ToString() + "'";
             string Order9 = "'" + selectedInsertRows[9].ToString() + "'";
             string Order10 = "'" + selectedInsertRows[10].ToString() + "'";
@@ -295,7 +295,7 @@ namespace Group2
             string Order12 = "'" + selectedInsertRows[12].ToString() + "'";
 
             // SQL Command
-            string sq1 = $" UPDATE tms_db.order SET Km = {Order9} , EstTime = {Order10} , CarrierFee = {Order11} , OSHTFee = {Order12} WHERE OrderID = {Order6} ;";
+            string sq1 = $" UPDATE tms_db.order SET Km = {Order9} , EstTime = {Order10} , CarrierFee = {Order11} , OSHTFee = {Order12}, OrderStatus = {Order7} WHERE OrderID = {Order6} ;";
 
             return sq1;
         }

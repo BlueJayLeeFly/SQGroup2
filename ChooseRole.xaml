@@ -15,7 +15,7 @@
         <Image Margin="452,156,467,329" Source="Images/buyer.jpg" Stretch="Fill"/>
         <Image Margin="849,157,70,328" Source="Images/planner.jpg" Stretch="Fill"/>
         <TextBlock HorizontalAlignment="Left" Margin="62,476,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Foreground="#FF333333" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="62,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Width="343"><Run Foreground="#FF333333" Text="veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia "/><Span Foreground="#FF333333"><Run Text="voluptas sit aspernatur aut odit aut fugit."/></Span></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="62,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Width="343"><Run Foreground="#FF333333" Text="The admin has the ability to set up Database connection, backup database information and can alter carrier details"/></TextBlock>
 
         <Button x:Name="StartAdmin" Content="Get Started" HorizontalAlignment="Left" Margin="62,603,0,0" VerticalAlignment="Top" Width="135" Height="50" BorderBrush="{x:Null}" FontSize="18" Foreground="White" Click="StartAdmin_Click">
             <Button.Style>
@@ -40,7 +40,7 @@
             </Button.Template>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="452,476,0,0" TextWrapping="Wrap" Text="Buyer" VerticalAlignment="Top" Foreground="#FF333333" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="452,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Width="343"><Run Foreground="#FF333333" Text="veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia "/><Span Foreground="#FF333333"><Run Text="voluptas sit aspernatur aut odit aut fugit."/></Span></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="452,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Width="343"><Run Foreground="#FF333333" Text="In the buyer you can accept new orders to make them available for the planner and generate invoices for the completed orders"/></TextBlock>
         <Button x:Name="StartBuyer" Content="Get Started" HorizontalAlignment="Left" Margin="452,603,0,0" VerticalAlignment="Top" Width="135" Height="50" BorderBrush="{x:Null}" FontSize="18" Foreground="White" Click="StartBuyer_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -64,7 +64,7 @@
             </Button.Template>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="853,476,0,0" TextWrapping="Wrap" Text="Planner" VerticalAlignment="Top" Foreground="#FF333333" FontSize="20" Width="84"/>
-        <TextBlock HorizontalAlignment="Left" Margin="853,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Width="343"><Run Foreground="#FF333333" Text="veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia "/><Span Foreground="#FF333333"><Run Text="voluptas sit aspernatur aut odit aut fugit."/></Span></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="853,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Width="343"><Run Foreground="#FF333333" Text="The Planner can look at the status of all the orders and can generate the charges and timing for each order"/></TextBlock>
         <Button x:Name="StartPlanner" Content="Get Started" HorizontalAlignment="Left" Margin="853,603,0,0" VerticalAlignment="Top" Width="135" Height="50" BorderBrush="{x:Null}" FontSize="18" Foreground="White" Click="StartPlanner_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

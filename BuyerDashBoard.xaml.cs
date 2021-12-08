@@ -456,18 +456,38 @@ namespace Group2
             System.IO.Directory.CreateDirectory(InvoiceDirectory);
 
             string clientName = info[0].ToString();
-            int jobtype = int.Parse(info[1].ToString());
+            int job_type = int.Parse(info[1].ToString());
             int quantity = int.Parse(info[2].ToString());
             string origin = info[3].ToString();
             string dest = info[4].ToString();
             int van_type = int.Parse(info[5].ToString());
-            string orderID = info[6].ToString();
+            string orderID = info[6].ToString();//
             int orderStatus = int.Parse(info[7].ToString());
             string carrierName = info[8].ToString();
             int km = int.Parse(info[9].ToString());
             double estTime = double.Parse(info[10].ToString());
             int amountDue = int.Parse(info[11].ToString());
             int OSHTDue = int.Parse(info[12].ToString());
+
+            string vanType = "";
+            string jobType = "";
+            if (van_type==1)
+            {
+                vanType = "Refrigerated";
+            }
+            if(van_type == 0)
+            {
+                vanType = "Dry Van";
+            }
+
+            if (job_type == 1)
+            {
+                jobType = "Less Truck Load";
+            }
+            if (job_type == 0)
+            {
+                jobType = "Full Truck Load";
+            }
 
             try
             {
@@ -478,17 +498,18 @@ namespace Group2
                 //string filepath = InvoiceDirectory + orderID + ".docx";
                 file = File.Create(filePath);
                 file.Close();
-                string invoicemsg = "Hello there " + clientName + ", Thank you for using our service, below is a breakdown of your order" + "\r\n\r\n" +
+                string invoicemsg = "Hello there, " + clientName + ", Thank you for using our service, below is a breakdown of your order" + "\r\n\r\n" +
                                      "Order ID:" + orderID + "\r\n" +
-                                     "Order Quantity: " + quantity + "\r\n" +
+                                     "-------------------------------------------------------------------------\r\n\r\n" +
+                                     "Job Type: " + jobType + "\r\n" +
                                      "Order Shipped From: " + origin + "\r\n" +
                                      "Order Destination: " + dest + "\r\n" +
                                      "Order Shipped by: " + carrierName + "\r\n" +
-                                     "Van Type: " + van_type + "\r\n" +
-                                     "Total Distance: " + km + "\r\n" +
-                                     "Estimated Delivery Time: " + estTime + "\r\n" +
-                                     "Total Amount Due: $" + amountDue + "\r\n\r\n" +
-                                     "Thank you so much for choosing our service! We hope that the delivery method was easy and convienient for you. " +
+                                     "Van Type: " + vanType + "\r\n" +
+                                     "Total Distance: " + km + " km\r\n" +
+                                     "Estimated Delivery Time: " + estTime + " hr\r\n" +
+                                     "                                                  Total Amount Due: $" + OSHTDue + "\r\n\r\n" +
+                                     "\tThank you so much for choosing our service! We hope that the delivery method was easy and convenient for you. " +
                                      "If you have any questions please reach out to us. " +
                                      "You may pay your balance by cheque through the mail - Please allow 2-3 business days for mail to arrive. " +
                                      "Or over the phone with your credit card.  Or in person at one of our offices. " +
@@ -500,7 +521,7 @@ namespace Group2
                 sw.Write(invoicemsg);
                 sw.Close();
                 file.Close();
-                OpenApp(filePath);
+                //OpenApp(filePath);
 
                 AdminController.addLog("[Buyer] Invoice Generated");
             }

@@ -172,48 +172,59 @@ namespace Group2
 
             // https://www.nuget.org/packages/MySqlBackup.NET/
 
-            using (MySqlConnection conn = new MySqlConnection(ConnectionStringForTMS))
+            try
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (MySqlConnection conn = new MySqlConnection(ConnectionStringForTMS))
                 {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ExportToFile(BackupFile);
-                        conn.Close();
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ExportToFile(BackupFile);
+                            conn.Close();
+                        }
                     }
                 }
             }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Planner] Database Backup Failed");
+            }
+
         }
 
-
-        /**
-        *  \brief    localRestore -- restore a DB backup locally
-        *  \details  this method restore a DB backup file locally
-        *  \param    ConnectionStringForTMS string
-        *  \param    BackupFile string
-        *  \returns  NONE
-        */
 
         public static void localRestore(string ConnectionStringForTMS, string BackupFile)
         {
             // https://www.nuget.org/packages/MySqlBackup.NET/
 
-            using (MySqlConnection conn = new MySqlConnection(ConnectionStringForTMS))
+            try
             {
-                using (MySqlCommand cmd = new MySqlCommand())
+                using (MySqlConnection conn = new MySqlConnection(ConnectionStringForTMS))
                 {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ImportFromFile(BackupFile);
-                        conn.Close();
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ImportFromFile(BackupFile);
+                            conn.Close();
+                        }
                     }
                 }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Warning);
+                AdminController.addLog("[Planner] Backup Restore Failed");
             }
         }
 
     }
+
 }
+

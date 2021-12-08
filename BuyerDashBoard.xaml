@@ -42,15 +42,15 @@
         <!-- [Dashboard - Main] -->
         <Canvas x:Name="buyer_dashboard_main" Visibility="Visible" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="335" TextWrapping="Wrap" Text="Things Get You Going as a Buyer" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="The Buyer has the ability to initiate orders from the Contract Market Place, and can generate invoices for the completed orders" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <Image Height="498" Canvas.Left="233" Canvas.Top="149" Width="498" Source="Images/buyer_main_1.jpg"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione " Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
         </Canvas>
 
         <!-- [Dashboard - Initiate Order] [Start] -->
         <Canvas x:Name="buyer_dashboard_ini_orders" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="930">
             <TextBlock Canvas.Left="402" TextWrapping="Wrap" Text="Initiate Orders" Canvas.Top="36" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="71" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Please Select Orders to initiate them from the Contract Market Place" Canvas.Top="71" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Marketplace Data grid -->
             <DataGrid x:Name="Marketplace_datagrid"  AutoGenerateColumns="True" Height="258" Canvas.Left="62" Canvas.Top="172" Width="791" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
@@ -133,13 +133,13 @@
         <!-- [Dashboard - Review Completed Orders] Do we use it??????????????? -->
         <Canvas Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
             <TextBlock Canvas.Left="374" TextWrapping="Wrap" Text="Review Completed Orders" Canvas.Top="48" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Please review the completed orders and generate invoices" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
         </Canvas>
 
         <!-- [[Dashboard - Generate invoice] -->
         <Canvas x:Name="buyer_dashboard_generate_invoice" Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
             <TextBlock Canvas.Left="374" TextWrapping="Wrap" Text="Generate Invoices" Canvas.Top="48" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Please review completed orders and generate invoices" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <DataGrid x:Name="completed_orders" AutoGenerateColumns="True" Height="297" Canvas.Left="57" Canvas.Top="172" Width="836" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
                 <!-- Column Header Style -->
                 <DataGrid.ColumnHeaderStyle>

@@ -69,9 +69,9 @@
         <!-- [[Dashboard - Main] -->
         <Canvas x:Name="AdminDashBoardMain" Visibility="Visible" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Things Get You Going as an Admin" Canvas.Top="58" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Here in the admin you have the ability to change the database connection, set the directory for the log files, alter carrier database values, review log files and create a backup database" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <Image Height="608" Canvas.Left="158" Canvas.Top="88" Width="608" Source="Images/admin_main_1.jpg"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione " Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Canvas.Top="620" FontSize="16" Height="134" Width="651" Foreground="#FF787878"/>
         </Canvas>
 
         <!-- [[Dashboard - Directory Setting] -->
@@ -103,7 +103,7 @@
         <!-- [[Dashboard - Rate_Table] -->
         <Canvas x:Name="Rate_Table" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Setting Rate Table" Canvas.Top="38" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="82" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="" Canvas.Top="82" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Rate Table Data grid -->
             <DataGrid x:Name="rate_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="146" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="rate_table_datagrid_SelectionChanged">
@@ -142,7 +142,7 @@
         <!-- [[Dashboard - Carrier_Table] -->
         <Canvas x:Name="Carrier_Table" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Setting Carrier Table" Canvas.Top="34" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="78" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="" Canvas.Top="78" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Carrier Table Data grid -->
             <DataGrid x:Name="carrier_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="132" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="carrier_table_datagrid_SelectionChanged">
@@ -190,7 +190,7 @@
         <!-- [[Dashboard - Route_Table] -->
         <Canvas x:Name="Route_Table" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="326" TextWrapping="Wrap" Text="Setting Route Table" Canvas.Top="40" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="84" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="" Canvas.Top="84" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
 
             <!-- Route Table Data grid -->
             <DataGrid x:Name="route_table_datagrid" Height="295" Canvas.Left="70" Canvas.Top="146" Width="790" BorderBrush="#FFCB99FF" BorderThickness="5" SelectionChanged="route_table_datagrid_SelectionChanged">
@@ -237,7 +237,7 @@
         <!-- [[Dashboard - Review Log Files] -->
         <Canvas x:Name="admin_dashboard_review_log"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
             <TextBlock Canvas.Left="418" TextWrapping="Wrap" Text="TMS Log" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="101"/>
-            <TextBlock Canvas.Left="259" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="550" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="259" TextWrapping="Wrap" Text="" Canvas.Top="102" FontSize="16" Height="47" Width="550" Foreground="#FF787878"/>
             <ListBox x:Name="admin_log_listbox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="517" Canvas.Left="158" Canvas.Top="195" Width="651" BorderBrush="{x:Null}"/>
             <Image Height="300" Canvas.Left="-65" Canvas.Top="71" Width="300" Source="Images/log1.png"/>
             <Image Height="300" Canvas.Left="592" Canvas.Top="122" Width="300" Source="Images/log2.png"/>
@@ -247,7 +247,7 @@
         <Canvas x:Name="admin_dashboard_backup"  Visibility="Collapsed" Height="764" Canvas.Left="345" Width="935">
             <Image Height="272" Canvas.Left="628" Canvas.Top="466" Width="272" Source="Images/backup.png" RenderTransformOrigin="0.5,0.5"/>
             <TextBlock Canvas.Left="354" TextWrapping="Wrap" Text="Backup TMS DB" Canvas.Top="55" FontSize="20" FontWeight="Bold" Width="173"/>
-            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
+            <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <TextBlock TextWrapping="Wrap" Canvas.Top="250" FontSize="16" Text="Backup/Export a TMS Database " Canvas.Left="166" Width="268" Foreground="#FF333333"></TextBlock>
             <TextBox x:Name="backup_file_path"  VerticalContentAlignment="Center" Text="" Canvas.Left="166" Canvas.Top="276" Padding="5,5,5,5" Height="42" Width="402" BorderBrush="#FF9756D9" Foreground="#FF9756D9" FontSize="14" />
             <Button x:Name="backup_button" Content="Backup" Canvas.Left="587" Canvas.Top="276" Width="133" Height="42" BorderBrush="{x:Null}" Background="#FF9756D9" Foreground="White" Click="backup_button_Click"/>
