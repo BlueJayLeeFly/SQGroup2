@@ -23,15 +23,13 @@
                 <Label x:Name="planner_menu1_label" Content="Calculate Order Information" Canvas.Left="83" Canvas.Top="16" FontSize="18" Foreground="#FF787878" Width="238"/>
             </Canvas>
 
-            <!--  Remove menu2 and 3-->
-            <Canvas x:Name="planner_menu2" Height="63" Canvas.Top="201" Width="345" MouseEnter="planner_menu2_MouseEnter" MouseLeave="planner_menu2_MouseLeave" MouseLeftButtonDown="planner_menu2_MouseLeftButtonDown" Cursor="Hand">
-                <Label x:Name="planner_menu2_label" Content="Menu2" Canvas.Left="81" Canvas.Top="14" FontSize="18" Foreground="#FF787878" Width="250"/>
-                <Image Source="Images/planner_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="35" Canvas.Top="14" />
-            </Canvas>
-            <Canvas x:Name="planner_menu3" Height="63" Canvas.Top="269" Width="345" MouseEnter="planner_menu3_MouseEnter" MouseLeave="planner_menu3_MouseLeave" MouseLeftButtonDown="planner_menu3_MouseLeftButtonDown" Cursor="Hand">
-                <Image Source="Images/planner_directory.png" RenderTransformOrigin="1.706,2.006" Canvas.Left="35" Canvas.Top="15" />
-                <Label x:Name="planner_menu3_label" Content="Menu3" Canvas.Left="78" Canvas.Top="15" FontSize="18" Foreground="#FF787878" Width="250"/>
-            </Canvas>
+            <!-- Tutorial Banner-->
+            <Image Height="325" Canvas.Left="10" Canvas.Top="409" Width="325" Source="Images/comingsoon.png"/>
+            <Label Content="Coming Soon" Padding="10, 10, 10, 10" Canvas.Left="103" Canvas.Top="409" Foreground="white" FontSize="20" Background="#FF45B16B"/>
+            <Label Content="Learn More About Group2 TMS" Canvas.Left="61" Canvas.Top="466" Foreground="#FF333333" FontSize="16" />
+
+
+
             <Canvas x:Name="PlannerBackToMain" Height="63" Canvas.Top="703" Width="345" Background="#45B16B" MouseLeftButtonDown="PlannerBackToMain_MouseLeftButtonDown" Cursor="Hand">
                 <Label Content="Back to Main" Canvas.Left="122" Canvas.Top="14" Foreground="White" FontSize="20"/>
                 <Image Height="32" Canvas.Left="51" Canvas.Top="18" Width="73" Source="door.png"/>
@@ -51,10 +49,21 @@
         <Canvas x:Name="menu1_screen" Height="800" Canvas.Left="345" Width="935" Visibility="Visible">
             <TextBlock Canvas.Left="348" TextWrapping="Wrap" Text="Calculate Order Information" Canvas.Top="47" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
-            <DataGrid x:Name="Planner_datagrid"  AutoGenerateColumns="True" Height="306" Canvas.Left="71" Canvas.Top="197" Width="792" Padding="5,5,5,5" BorderBrush="#FFFBA5BA" BorderThickness="5">
+            <DataGrid x:Name="Planner_datagrid"  AutoGenerateColumns="True" Height="306" Canvas.Left="71" Canvas.Top="197" Width="792" Padding="5,5,5,5" BorderBrush="#FF83F7AC" BorderThickness="5">
+                <!-- Column Header Style -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="Green" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.5"/>
+                        <Setter Property="Padding" Value="5,10,5,10" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
             </DataGrid>
-            <TextBox Height="23" Canvas.Left="290" TextWrapping="Wrap" Text="TextBox" Canvas.Top="591" Width="120"/>
-            <Button Content="Button" Canvas.Left="442" Canvas.Top="591" Width="75"/>
+            <Button Content="Load Orders" Canvas.Left="124" Canvas.Top="566" Width="169" Height="41" Click="Button_Click_1" Background="#FF45B16B" Foreground="White" BorderBrush="{x:Null}"/>
+            <Button Content="Generate Information" Canvas.Left="367" Canvas.Top="566" Width="158" Height="48" Click="Button_Click" BorderBrush="{x:Null}" Background="#FF45B16B" Foreground="White"/>
+            <Button Content="Update Order" Canvas.Left="627" Canvas.Top="566" Width="164" Height="48" Click="Button_Click_2" Background="#FF45B16B" BorderBrush="White" Foreground="White"/>
         </Canvas>
 
         <!-- [[Dashboard - Menu2] Delete menu2 and menu3-->

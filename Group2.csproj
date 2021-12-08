@@ -168,6 +168,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="orderDetail.cs" />
     <Compile Include="Params.cs" />
     <Compile Include="PlannerDashBoard.xaml.cs">
       <DependentUpon>PlannerDashBoard.xaml</DependentUpon>
