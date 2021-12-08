@@ -238,12 +238,12 @@ namespace Group2
                     acceptedRows[6] = randomNumber.Next(1, 10000);
 
                     // Set Status to 2 and Carrier to the ComboValues
-                    acceptedRows[7] = 9;
+                    acceptedRows[7] = 2;
                     acceptedRows[8] = carrier;
 
                     // Default Values for km, time and cost
                     acceptedRows[9] = 0;
-                    acceptedRows[10] = 0.01;
+                    acceptedRows[10] = 0;
                     acceptedRows[11] = 0;
                     acceptedRows[12] = 0;
 

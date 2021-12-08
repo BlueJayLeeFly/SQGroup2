@@ -38,7 +38,7 @@
         </Canvas>
 
         <!-- [[Dashboard - Main] -->
-        <Canvas x:Name="main_screen" Visibility="Collapsed" Height="800" Canvas.Left="350" Width="920">
+        <Canvas x:Name="main_screen" Visibility="Visible" Height="800" Canvas.Left="350" Width="920">
             <TextBlock Canvas.Left="312" Text="Things Get You Going as an Planner" TextWrapping="Wrap" Canvas.Top="58" FontSize="20" FontWeight="Bold" Width="349"></TextBlock>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="102" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <Image Height="464" Canvas.Left="236" Canvas.Top="156" Width="464" Source="Images/planner_main_1.jpg"/>
@@ -46,7 +46,7 @@
         </Canvas>
 
         <!-- [[Dashboard - Menu1] -->
-        <Canvas x:Name="menu1_screen" Height="800" Canvas.Left="345" Width="935" Visibility="Visible">
+        <Canvas x:Name="menu1_screen" Height="800" Canvas.Left="345" Width="935" Visibility="Collapsed">
             <TextBlock Canvas.Left="348" TextWrapping="Wrap" Text="Calculate Order Information" Canvas.Top="47" FontSize="20" FontWeight="Bold"/>
             <TextBlock Canvas.Left="158" TextWrapping="Wrap" Text="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur" Canvas.Top="111" FontSize="16" Height="47" Width="651" Foreground="#FF787878"/>
             <DataGrid x:Name="Planner_datagrid"  AutoGenerateColumns="True" Height="306" Canvas.Left="71" Canvas.Top="197" Width="792" Padding="5,5,5,5" BorderBrush="#FF83F7AC" BorderThickness="5">
